@@ -1,0 +1,34 @@
+# Core data
+pandas>=2.0
+numpy>=1.24
+
+# NLP
+spacy>=3.7
+# Dutch model — install separately with:
+#   python -m spacy download nl_core_news_lg
+
+# Embeddings & similarity
+sentence-transformers>=2.2
+scikit-learn>=1.3
+rank-bm25>=0.2
+
+# Graph
+networkx>=3.0
+
+# Visualisation
+matplotlib>=3.7
+seaborn>=0.12
+# Optional: interactive graph viz
+# pyvis>=0.3
+
+# Notebooks
+jupyter>=1.0
+ipykernel>=6.0
+
+# Web / data fetching
+requests>=2.31
+lxml>=4.9
+beautifulsoup4>=4.12
+
+# Validation metrics
+# pytrec-eval-terrier>=0.5  # uncomment when needed

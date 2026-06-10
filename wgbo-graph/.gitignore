@@ -1,0 +1,40 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- Distribution ---
+build/
+dist/
+*.egg-info/
+
+# --- Editors ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# --- Project-specific ---
+# never commit large model files or full case-law dumps
+*.bin
+*.safetensors
+data/raw/case_law/*.xml
+data/raw/case_law/*.json
+!data/raw/case_law/.gitkeep
+
+# but DO commit small annotated samples and the validation set
+!data/validation/*.csv
+!data/annotations/*.json
+
+# notebook outputs (clear before commit, or use nbstripout)
+# uncomment if you set up nbstripout:
+# notebooks/*.ipynb
