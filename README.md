@@ -1,5 +1,4 @@
-# WGBO Article Relationship Graph
-
+# Article Relationship Model
 A network model of relationships across statutory articles in Dutch medical
 malpractice and consent law, anchored on Article 7:454 BW (*dossierplicht*).
 
