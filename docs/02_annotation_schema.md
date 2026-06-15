@@ -16,7 +16,7 @@ The raw guidelines are filed under `docs/supervisor_notes/`.
 | 6 | Temporal | When, before / after, deadlines |
 | 7 | Explicit References | Citations to other articles or documents |
 | 8 | Hierarchies | "Subject to", "Notwithstanding", "Without prejudice to" |
-| 9 | Residual | Pre-conditional attributes not captured by 2–8 |
+| 9 | Residual | Pre-conditional attributes not captured by 2–8 |-+-----------++++++++++++-
 
 For full definitions and edge cases, see
 `docs/supervisor_notes/annotation_guidelines.md`.
@@ -34,6 +34,7 @@ annotated with the structure below. All list fields default to `[]`.
   "lid":             int,        # 1
   "source":          str,        # "BW Boek 7, Titel 7.7.5"
   "text":            str,        # the raw text span
+  "text_en":         str,        # English translation of `text`
 
   # ---- Task 1 ----
   "condition_type":  str,        # "pre_condition" or "post_condition"

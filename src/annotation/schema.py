@@ -42,6 +42,7 @@ class Atom:
     article_id: str
     lid: int
     text: str
+    text_en: str = ""
     source: str = ""
 
     # --- Task 1: pre vs post ---
