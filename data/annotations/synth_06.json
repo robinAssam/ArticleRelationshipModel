@@ -1,0 +1,82 @@
+[
+  {
+    "atom_id": "synth:6(1).a",
+    "article_id": "synth:6",
+    "lid": 1,
+    "text": "If a patient is admitted to a Level-5 bio-containment ward",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "admitted"
+    ],
+    "geographical_domain": [
+      "Level-5 bio-containment ward"
+    ],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:6(1).b",
+    "article_id": "synth:6",
+    "lid": 1,
+    "text": "the colonial medical board must withhold the patient's identity from public health broadcasts",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "colonial medical board",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "withholds"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "identity",
+      "public health broadcasts"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:6(1).c",
+    "article_id": "synth:6",
+    "lid": 1,
+    "text": "unless the pathogen is legally classified as a colony-threatening contagion",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [
+      "unless the pathogen is legally classified as a colony-threatening contagion"
+    ],
+    "residual": [
+      "pathogen",
+      "colony-threatening contagion",
+      "legally classified"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "Exception defeater"
+  }
+]

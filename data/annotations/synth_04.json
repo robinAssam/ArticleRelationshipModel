@@ -1,0 +1,57 @@
+[
+  {
+    "atom_id": "synth:4(1).a",
+    "article_id": "synth:4",
+    "lid": 1,
+    "text": "If a pathogenic mutation is detected within a hydroponic agricultural sector",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [
+      "hydroponic agricultural sector"
+    ],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "pathogenic mutation",
+      "detected"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:4(1).b",
+    "article_id": "synth:4",
+    "lid": 1,
+    "text": "the lead epidemiologist must initiate an immediate, sector-wide biological quarantine sequence",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "lead epidemiologist"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "initiates"
+    ],
+    "geographical_domain": [
+      "sector-wide"
+    ],
+    "temporal": [
+      "immediate"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "biological quarantine sequence"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

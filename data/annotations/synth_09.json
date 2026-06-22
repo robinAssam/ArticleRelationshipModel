@@ -1,0 +1,82 @@
+[
+  {
+    "atom_id": "synth:9(1).a",
+    "article_id": "synth:9",
+    "lid": 1,
+    "text": "If a structural anomaly is discovered in a colonist's embryonic genetic profile",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "colonist"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "discovered"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "structural anomaly",
+      "embryonic genetic profile"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:9(1).b",
+    "article_id": "synth:9",
+    "lid": 1,
+    "text": "the chief geneticist must report the anomaly to the Extraterrestrial Health Directorate",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "chief geneticist",
+      "Extraterrestrial Health Directorate"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "reports"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "anomaly"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:9(1).c",
+    "article_id": "synth:9",
+    "lid": 1,
+    "text": "unless the anomaly is definitively categorized as a benign cosmic radiation artifact",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [
+      "unless the anomaly is definitively categorized as a benign cosmic radiation artifact"
+    ],
+    "residual": [
+      "anomaly",
+      "definitively categorized",
+      "benign cosmic radiation artifact"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

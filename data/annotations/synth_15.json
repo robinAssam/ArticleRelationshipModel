@@ -1,0 +1,85 @@
+[
+  {
+    "atom_id": "synth:15(1).a",
+    "article_id": "synth:15",
+    "lid": 1,
+    "text": "If a colonist requests an elective cybernetic limb replacement",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "colonist"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "requests"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "elective cybernetic limb replacement"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:15(1).b",
+    "article_id": "synth:15",
+    "lid": 1,
+    "text": "and the colonist possesses a documented medical history of severe neuro-synthetic implant rejection",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "colonist"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "possesses"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "documented medical history",
+      "severe neuro-synthetic implant rejection"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "Cumulative pre-condition (AND) — split"
+  },
+  {
+    "atom_id": "synth:15(1).c",
+    "article_id": "synth:15",
+    "lid": 1,
+    "text": "the bio-ethics committee and the lead neurosurgeon must substitute the procedure with the provision of a customized external bio-suit, securing a legal state of guaranteed mechanical mobility devoid of internal biological integration risk",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "bio-ethics committee",
+      "lead neurosurgeon"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "substitutes"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "procedure",
+      "customized external bio-suit",
+      "guaranteed mechanical mobility",
+      "internal biological integration risk"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

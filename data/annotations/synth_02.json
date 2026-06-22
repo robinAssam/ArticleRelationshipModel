@@ -1,0 +1,54 @@
+[
+  {
+    "atom_id": "synth:2(1).a",
+    "article_id": "synth:2",
+    "lid": 1,
+    "text": "If a medical emergency occurs during an extravehicular surface transit",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [
+      "during an extravehicular surface transit"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "medical emergency",
+      "occurs"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:2(1).b",
+    "article_id": "synth:2",
+    "lid": 1,
+    "text": "any certified emergency medical technician may administer autonomous life-support protocols without prior written consent",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "certified emergency medical technician"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "administers"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "autonomous life-support protocols",
+      "prior written consent"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

@@ -15,7 +15,7 @@ Anchor article: **7:454 BW (dossierplicht)**.
 Neighbourhood: WGBO articles 7:451–7:458 + Book 6 fallbacks (6:74, 6:162,
 6:170) + optional GDPR overlap (Arts. 5, 9, 15, 17).
 
-## Method, in one paragraph
+## Method
 
 Each article is decomposed into atomic boolean statements (one per
 requirement or duty), each annotated against the lab's 9-label schema

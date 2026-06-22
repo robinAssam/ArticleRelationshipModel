@@ -1,0 +1,60 @@
+[
+  {
+    "atom_id": "synth:3(1).a",
+    "article_id": "synth:3",
+    "lid": 1,
+    "text": "If a citizen formally requests the deletion of their gravitational adaptation biometrics",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "citizen"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "requests"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "deletion",
+      "gravitational adaptation biometrics",
+      "formally"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:3(1).b",
+    "article_id": "synth:3",
+    "lid": 1,
+    "text": "the orbital health authority must purge the specified data from all active servers within three lunar cycles",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "orbital health authority"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "purges"
+    ],
+    "geographical_domain": [
+      "active servers"
+    ],
+    "temporal": [
+      "within three lunar cycles"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "specified data"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "atom_id": "synth:7(1).a",
+    "article_id": "synth:7",
+    "lid": 1,
+    "text": "If a citizen's neural implant transmits erratic or hostile bio-signatures",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "citizen"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "transmits"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "neural implant",
+      "erratic",
+      "hostile",
+      "bio-signatures"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "'or' preserved per schema rule"
+  },
+  {
+    "atom_id": "synth:7(1).b",
+    "article_id": "synth:7",
+    "lid": 1,
+    "text": "the automated triage system must dispatch an emergency retrieval drone",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "automated triage system"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "dispatches"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "emergency retrieval drone"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:7(1).c",
+    "article_id": "synth:7",
+    "lid": 1,
+    "text": "except where the citizen has previously logged an authorized mechanical maintenance session",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "citizen"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "logged"
+    ],
+    "geographical_domain": [],
+    "temporal": [
+      "previously"
+    ],
+    "explicit_references": [],
+    "hierarchies": [
+      "except where the citizen has previously logged an authorized mechanical maintenance session"
+    ],
+    "residual": [
+      "authorized mechanical maintenance session"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

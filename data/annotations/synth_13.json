@@ -1,0 +1,86 @@
+[
+  {
+    "atom_id": "synth:13(1).a",
+    "article_id": "synth:13",
+    "lid": 1,
+    "text": "If an unclassified extraterrestrial biological agent is ingested by a colonist",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "colonist"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "ingested"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "unclassified extraterrestrial biological agent"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:13(1).b",
+    "article_id": "synth:13",
+    "lid": 1,
+    "text": "and the resulting physiological symptoms cannot be cross-referenced with the known galactic pharmacopeia",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "physiological symptoms",
+      "cross-referenced",
+      "known galactic pharmacopeia"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "Cumulative pre-condition (AND) — split"
+  },
+  {
+    "atom_id": "synth:13(1).c",
+    "article_id": "synth:13",
+    "lid": 1,
+    "text": "the planetary governor and the chief xenobiologist must mandate the patient's immediate transfer to a geostationary medical satellite, resulting in a legally verified condition of zero-risk planetary containment",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "planetary governor",
+      "chief xenobiologist",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "mandates"
+    ],
+    "geographical_domain": [
+      "geostationary medical satellite"
+    ],
+    "temporal": [
+      "immediate"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "transfer",
+      "zero-risk planetary containment",
+      "legally verified"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

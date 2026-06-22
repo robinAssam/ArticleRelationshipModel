@@ -1,0 +1,86 @@
+[
+  {
+    "atom_id": "synth:11(1).a",
+    "article_id": "synth:11",
+    "lid": 1,
+    "text": "If a patient suffers from deep-space acute radiation syndrome",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "suffers"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "deep-space acute radiation syndrome"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:11(1).b",
+    "article_id": "synth:11",
+    "lid": 1,
+    "text": "and their designated primary caregiver is incapacitated",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "designated primary caregiver",
+      "patient"
+    ],
+    "legal_relations": [
+      "caregiver relationship"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "incapacitated"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "Cumulative pre-condition (AND) — split per schema"
+  },
+  {
+    "atom_id": "synth:11(1).c",
+    "article_id": "synth:11",
+    "lid": 1,
+    "text": "the sector magistrate and the backup medical proxy must jointly execute a marrow-regeneration protocol, until the patient achieves a legal state of certified radiological remission",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "sector magistrate",
+      "backup medical proxy",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "executes"
+    ],
+    "geographical_domain": [],
+    "temporal": [
+      "until the patient achieves a legal state of certified radiological remission"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "marrow-regeneration protocol",
+      "jointly"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

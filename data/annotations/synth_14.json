@@ -1,0 +1,64 @@
+[
+  {
+    "atom_id": "synth:14(1).a",
+    "article_id": "synth:14",
+    "lid": 1,
+    "text": "If a commercial transport vessel docks with an active medical emergency onboard or the vessel's automated bio-screening matrix fails upon approach",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [
+      "docks",
+      "fails"
+    ],
+    "geographical_domain": [],
+    "temporal": [
+      "upon approach"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "commercial transport vessel",
+      "active medical emergency",
+      "automated bio-screening matrix"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "OR-connected pre-condition kept as one atom"
+  },
+  {
+    "atom_id": "synth:14(1).b",
+    "article_id": "synth:14",
+    "lid": 1,
+    "text": "the port authority and the assigned quarantine officers must physically detain the entire crew for molecular decontamination, establishing a certified condition of absolute biological sterility across the docking perimeter",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "port authority",
+      "assigned quarantine officers",
+      "crew"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "detains"
+    ],
+    "geographical_domain": [
+      "docking perimeter"
+    ],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "molecular decontamination",
+      "absolute biological sterility",
+      "physically",
+      "certified"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

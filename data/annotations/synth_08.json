@@ -1,0 +1,86 @@
+[
+  {
+    "atom_id": "synth:8(1).a",
+    "article_id": "synth:8",
+    "lid": 1,
+    "text": "If an experimental radiation shield therapy is proposed to a colonist",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "colonist"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "proposed"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "experimental radiation shield therapy"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:8(1).b",
+    "article_id": "synth:8",
+    "lid": 1,
+    "text": "the treating specialist must obtain triple-verified digital consent from the patient",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "treating specialist",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "obtains"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "triple-verified digital consent"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:8(1).c",
+    "article_id": "synth:8",
+    "lid": 1,
+    "text": "provided that the patient is not currently exhibiting symptoms of cryogenic stasis delirium",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "exhibiting"
+    ],
+    "geographical_domain": [],
+    "temporal": [
+      "currently"
+    ],
+    "explicit_references": [],
+    "hierarchies": [
+      "provided that the patient is not currently exhibiting symptoms of cryogenic stasis delirium"
+    ],
+    "residual": [
+      "symptoms",
+      "cryogenic stasis delirium"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "atom_id": "synth:1(1).a",
+    "article_id": "synth:1",
+    "lid": 1,
+    "text": "If a patient permanently resides in a subterranean pressurized habitat zone",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "resides"
+    ],
+    "geographical_domain": [
+      "subterranean pressurized habitat zone"
+    ],
+    "temporal": [
+      "permanently"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:1(1).b",
+    "article_id": "synth:1",
+    "lid": 1,
+    "text": "the attending physician must record their ambient oxygen saturation baseline in the Lunar Medical Registry",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "attending physician",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "records"
+    ],
+    "geographical_domain": [
+      "Lunar Medical Registry"
+    ],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "ambient oxygen saturation baseline"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "'their' resolves to patient"
+  }
+]

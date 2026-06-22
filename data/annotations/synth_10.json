@@ -1,0 +1,81 @@
+[
+  {
+    "atom_id": "synth:10(1).a",
+    "article_id": "synth:10",
+    "lid": 1,
+    "text": "If a synthetic organ cloning procedure is completed",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [
+      "completed"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "synthetic organ cloning procedure"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:10(1).b",
+    "article_id": "synth:10",
+    "lid": 1,
+    "text": "the clone vat operator must incinerate any surplus biological material",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "clone vat operator"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "incinerates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "surplus biological material"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:10(1).c",
+    "article_id": "synth:10",
+    "lid": 1,
+    "text": "except where such material is explicitly requisitioned by the orbital stem-cell research division",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "orbital stem-cell research division"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "requisitions"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [
+      "except where such material is explicitly requisitioned by the orbital stem-cell research division"
+    ],
+    "residual": [
+      "material",
+      "explicitly"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

@@ -1,0 +1,63 @@
+[
+  {
+    "atom_id": "synth:12(1).a",
+    "article_id": "synth:12",
+    "lid": 1,
+    "text": "If a medical data breach compromises the colony's central psychiatric database or a malicious cyber-intrusion targets civilian life-support telemetry",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [
+      "compromises",
+      "targets"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "medical data breach",
+      "central psychiatric database",
+      "malicious cyber-intrusion",
+      "civilian life-support telemetry"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": "OR-connected pre-condition kept as one atom per schema rule"
+  },
+  {
+    "atom_id": "synth:12(1).b",
+    "article_id": "synth:12",
+    "lid": 1,
+    "text": "the chief cybersecurity officer and the lunar health minister must permanently sever the compromised network nodes, establishing a mandatory condition of absolute network isolation for the affected sector",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "chief cybersecurity officer",
+      "lunar health minister"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "severs"
+    ],
+    "geographical_domain": [
+      "affected sector"
+    ],
+    "temporal": [
+      "permanently"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "compromised network nodes",
+      "absolute network isolation",
+      "mandatory"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]

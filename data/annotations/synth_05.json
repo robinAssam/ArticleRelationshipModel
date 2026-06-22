@@ -1,0 +1,58 @@
+[
+  {
+    "atom_id": "synth:5(1).a",
+    "article_id": "synth:5",
+    "lid": 1,
+    "text": "If an unemancipated minor undergoes artificial gravity acclimation therapy",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "pre_condition",
+    "actors": [
+      "unemancipated minor"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "undergoes"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "artificial gravity acclimation therapy"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  },
+  {
+    "atom_id": "synth:5(1).b",
+    "article_id": "synth:5",
+    "lid": 1,
+    "text": "the legal guardian may observe the physiological telemetry via a secured, encrypted transmission link",
+    "text_nl": "",
+    "source": "Synthetic — Lunar Medical Code (training data)",
+    "condition_type": "post_condition",
+    "actors": [
+      "legal guardian",
+      "unemancipated minor"
+    ],
+    "legal_relations": [
+      "guardianship"
+    ],
+    "acts": [
+      "observes"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "physiological telemetry",
+      "secured encrypted transmission link"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-06-22",
+    "notes": ""
+  }
+]
