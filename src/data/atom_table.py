@@ -472,3 +472,177 @@ def build_semantic_edge_table(
                 })
 
     return pd.DataFrame(rows)
+
+
+# ============================================================================
+# Atom classifier
+# ============================================================================
+
+def classify_atom(
+    query,
+    df: pd.DataFrame,
+    weights: dict | None = None,
+    sim_pairs: pd.DataFrame | None = None,
+    alpha: float = 0.5,
+    top_k: int = 5,
+) -> dict:
+    """Score a query atom against every atom in the corpus and return the top-k.
+
+    The query can be:
+      - an Atom dataclass instance
+      - a dict matching the atom schema
+      - a partial dict containing only some fields (others default to empty)
+
+    For each candidate atom in df, compute two scores:
+      - exact_score:    sum of IDF weights of tags the query shares exactly
+                        with the candidate, summed across fields
+      - semantic_score: sum of best semantic-similarity matches between the
+                        query's tags and the candidate's tags (excluding tags
+                        already matched exactly)
+
+    The final score is alpha * exact + (1 - alpha) * semantic. The function
+    skips any candidate whose atom_id equals the query's atom_id (so you can
+    pass an existing atom for self-comparison without it always topping itself).
+
+    Returns
+    -------
+    dict with:
+      'top_matches':       DataFrame of the top_k by combined_score
+      'predicted_article': the most common article_id among the top_k
+      'scores_by_atom':    the full ranked DataFrame (all candidates)
+    """
+    if hasattr(query, "to_dict"):
+        query = query.to_dict()
+    query = dict(query)  # shallow copy
+
+    # Build a (field, tag) -> [(other_tag, sim), ...] lookup for semantic matches
+    sem_lookup: dict[tuple[str, str], list[tuple[str, float]]] = {}
+    if sim_pairs is not None and len(sim_pairs) > 0:
+        for _, row in sim_pairs.iterrows():
+            key_a = (row["field"], row["tag_a"])
+            key_b = (row["field"], row["tag_b"])
+            sem_lookup.setdefault(key_a, []).append((row["tag_b"], row["similarity"]))
+            sem_lookup.setdefault(key_b, []).append((row["tag_a"], row["similarity"]))
+
+    query_id = query.get("atom_id")
+    rows = []
+
+    for _, cand in df.iterrows():
+        if cand["atom_id"] == query_id:
+            continue
+
+        exact_score = 0.0
+        semantic_score = 0.0
+        exact_matches: list[tuple[str, str, float]] = []
+        semantic_matches: list[tuple[str, str, str, float]] = []
+
+        for field in LIST_FIELDS:
+            q_tags = set(query.get(field, []) or [])
+            c_tags = set(cand[field])
+            if not q_tags or not c_tags:
+                continue
+
+            # Exact overlap
+            shared = q_tags & c_tags
+            for tag in shared:
+                w = weights.get((field, tag), 1.0) if weights else 1.0
+                exact_score += w
+                exact_matches.append((field, tag, round(w, 4)))
+
+            # Semantic matches — for each query tag not exactly matched, find
+            # the best semantically-similar tag on the candidate
+            for q_tag in q_tags - shared:
+                best_sim = 0.0
+                best_match: str | None = None
+                for related_tag, sim in sem_lookup.get((field, q_tag), []):
+                    if related_tag in c_tags and sim > best_sim:
+                        best_sim = sim
+                        best_match = related_tag
+                if best_match is not None:
+                    semantic_score += best_sim
+                    semantic_matches.append((field, q_tag, best_match, round(best_sim, 4)))
+
+        combined = alpha * exact_score + (1.0 - alpha) * semantic_score
+        rows.append({
+            "atom_id": cand["atom_id"],
+            "article_id": cand["article_id"],
+            "combined_score": round(combined, 4),
+            "exact_score": round(exact_score, 4),
+            "semantic_score": round(semantic_score, 4),
+            "exact_matches": exact_matches,
+            "semantic_matches": semantic_matches,
+        })
+
+    scores_df = pd.DataFrame(rows).sort_values(
+        "combined_score", ascending=False
+    ).reset_index(drop=True)
+
+    top = scores_df.head(top_k)
+    predicted_article = top["article_id"].mode().iloc[0] if len(top) else None
+
+    return {
+        "top_matches": top[["atom_id", "article_id", "combined_score",
+                            "exact_score", "semantic_score"]],
+        "predicted_article": predicted_article,
+        "scores_by_atom": scores_df,
+    }
+
+
+def evaluate_classifier_loo(
+    df: pd.DataFrame,
+    weights: dict | None = None,
+    sim_pairs: pd.DataFrame | None = None,
+    alpha: float = 0.5,
+    top_k: int = 5,
+) -> tuple[pd.DataFrame, dict]:
+    """Leave-one-out evaluation of the atom classifier.
+
+    For each atom in df: remove it, classify it against the rest, then check
+    whether the correct article appears at rank 1, in the top_k, and where.
+
+    Returns
+    -------
+    eval_df : DataFrame with per-atom results (atom_id, true_article,
+              predicted_article, top1_hit, topk_hit, rank, reciprocal_rank)
+    summary : dict with overall top-1 accuracy, top-k accuracy, and MRR
+    """
+    results = []
+    for idx, atom in df.iterrows():
+        rest = df.drop(idx)
+        out = classify_atom(
+            atom.to_dict(), rest,
+            weights=weights, sim_pairs=sim_pairs,
+            alpha=alpha, top_k=top_k,
+        )
+        top = out["top_matches"]
+        true_article = atom["article_id"]
+
+        top1_article = top.iloc[0]["article_id"] if len(top) else None
+        top1_hit = top1_article == true_article
+        topk_hit = (true_article in top["article_id"].values) if len(top) else False
+
+        rank: int | None = None
+        for r, art in enumerate(top["article_id"].values, start=1):
+            if art == true_article:
+                rank = r
+                break
+
+        results.append({
+            "atom_id": atom["atom_id"],
+            "true_article": true_article,
+            "top1_match": top1_article,
+            "predicted_article": out["predicted_article"],
+            "top1_hit": top1_hit,
+            "topk_hit": topk_hit,
+            "rank": rank,
+            "reciprocal_rank": (1.0 / rank) if rank else 0.0,
+        })
+
+    eval_df = pd.DataFrame(results)
+    summary = {
+        "n_atoms": len(eval_df),
+        "top1_accuracy": round(eval_df["top1_hit"].mean(), 4),
+        f"top{top_k}_accuracy": round(eval_df["topk_hit"].mean(), 4),
+        "mean_reciprocal_rank": round(eval_df["reciprocal_rank"].mean(), 4),
+    }
+    return eval_df, summary
