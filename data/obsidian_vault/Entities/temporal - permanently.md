@@ -4,3 +4,7 @@ field: temporal
 weight: 2.8134
 ---
 # Entity: permanently
+
+## Semantic Links
+- [[temporal - immediate]] (Similarity: 0.62)
+- [[temporal - currently]] (Similarity: 0.61)

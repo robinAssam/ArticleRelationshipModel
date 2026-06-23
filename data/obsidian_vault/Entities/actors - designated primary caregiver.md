@@ -7,3 +7,4 @@ weight: 3.2189
 
 ## Semantic Links
 - [[actors - care provider]] (Similarity: 0.80)
+- [[actors - treating specialist]] (Similarity: 0.56)

@@ -7,3 +7,4 @@ weight: 2.8134
 
 ## Semantic Links
 - [[temporal - currently]] (Similarity: 0.78)
+- [[temporal - permanently]] (Similarity: 0.62)

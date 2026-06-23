@@ -7,3 +7,4 @@ weight: 3.2189
 
 ## Semantic Links
 - [[temporal - after request]] (Similarity: 0.77)
+- [[temporal - upon approach]] (Similarity: 0.58)

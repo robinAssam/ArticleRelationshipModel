@@ -1,0 +1,209 @@
+{
+  "main": {
+    "id": "a7925c0673369905",
+    "type": "split",
+    "children": [
+      {
+        "id": "5c6431fffcd06f5d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "719aeba2695de26e",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "74d83cedb8eb5563",
+    "type": "split",
+    "children": [
+      {
+        "id": "5c42af8f472c5d3f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9bef0a5846675f0f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "182794cedd16799f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "90c8cc03993ced51",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "3bf8fb92396757f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "5d20f5dcf1bea21e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "67381baa1aec8533",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "403072e484b501e0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "a21ea1662832e2c7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f0c45ae8570f6723",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "3aa2f25ffe6680d7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "719aeba2695de26e",
+  "lastOpenFiles": [
+    "Articles/Article 7_454.md",
+    "Entities/actors - patient.md",
+    "Atoms/Atom synth_13(1).c.md",
+    "Entities/acts - mandates.md",
+    "Entities/explicit_references - article 455.md",
+    "Entities/explicit_references - paragraph 1.md",
+    "Entities/geographical_domain - geostationary medical satellite.md",
+    "Entities/residual - absolute network isolation.md",
+    "Entities/geographical_domain - sector-wide.md",
+    "Entities/residual - absolute biological sterility.md",
+    "Entities/residual - anomaly.md",
+    "Entities/residual - artificial gravity acclimation therapy.md",
+    "Entities/residual - autonomous life-support protocols.md",
+    "Entities/residual - benign cosmic radiation artifact.md",
+    "Entities/residual - biological quarantine sequence.md",
+    "Entities/residual - certified.md",
+    "Entities/residual - civilian life-support telemetry.md",
+    "Entities/residual - compromised network nodes.md",
+    "Entities/residual - deep-space acute radiation syndrome.md",
+    "Entities/residual - definitively categorized.md",
+    "Entities/residual - detected.md",
+    "Entities/residual - destruction.md",
+    "Entities/residual - documented medical history.md",
+    "Entities/residual - documents.md",
+    "Entities/residual - duty.md",
+    "Entities/residual - symptoms.md",
+    "Untitled.canvas"
+  ]
+}

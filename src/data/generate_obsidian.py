@@ -43,12 +43,10 @@ def main():
     sim_pairs = compute_tag_similarities(df, threshold=0.55)
     
     # 3. Create structure
-    if VAULT_DIR.exists():
-        shutil.rmtree(VAULT_DIR)
-        
-    (VAULT_DIR / "Articles").mkdir(parents=True, exist_ok=True)
-    (VAULT_DIR / "Atoms").mkdir(parents=True, exist_ok=True)
-    (VAULT_DIR / "Entities").mkdir(parents=True, exist_ok=True)
+    VAULT_DIR.mkdir(parents=True, exist_ok=True)
+    for sub in ["Articles", "Atoms", "Entities"]:
+        sub_dir = VAULT_DIR / sub
+        sub_dir.mkdir(parents=True, exist_ok=True)
     
     # Map for semantic links
     semantic_map = {}

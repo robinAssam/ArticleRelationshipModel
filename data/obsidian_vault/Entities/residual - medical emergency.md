@@ -7,3 +7,4 @@ weight: 3.2189
 
 ## Semantic Links
 - [[residual - active medical emergency]] (Similarity: 0.92)
+- [[residual - documented medical history]] (Similarity: 0.58)
