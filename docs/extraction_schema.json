@@ -1,0 +1,124 @@
+{
+  "attributes": [
+    {
+      "name": "Pre-condition",
+      "definition": "A factual or legal requirement that must be met before a legal provision can be applied or any legal consequences can take effect.",
+      "includes": [
+        "Full sentences including connecting words ('and', 'or') and punctuation (except full stops)",
+        "Exceptions"
+      ],
+      "excludes": [
+        "Separating conditions if connected by 'or'"
+      ]
+    },
+    {
+      "name": "Post-condition",
+      "definition": "A legal consequence resulting from the relevant pre-conditions being met.",
+      "includes": [
+        "Legal consequence taking form of classification or behavior"
+      ],
+      "excludes": []
+    },
+    {
+      "name": "Actor",
+      "definition": "A natural person, legal entity, organisation, or body.",
+      "includes": [
+        "Actors whose legal capacity enables the legal consequence",
+        "Essential non-acting actors directly necessary for the legal consequence",
+        "Adjectives adjacent to the actor",
+        "Nested actors in their entirety"
+      ],
+      "excludes": [
+        "Geographical settings",
+        "Mere mentions of an actor not necessary for the consequence"
+      ]
+    },
+    {
+      "name": "Legal Relation",
+      "definition": "Legal elements linking two or more different actors (e.g., employment, corporate, family, contractual, public law).",
+      "includes": [
+        "Relations between actors that are a necessary condition for the legal consequence"
+      ],
+      "excludes": [
+        "One-sided actions like 'consent'",
+        "Hierarchy statements"
+      ]
+    },
+    {
+      "name": "Act",
+      "definition": "An action that must or may occur (positive act) or must not occur (negative act, inaction, failure to act) before legal consequences take effect.",
+      "includes": [
+        "Positive acts",
+        "Negative acts",
+        "Inaction",
+        "Failure to act"
+      ],
+      "excludes": [
+        "Actors (unless wording necessitates)",
+        "Factual status/descriptions",
+        "Objects/things (e.g., 'a proposal')"
+      ]
+    },
+    {
+      "name": "Geographical / Physical Domain",
+      "definition": "An identified establishment or specific geographical and physical domain where pre-conditional attributes must occur.",
+      "includes": [
+        "Specific geographical locations",
+        "Triggers like 'domiciled in'"
+      ],
+      "excludes": [
+        "Entities capable of taking legal measures (Actors)"
+      ]
+    },
+    {
+      "name": "Temporal",
+      "definition": "A specified or general period that should be considered before legal consequences are triggered.",
+      "includes": [
+        "Time-based requirements",
+        "Chronological sequence requirements",
+        "Triggers like 'before', 'by', 'after', 'during'"
+      ],
+      "excludes": [
+        "Elements that chronologically precede but are not necessary conditions for the legal consequence"
+      ]
+    },
+    {
+      "name": "Explicit Reference",
+      "definition": "A reference to a concept identified and defined within the same or another legal document.",
+      "includes": [
+        "References to Regulations, Directives, Case Law, Articles, Annexes",
+        "Triggers like 'referred to', 'provided for'"
+      ],
+      "excludes": [
+        "References that are not pre-conditional attributes"
+      ]
+    },
+    {
+      "name": "Hierarchy",
+      "definition": "The prioritisation of legal rules or other norms within a legal framework.",
+      "includes": [
+        "Triggers like 'Without prejudice to', 'Notwithstanding', 'Subject to'",
+        "The entire hierarchy as one text chunk"
+      ],
+      "excludes": []
+    },
+    {
+      "name": "Residual Pre-condition",
+      "definition": "Pre-conditional attributes that are conditional for legal consequences but do not fall under Actors, Legal Relations, Acts, Domains, Temporal, References, or Hierarchies.",
+      "includes": [
+        "Necessary conditions that do not fit other categories"
+      ],
+      "excludes": [
+        "Any attribute that falls under Tasks 1-8"
+      ]
+    }
+  ],
+  "general_extraction_rules": [
+    "Exclude articles (e.g., 'the', 'a') in the annotations.",
+    "Label attributes in the form of pronouns every time they appear.",
+    "Label 'and' and 'or' when they appear to avoid unnecessary merging.",
+    "Do not include punctuation unless necessary to avoid breaking an annotation into multiple parts.",
+    "For each extracted attribute, output a distinct Markdown file.",
+    "In the Markdown file, use Obsidian wiki-links (e.g., [[Attribute Text]]) to represent relationships with other entities."
+  ]
+}
