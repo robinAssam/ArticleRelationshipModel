@@ -40,7 +40,7 @@ def main():
     weights = compute_tag_weights(df, method="idf")
     
     print("Computing semantic similarities (this may download a model)...")
-    sim_pairs = compute_tag_similarities(df, threshold=0.75)
+    sim_pairs = compute_tag_similarities(df, threshold=0.55)
     
     # 3. Create structure
     if VAULT_DIR.exists():
