@@ -19,12 +19,6 @@ throws away most of that structure. This project decomposes articles into
 atoms, so the internal structure of each article becomes explicit and
 addressable.
 
-The design is deliberately complementary to G-DSR (Louis, Van Dijck, Spanakis,
-EACL 2023), which retrieves articles using their citation and containment
-topology. This project sits one layer below: instead of learning a graph
-between articles, it makes the graph inside each article explicit, and
-composes those graphs into a larger one.
-
 
 ## Method
 
