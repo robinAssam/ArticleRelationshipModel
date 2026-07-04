@@ -84,10 +84,7 @@ tables, runs the classifier, and produces the figures used in the write-up.
 
 Files under data/raw/ are the source of truth and are not edited in place.
 Derived data lives under data/processed/. Notebooks are for exploration;
-stable code moves into src/. Design decisions get a dated entry in
-docs/decisions_log.md. Supervisor meeting notes go into
-docs/supervisor_notes/
-
+stable code moves into src/.
 
 ## Status
 
