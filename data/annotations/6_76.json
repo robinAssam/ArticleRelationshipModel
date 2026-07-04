@@ -1,0 +1,33 @@
+[
+  {
+    "atom_id": "6:76(1).a",
+    "article_id": "6:76",
+    "lid": 1,
+    "text": "If a debtor uses the assistance of other persons in performing an obligation, he is liable for their conduct in the same way as for his own conduct",
+    "text_nl": "Maakt een schuldenaar bij de uitvoering van een verbintenis gebruik van de hulp van andere personen, dan is hij voor hun gedragingen op gelijke wijze als voor eigen gedragingen aansprakelijk",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor",
+      "auxiliary person"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [
+      "uses assistance"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "conduct",
+      "liability",
+      "performance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Contract-based vicarious liability. Parallel path to 6:170 (tort-based). 'Auxiliary person' is the term used in Dutch legal drafting."
+  }
+]

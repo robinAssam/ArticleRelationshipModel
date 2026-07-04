@@ -1,0 +1,32 @@
+[
+  {
+    "atom_id": "6:75(1).a",
+    "article_id": "6:75",
+    "lid": 1,
+    "text": "A failure to perform cannot be attributed to the debtor if it is neither due to his fault, nor for his account by virtue of law, legal act, or generally accepted views in commerce",
+    "text_nl": "Een tekortkoming kan de schuldenaar niet worden toegerekend, indien zij niet is te wijten aan zijn schuld, noch krachtens wet, rechtshandeling of in het verkeer geldende opvattingen voor zijn rekening komt",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "failure to perform",
+      "attribution",
+      "fault",
+      "law",
+      "legal act",
+      "generally accepted views",
+      "commerce"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Definitional rule about when attribution fails. Three OR-connected disqualifiers kept as one atom per schema."
+  }
+]

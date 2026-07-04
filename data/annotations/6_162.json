@@ -1,0 +1,116 @@
+[
+  {
+    "atom_id": "6:162(1).a",
+    "article_id": "6:162",
+    "lid": 1,
+    "text": "One who commits an unlawful act against another, which can be attributed to him, is obliged to compensate the damage that the other suffers as a result",
+    "text_nl": "Hij die jegens een ander een onrechtmatige daad pleegt, welke hem kan worden toegerekend, is verplicht de schade die de ander dientengevolge lijdt, te vergoeden",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.1",
+    "condition_type": "post_condition",
+    "actors": [
+      "wrongdoer",
+      "injured party"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "commits",
+      "compensates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "unlawful act",
+      "damage",
+      "attribution"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Central tort rule — parallel to 6:74's central contract rule. Damage and attribution echo across both."
+  },
+  {
+    "atom_id": "6:162(2).a",
+    "article_id": "6:162",
+    "lid": 2,
+    "text": "An unlawful act is deemed to be an infringement of a right and an act or omission in violation of a legal duty or of what is proper in society according to unwritten law",
+    "text_nl": "Als onrechtmatige daad worden aangemerkt een inbreuk op een recht en een doen of nalaten in strijd met een wettelijke plicht of met hetgeen volgens ongeschreven recht in het maatschappelijk verkeer betaamt",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.1",
+    "condition_type": "post_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "unlawful act",
+      "infringement",
+      "right",
+      "act",
+      "omission",
+      "legal duty",
+      "unwritten law",
+      "propriety",
+      "society"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Definitional atom for 'unlawful act'. AND-connected clauses within one definition kept together."
+  },
+  {
+    "atom_id": "6:162(2).b",
+    "article_id": "6:162",
+    "lid": 2,
+    "text": "all this subject to the presence of a ground for justification",
+    "text_nl": "een en ander behoudens de aanwezigheid van een rechtvaardigingsgrond",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.1",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [
+      "subject to the presence of a ground for justification"
+    ],
+    "residual": [
+      "justification",
+      "ground"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Hierarchy tag captures 'subject to' — parallels 7:454(3).a treatment of 'without prejudice to'."
+  },
+  {
+    "atom_id": "6:162(3).a",
+    "article_id": "6:162",
+    "lid": 3,
+    "text": "An unlawful act can be attributed to the perpetrator if it is due to his fault or to a cause for which he is responsible by virtue of the law or generally accepted views in commerce",
+    "text_nl": "Een onrechtmatige daad kan aan de dader worden toegerekend, indien zij te wijten is aan zijn schuld of aan een oorzaak welke krachtens de wet of de in het verkeer geldende opvattingen voor zijn rekening komt",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.1",
+    "condition_type": "post_condition",
+    "actors": [
+      "wrongdoer"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "unlawful act",
+      "attribution",
+      "fault",
+      "law",
+      "generally accepted views",
+      "commerce"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Attribution rule for tort. Note shared residuals with 6:75 ('fault', 'attribution', 'generally accepted views', 'commerce') — strong exact-edge signal."
+  }
+]

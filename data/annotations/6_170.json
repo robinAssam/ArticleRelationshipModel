@@ -1,0 +1,91 @@
+[
+  {
+    "atom_id": "6:170(1).a",
+    "article_id": "6:170",
+    "lid": 1,
+    "text": "For damage caused to a third party by a fault of a subordinate, the person in whose service the subordinate performs his task is liable",
+    "text_nl": "Voor schade, aan een derde toegebracht door een fout van een ondergeschikte, is degene in wiens dienst de ondergeschikte zijn taak vervult aansprakelijk",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.2",
+    "condition_type": "post_condition",
+    "actors": [
+      "employer",
+      "subordinate",
+      "third party"
+    ],
+    "legal_relations": [
+      "service relationship"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "fault",
+      "liability",
+      "task"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Tort-based vicarious liability. Employer/subordinate/third party is the classic triangle."
+  },
+  {
+    "atom_id": "6:170(1).b",
+    "article_id": "6:170",
+    "lid": 1,
+    "text": "if the chance of the fault being committed was increased by the assignment to perform this task",
+    "text_nl": "indien de kans op de fout door de opdracht tot het verrichten van deze taak is vergroot",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.2",
+    "condition_type": "pre_condition",
+    "actors": [
+      "employer",
+      "subordinate"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "fault",
+      "chance",
+      "assignment",
+      "task"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "First of two AND-connected pre-conditions on .a. Split per schema."
+  },
+  {
+    "atom_id": "6:170(1).c",
+    "article_id": "6:170",
+    "lid": 1,
+    "text": "and the person in whose service he was had, by virtue of their relevant legal relationship, control over the conduct in which the fault occurred",
+    "text_nl": "en degene in wiens dienst hij stond, uit hoofde van hun desbetreffende rechtsbetrekking zeggenschap had over de gedragingen waarin de fout was gelegen",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.2",
+    "condition_type": "pre_condition",
+    "actors": [
+      "employer",
+      "subordinate"
+    ],
+    "legal_relations": [
+      "service relationship",
+      "legal relationship"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "control",
+      "conduct",
+      "fault"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Second of two AND-connected pre-conditions on .a."
+  }
+]

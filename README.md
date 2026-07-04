@@ -1,101 +1,115 @@
 # Article Relationship Model
-A network model of relationships across statutory articles in Dutch medical
-malpractice and consent law, anchored on Article 7:454 BW (*dossierplicht*).
 
-**Internship project — Maastricht Law and Tech Lab, summer 2026.**
+An atom-level knowledge graph over Dutch statutory law. Each article is
+decomposed into the smallest units that carry a single legal meaning ("atoms"),
+annotated against a 9-label schema, and connected into a graph that can be
+navigated and queried in natural language.
 
-## What this project does
+nchored on the WGBO (Book 7, Title 7.7.5 BW)
+and extended into the Book 6 obligations articles that are typically referenced
+from medical malpractice cases.
 
-Given a statutory article whose requirements a claimant cannot fully satisfy,
-the model identifies alternative articles whose requirements (a) protect a
-similar interest and (b) share lexical, semantic, or structural features —
-such that they constitute plausible alternative legal grounds.
 
-Anchor article: **7:454 BW (dossierplicht)**.
-Neighbourhood: WGBO articles 7:451–7:458 + Book 6 fallbacks (6:74, 6:162,
-6:170) + optional GDPR overlap (Arts. 5, 9, 15, 17).
+## Motivation
+
+Statutes are written for lawyers, not machines. A single article stacks
+duties, qualifying conditions, and cross-references in dense prose. Treating
+the article as one opaque unit  the usual approach in statutory retrieval 
+throws away most of that structure. This project decomposes articles into
+atoms, so the internal structure of each article becomes explicit and
+addressable.
+
+The design is deliberately complementary to G-DSR (Louis, Van Dijck, Spanakis,
+EACL 2023), which retrieves articles using their citation and containment
+topology. This project sits one layer below: instead of learning a graph
+between articles, it makes the graph inside each article explicit, and
+composes those graphs into a larger one.
+
 
 ## Method
 
-Each article is decomposed into atomic boolean statements (one per
-requirement or duty), each annotated against the lab's 9-label schema
+Each article is annotated by hand against the lab's 9-label extraction schema
 (actors, legal relations, acts, geographical domain, temporal, explicit
-references, hierarchies, residual). The annotated atoms become structured
-tuples. Two atoms — and by aggregation two articles — are *linked* when they
-share field values (same actor, same act, etc.) or when one explicitly
-references the other. The resulting multi-relational graph is validated
-against rechtspraak.nl judgments that plead grounds *primair / subsidiair*.
+references, hierarchies, residual, plus pre- vs post-condition). Annotated
+atoms are connected through three edge channels:
 
-## Folder structure
+1. Shared annotation tags (exact set intersection, weighted by IDF)
+2. Semantic similarity between tag values via sentence embeddings
+3. Hierarchical containment through the Dutch legal tree
+   (rechtsgebied - wetboek - boek - titel - afdeling - artikel)
 
-```
-.
-├── docs/                      # all written documentation
-│   ├── 00_project_overview.md
-│   ├── 01_data_model_schema.md
-│   ├── 02_annotation_schema.md
-│   ├── 03_decisions_log.md
-│   └── supervisor_notes/      # raw notes from each meeting
-├── data/
-│   ├── raw/                   # source texts — NEVER edit in place
-│   │   ├── statutes/
-│   │   └── case_law/
-│   ├── annotations/           # tuple files (one per article)
-│   ├── processed/             # flat atom table, derived datasets
-│   └── validation/            # primair/subsidiair ground truth
-├── src/                       # reusable Python modules
-│   ├── data/                  # fetchers, parsers
-│   ├── annotation/            # tuple schema, validators
-│   ├── similarity/            # matching across atoms
-│   └── graph/                 # graph construction, queries
-├── notebooks/                 # exploration, throwaway analysis
-├── outputs/                   # figures, tables, written reports
-│   ├── figures/
-│   ├── tables/
-│   └── reports/
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
+A classifier takes an atom-shaped query, scores every corpus atom, and
+returns a predicted position in the tree. Evaluation is leave-one-out,
+reported at each hierarchy level rather than only at the article level.
+
+
+## Corpus
+
+- WGBO articles 7:454 and 7:455 (11 atoms)
+- Book 6 fallbacks: 6:74, 6:75, 6:76, 6:162, 6:170 (12 atoms)
+- Synthetic corpus (Lunar Medical Code): 15 articles, 38 atoms
+
+The synthetic corpus is used to exercise the pipeline without leaking real
+statutory text into training and to keep automated evaluation honest.
+
+
+## Repository layout
+
+    docs/
+      annotation_schema.md         The 9-label schema and its rules.
+      decisions_log.md             Dated notes on design decisions.
+      supervisor_notes/            Meeting notes, one file per meeting.
+
+    data/
+      raw/statutes/                Source article texts. Read-only.
+      annotations/                 One JSON per article; flat list of atoms.
+      processed/                   Derived tables (edges, embeddings).
+
+    src/
+      annotation/schema.py         Atom dataclass and field definitions.
+      data/atom_table.py           Loaders, edges, weighting, classifier.
+      data/hierarchy.py            Legal tree and taxonomy lookup.
+
+    notebooks/
+      01_explore_atoms.ipynb       End-to-end exploration and evaluation.
+
+    outputs/                       Figures, tables, exported artefacts.
+
 
 ## Setup
 
-```bash
-# create and activate a Python virtual environment
-python3 -m venv .venv
-source .venv/bin/activate          # macOS / Linux
-# .venv\Scripts\activate            # Windows
+    python -m venv .venv
+    source .venv/bin/activate           # Windows: .venv\Scripts\activate
+    pip install -r requirements.txt
 
-# install dependencies
-pip install -r requirements.txt
+The notebook is the entry point. It loads the annotations, builds the edge
+tables, runs the classifier, and produces the figures used in the write-up.
 
-# verify
-python -c "import pandas, spacy, networkx; print('ok')"
-```
 
-## Workflow conventions
+## Conventions
 
-- **Never edit files in `data/raw/`** — they are the source of truth. All
-  derived data lives in `data/processed/` or `data/annotations/`.
-- **One notebook per exploration**, prefixed with a number
-  (`01_explore_articles.ipynb`, `02_build_atom_table.ipynb`). Notebooks are
-  for thinking; promote stable code into `src/`.
-- **Document every decision** in `docs/03_decisions_log.md` with a date.
-  Future-you and the supervisor need this.
-- **Supervisor notes go in `docs/supervisor_notes/`** — one file per meeting,
-  filename `YYYY-MM-DD_topic.md`. Verbatim is best.
-- **Commit often, push at end of day** to GitHub. Even messy commits beat
-  losing a day of work.
+Files under data/raw/ are the source of truth and are not edited in place.
+Derived data lives under data/processed/. Notebooks are for exploration;
+stable code moves into src/. Design decisions get a dated entry in
+docs/decisions_log.md. Supervisor meeting notes go into
+docs/supervisor_notes/
+
 
 ## Status
 
-- [x] Anchor article selected: 7:454 BW
-- [x] Boolean decomposition of 7:454
-- [ ] Lid 3 fully annotated against 9-label schema (next)
-- [ ] Tuple schema validated with supervisor
-- [ ] Neighbourhood articles fetched
-- [ ] Atom table populated
-- [ ] Cross-tuple links computed
-- [ ] Graph constructed
-- [ ] Validation against case law
-- [ ] Final report and visualisation
+Implemented:
+- Atom-level annotation for 7 real articles and a 15-article synthetic corpus
+- Three-channel edge construction (exact, IDF-weighted, semantic)
+- Legal tree parsing and per-level LOO evaluation
+- Encoder comparison across three sentence transformers, including two
+  legal-domain models
+- Obsidian vault export of the annotated graph
+
+In progress:
+- Extending the corpus to a wider cluster of medical-malpractice articles
+- Filter-then-semantic retrieval, following the pattern in G-DSR
+- BM25 as an additional retrieval channel for baseline comparison
+- A Streamlit interface for interactive queries
+- A short technical write-up
+
+

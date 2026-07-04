@@ -1,0 +1,88 @@
+[
+  {
+    "atom_id": "6:74(1).a",
+    "article_id": "6:74",
+    "lid": 1,
+    "text": "Every failure to perform an obligation obliges the debtor to compensate the damage that the creditor suffers as a result",
+    "text_nl": "Iedere tekortkoming in de nakoming van een verbintenis verplicht de schuldenaar de schade die de schuldeiser daardoor lijdt te vergoeden",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor",
+      "creditor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [
+      "compensates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "failure to perform",
+      "damage",
+      "performance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Central duty rule. Debtor and creditor are the paired actors; damage is the residual concept the whole book will re-use."
+  },
+  {
+    "atom_id": "6:74(1).b",
+    "article_id": "6:74",
+    "lid": 1,
+    "text": "unless the failure cannot be attributed to the debtor",
+    "text_nl": "tenzij de tekortkoming de schuldenaar niet kan worden toegerekend",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "pre_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "failure to perform",
+      "attribution"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Defense qualifier on .a. Attribution is defined in 6:75 — should surface a semantic edge."
+  },
+  {
+    "atom_id": "6:74(2).a",
+    "article_id": "6:74",
+    "lid": 2,
+    "text": "Insofar as performance is not already permanently impossible, paragraph 1 only applies with due observance of what is determined in the second paragraph regarding the debtor's default",
+    "text_nl": "Voor zover nakoming niet reeds blijvend onmogelijk is, vindt lid 1 slechts toepassing met inachtneming van hetgeen is bepaald in de tweede paragraaf betreffende het verzuim van de schuldenaar",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "paragraph 1",
+      "second paragraph"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "performance",
+      "default",
+      "permanently impossible",
+      "application"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "2026-07-01",
+    "notes": "Scoping clause. 'Insofar as' kept as text-level qualifier, not tagged as hierarchy (reserved for 'without prejudice' / 'subject to' / 'notwithstanding')."
+  }
+]
