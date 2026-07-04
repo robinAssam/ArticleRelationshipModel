@@ -459,3 +459,112 @@ def evaluate_at_levels(
     for level in levels:
         summary[f"{level}_accuracy"] = round(eval_df[f"{level}_hit"].mean(), 3)
     return eval_df, summary
+
+
+# ---------------------------------------------------------------------------
+# Cross-article reference edges
+# ---------------------------------------------------------------------------
+
+# Reference-text patterns for _resolve_reference
+_REF_INTERNAL = re.compile(
+    r'^\s*(paragraph|lid|first paragraph|second paragraph|third paragraph|'
+    r'fourth paragraph|next paragraph|preceding paragraph)\b',
+    re.IGNORECASE,
+)
+_REF_BOOK_ARTICLE = re.compile(r'(\d+):(\d+[a-zA-Z]?)')
+_REF_ARTICLE_ONLY = re.compile(r'article\s+(\d+[a-zA-Z]?)', re.IGNORECASE)
+
+
+def _resolve_reference(ref_text: str, source_book: str | None) -> str | None:
+    """Resolve a reference string to a target article ID, or None if internal.
+
+    Handles three patterns, in order of specificity:
+
+    1. Full BW notation, e.g. ``"article 6:74"`` or ``"6:162"``  → ``"6:74"``
+    2. Same-book shorthand, e.g. ``"article 455"``               → uses source_book
+    3. Internal references (``"paragraph 1"``, ``"lid 2"``)      → None
+    """
+    if not isinstance(ref_text, str):
+        return None
+    text = ref_text.strip()
+
+    # Skip internal references (same-article lid/paragraph)
+    if _REF_INTERNAL.match(text):
+        return None
+
+    # Full book:article notation
+    m = _REF_BOOK_ARTICLE.search(text)
+    if m:
+        return f"{m.group(1)}:{m.group(2)}"
+
+    # "article N" — resolve using source book
+    m = _REF_ARTICLE_ONLY.search(text)
+    if m and source_book:
+        return f"{source_book}:{m.group(1)}"
+
+    return None
+
+
+def build_reference_edges(
+    df: pd.DataFrame,
+    return_unresolved: bool = False,
+) -> pd.DataFrame:
+    """Build directed edges from atoms to articles they explicitly reference.
+
+    Reads the ``explicit_references`` field on each atom, parses each reference
+    string, and resolves it to a target article ID. Same-article references
+    (``paragraph 1``, ``second paragraph``, etc.) are skipped.
+
+    Returns a DataFrame with columns ``source``, ``target``, ``edge_kind``,
+    ``ref_text``. ``edge_kind`` is always ``'references'``.
+
+    If ``return_unresolved=True``, returns a second DataFrame listing reference
+    strings that could not be parsed, for inspection.
+    """
+    if "explicit_references" not in df.columns:
+        raise ValueError("df must have an 'explicit_references' column")
+
+    edges: list[dict[str, str]] = []
+    unresolved: list[dict[str, str]] = []
+
+    for _, atom in df.iterrows():
+        refs = atom.get("explicit_references")
+        if refs is None or (isinstance(refs, list) and len(refs) == 0):
+            continue
+        if not isinstance(refs, list):
+            continue
+
+        atom_id = atom["atom_id"]
+        source_article = atom["article_id"]
+
+        # Source book number for same-book resolution
+        source_book: str | None = None
+        m = re.match(r"^(\d+):", str(source_article))
+        if m:
+            source_book = m.group(1)
+
+        for ref_text in refs:
+            target = _resolve_reference(ref_text, source_book)
+            if target is None:
+                # Distinguish "intentionally internal" from "unparseable"
+                if not _REF_INTERNAL.match(str(ref_text).strip()):
+                    unresolved.append({
+                        "atom_id": atom_id,
+                        "ref_text": ref_text,
+                        "reason": "could not parse",
+                    })
+                continue
+            if target == source_article:
+                # Self-reference (article citing itself); skip
+                continue
+            edges.append({
+                "source": atom_id,
+                "target": target,
+                "edge_kind": "references",
+                "ref_text": ref_text,
+            })
+
+    edges_df = pd.DataFrame(edges)
+    if return_unresolved:
+        return edges_df, pd.DataFrame(unresolved)
+    return edges_df
