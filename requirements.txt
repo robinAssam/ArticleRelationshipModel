@@ -32,3 +32,9 @@ beautifulsoup4>=4.12
 
 # Validation metrics
 # pytrec-eval-terrier>=0.5  # uncomment when needed
+
+#UI
+streamlit>=1.36
+plotly>=5.20
+networkx>=3.0
+
