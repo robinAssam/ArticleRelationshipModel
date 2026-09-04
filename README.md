@@ -74,7 +74,8 @@ statutory text into training and to keep automated evaluation honest.
       data/reasoning.py            Chained-reasoning walker and trace formatting.
 
     notebooks/
-      01_explore_atoms.ipynb       End-to-end exploration and evaluation.
+        01_explore_atoms.ipynb       End-to-end exploration and evaluation.
+        02_experiments.ipynb         Decision-support experiments (model comparison, alpha and top-k sweeps).
 
     outputs/                       Figures, tables, exported artefacts.
 
@@ -85,9 +86,12 @@ statutory text into training and to keep automated evaluation honest.
     source .venv/bin/activate           # Windows: .venv\Scripts\activate
     pip install -r requirements.txt
 
-The notebook is the entry point. It loads the annotations, builds the edge
-tables, runs the classifier, walks the chained-reasoning demos, and produces
-the figures used in the write-up.
+The primary entry point is `notebooks/01_explore_atoms.ipynb`. It loads
+the annotations, builds the edge tables, runs the classifier and the
+chained-reasoning demos, and produces the figures used in the write-up.
+`notebooks/02_experiments.ipynb` holds standalone experiments that
+informed defaults in the primary pipeline; re-run only when a decision
+needs revisiting.
 
 
 ## Conventions

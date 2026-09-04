@@ -53,12 +53,30 @@ Tier 3 (6:74, 6:162, 6:170). Tier 4 (GDPR) optional.
 enough for meaningful graph structure, small enough to hand-annotate.
 **A:** Whole WGBO; whole BW Boek 7. Rejected — scope too large.
 
+## 2026-07-XX — Encoder: keep `all-mpnet-base-v2` as default
+
+Compared three sentence-transformer models on the current corpus:
+`all-mpnet-base-v2` (general English), `nlpaueb/legal-bert-base-uncased`
+(English legal), and `joelniklaus/legal-xlm-roberta-base` (multilingual
+legal). Legal-BERT produces a degenerate embedding space where most tags
+match most others (~4,800 pairs at threshold 0.55, with no downstream
+accuracy gain). Legal-XLM-R adds mild coverage but no accuracy improvement.
+
+Decision: keep `all-mpnet-base-v2`. Revisit when the corpus is larger or
+when a bilingual (Dutch-English) legal-domain sentence-transformer becomes
+available.
+
+See `notebooks/02_experiments.ipynb`, Section 1.
+
+## 2025-07-XX — Classifier: alpha = 0.5, top_k = 3 as defaults
+
+Grid search over alpha ∈ {0, 0.25, 0.5, 0.75, 1.0} and top_k ∈ {3, 5}
+on leave-one-out evaluation. Accuracy plateaus from alpha ≥ 0.25 — the
+exact-match channel does most of the useful work, and additional
+semantic weight beyond a small floor produces no further improvement.
+
+Decision: alpha = 0.5, top_k = 3. Revisit if IDF weighting or the
+semantic scoring formula changes materially.
+
+See `notebooks/02_experiments.ipynb`, Section 2.
 ---
-
-<!-- Add new entries below this line -->
-
-## YYYY-MM-DD — [Decision title]
-
-**D:**
-**W:**
-**A:**
