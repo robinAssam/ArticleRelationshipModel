@@ -1,0 +1,59 @@
+[
+  {
+    "atom_id": "7:453(1).a",
+    "article_id": "7:453",
+    "lid": 1,
+    "text": "The care provider must, in his work, observe the care of a good care provider",
+    "text_nl": "De hulpverlener moet bij zijn werkzaamheden de zorg van een goed hulpverlener in acht nemen",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "observes"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "good care provider",
+      "care",
+      "work"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Central duty of care. 'Good care provider' echoes 7:454(3).b — should surface a strong shared-tag edge."
+  },
+  {
+    "atom_id": "7:453(1).b",
+    "article_id": "7:453",
+    "lid": 1,
+    "text": "and the care provider acts in accordance with the responsibility resting on him, arising from the professional standard applicable to care providers",
+    "text_nl": "en handelt daarbij in overeenstemming met de op hem rustende verantwoordelijkheid, voortvloeiende uit de voor hulpverleners geldende professionele standaard",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "acts in accordance"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "responsibility",
+      "professional standard"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Professional standard duty. Split from (1).a per AND-connected rule though the two duties describe the same overall obligation."
+  }
+]

@@ -1,0 +1,250 @@
+[
+  {
+    "atom_id": "7:448(1).a",
+    "article_id": "7:448",
+    "lid": 1,
+    "text": "The care provider shall inform the patient clearly about the proposed examination, the proposed treatment, and about developments regarding the examination, the treatment, and the health condition of the patient",
+    "text_nl": "De hulpverlener licht de patiënt op duidelijke wijze in over het voorgenomen onderzoek, de voorgestelde behandeling en over de ontwikkelingen omtrent het onderzoek, de behandeling en de gezondheidstoestand van de patiënt",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "informs"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "examination",
+      "treatment",
+      "health condition",
+      "developments"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Central informing duty. Cornerstone of Dutch informed-consent doctrine."
+  },
+  {
+    "atom_id": "7:448(1).b",
+    "article_id": "7:448",
+    "lid": 1,
+    "text": "The care provider shall inform the patient in writing upon request",
+    "text_nl": "De hulpverlener licht de patiënt desgevraagd schriftelijk in",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "informs"
+    ],
+    "geographical_domain": [],
+    "temporal": [
+      "upon request"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "written"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": ""
+  },
+  {
+    "atom_id": "7:448(1).c",
+    "article_id": "7:448",
+    "lid": 1,
+    "text": "The care provider shall inform a patient who has not yet reached the age of twelve years in a manner appropriate to his level of understanding",
+    "text_nl": "De hulpverlener licht een patiënt die de leeftijd van twaalf jaren nog niet heeft bereikt op zodanige wijze in als past bij zijn bevattingsvermogen",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "informs"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "age of twelve years",
+      "level of understanding"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Age-adapted informing. Note age threshold — creates a potential edge to articles about legal capacity (7:465, not in corpus)."
+  },
+  {
+    "atom_id": "7:448(2).a",
+    "article_id": "7:448",
+    "lid": 2,
+    "text": "In performing the informing duty, the care provider shall be guided by what the patient should reasonably know regarding the nature and purpose of the examination or treatment, the expected consequences and risks, other methods that come into consideration, and the state of and prospects with respect to the patient's health",
+    "text_nl": "Bij het uitvoeren van de verplichting laat de hulpverlener zich leiden door hetgeen de patiënt redelijkerwijze dient te weten ten aanzien van de aard en het doel van het onderzoek of de behandeling, de te verwachten gevolgen en risico's, andere methoden van onderzoek of behandeling die in aanmerking komen, en de staat van en de vooruitzichten met betrekking tot diens gezondheid",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "informs"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "paragraph 1"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "reasonable knowledge",
+      "nature",
+      "purpose",
+      "examination",
+      "treatment",
+      "consequences",
+      "risks",
+      "alternative methods",
+      "health prospects"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Standard for informing. Four sub-items (a-d in the statute) kept together as they list what the standard covers, not separate rules."
+  },
+  {
+    "atom_id": "7:448(3).a",
+    "article_id": "7:448",
+    "lid": 3,
+    "text": "The care provider may withhold information from the patient only insofar as providing it would clearly cause serious harm to the patient",
+    "text_nl": "De hulpverlener mag de patiënt bedoelde inlichtingen slechts onthouden voor zover het verstrekken ervan kennelijk ernstig nadeel voor de patiënt zou opleveren",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "withholds"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "information",
+      "serious harm",
+      "therapeutic privilege"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Therapeutic privilege exception. Very narrow — only when disclosure causes 'clear serious harm'."
+  },
+  {
+    "atom_id": "7:448(3).b",
+    "article_id": "7:448",
+    "lid": 3,
+    "text": "If the interest of the patient so requires, the care provider must provide the information to someone other than the patient",
+    "text_nl": "Indien het belang van de patiënt dit vereist, dient de hulpverlener de desbetreffende inlichtingen aan een ander dan de patiënt te verstrekken",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "pre_condition",
+    "actors": [
+      "care provider",
+      "someone other than patient",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "provides"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "information",
+      "interest"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Third-party information duty when withholding from patient."
+  },
+  {
+    "atom_id": "7:448(3).c",
+    "article_id": "7:448",
+    "lid": 3,
+    "text": "The information shall be given to the patient as soon as such harm is no longer to be feared",
+    "text_nl": "De inlichtingen worden de patiënt alsnog gegeven, zodra bedoeld nadeel niet meer te duchten is",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "gives"
+    ],
+    "geographical_domain": [],
+    "temporal": [
+      "as soon as harm no longer feared"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "information"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Deferred provision — withholding is temporary, not permanent."
+  },
+  {
+    "atom_id": "7:448(3).d",
+    "article_id": "7:448",
+    "lid": 3,
+    "text": "The care provider shall not use the authority to withhold information unless he has consulted another care provider about it",
+    "text_nl": "De hulpverlener maakt geen gebruik van zijn bevoegdheid dan nadat hij daarover een andere hulpverlener heeft geraadpleegd",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "pre_condition",
+    "actors": [
+      "care provider"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "consults"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "authority",
+      "withholding",
+      "information",
+      "another care provider"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Procedural safeguard on therapeutic privilege — must consult a peer first."
+  }
+]

@@ -1,0 +1,151 @@
+[
+  {
+    "atom_id": "7:446(1).a",
+    "article_id": "7:446",
+    "lid": 1,
+    "text": "The treatment agreement is the agreement whereby a care provider, in the exercise of a medical profession or business, binds himself towards a client to perform actions in the field of medicine, directly relating to the person of the client or of a specific third party (the patient)",
+    "text_nl": "De behandelingsovereenkomst is de overeenkomst waarbij een natuurlijke persoon of een rechtspersoon, de hulpverlener, zich in de uitoefening van een geneeskundig beroep of bedrijf tegenover een ander, de opdrachtgever, verbindt tot het verrichten van handelingen op het gebied van de geneeskunst, rechtstreeks betrekking hebbende op de persoon van de opdrachtgever of van een bepaalde derde",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "client",
+      "patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "binds"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "medical profession",
+      "medical business",
+      "medical actions"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Definitional foundation of WGBO. Introduces care provider, client (opdrachtgever), and patient as distinct roles — client and patient may or may not be the same person."
+  },
+  {
+    "atom_id": "7:446(2).a",
+    "article_id": "7:446",
+    "lid": 2,
+    "text": "Actions in the field of medicine include all procedures directly relating to a person and aimed at curing him of a disease, protecting him from disease, assessing his state of health, or providing obstetric assistance",
+    "text_nl": "Onder handelingen op het gebied van de geneeskunst worden verstaan alle verrichtingen, het onderzoeken en het geven van raad daaronder begrepen, rechtstreeks betrekking hebbende op een persoon en ertoe strekkende hem van een ziekte te genezen, hem voor het ontstaan van een ziekte te behoeden of zijn gezondheidstoestand te beoordelen, dan wel verloskundige bijstand te verlenen",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "medical actions",
+      "procedures",
+      "curing",
+      "disease",
+      "prevention",
+      "health assessment",
+      "obstetric assistance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Definitional atom for what counts as 'medical action'. Four AND/OR-connected purposes kept together per schema (list of what the definition covers)."
+  },
+  {
+    "atom_id": "7:446(2).b",
+    "article_id": "7:446",
+    "lid": 2,
+    "text": "Actions in the field of medicine also include other actions directly relating to a person performed by a physician or dentist in that capacity",
+    "text_nl": "Onder handelingen op het gebied van de geneeskunst worden mede verstaan andere handelingen rechtstreeks betrekking hebbende op een persoon die worden verricht door een arts of tandarts in die hoedanigheid",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "physician",
+      "dentist"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "medical actions"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Catch-all for actions by qualified professionals that don't fit the (2).a categories."
+  },
+  {
+    "atom_id": "7:446(3).a",
+    "article_id": "7:446",
+    "lid": 3,
+    "text": "Medical actions also include the nursing and care of the patient in connection with them, and other actions directly performed for the benefit of the patient that reasonably arise from them",
+    "text_nl": "Tot de handelingen worden mede gerekend het in het kader daarvan verplegen en verzorgen van de patiënt en het overigens rechtstreeks ten behoeve van de patiënt verrichten van handelingen die redelijkerwijze daaruit voortvloeien",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "patient"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "paragraph 1"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "nursing",
+      "care",
+      "medical actions",
+      "reasonably"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Extends the definition. 'Paragraph 1' is an internal reference (skipped by the parser)."
+  },
+  {
+    "atom_id": "7:446(5).a",
+    "article_id": "7:446",
+    "lid": 5,
+    "text": "There is no treatment agreement if it concerns actions to assess the state of health or medical supervision of a person, performed at the request of someone other than that person in connection with the determination of rights or obligations, admission to insurance, or the assessment of suitability for training or employment",
+    "text_nl": "Geen behandelingsovereenkomst is aanwezig, indien het betreft handelingen ter beoordeling van de gezondheidstoestand of medische begeleiding van een persoon, verricht in opdracht van een ander dan die persoon in verband met de vaststelling van aanspraken of verplichtingen, de toelating tot een verzekering of voorziening, of de beoordeling van de geschiktheid voor een opleiding, een arbeidsverhouding of de uitvoering van bepaalde werkzaamheden",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "pre_condition",
+    "actors": [
+      "client",
+      "patient",
+      "someone other than patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "health assessment",
+      "medical supervision",
+      "insurance",
+      "training",
+      "employment",
+      "suitability",
+      "rights",
+      "obligations"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Third-party assessment exclusion. Insurance medicals, employment fitness assessments etc. do NOT form a treatment agreement."
+  }
+]

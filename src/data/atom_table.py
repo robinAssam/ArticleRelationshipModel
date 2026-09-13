@@ -478,6 +478,69 @@ def build_semantic_edge_table(
 # Atom classifier
 # ============================================================================
 
+def filter_candidates(
+    df: pd.DataFrame,
+    query,
+    fields_to_match: list[str] | None = None,
+) -> pd.DataFrame:
+    """Narrow the candidate set to atoms sharing at least one tag with the query.
+
+    Returns the subset of df where at least one tag value in the query
+    overlaps with the candidate atom, in at least one of the specified
+    fields. Used as a pre-filter before classifier scoring — the
+    filter-then-semantic pattern from Gijs's G-DSR work, adapted to
+    atom-level retrieval.
+
+    If the filter returns zero survivors (query has no overlap with any
+    atom on the specified fields), returns the full df unchanged so the
+    caller still gets a scoreable pool. This fallback prevents empty
+    results from over-strict filters.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The full atom table.
+    query : dict or Atom
+        Atom-shaped query. Must have the fields named in fields_to_match.
+    fields_to_match : list[str] or None
+        Fields on which to check for overlap. Defaults to ['actors', 'acts'].
+        Widen for a looser filter, narrow for a stricter one.
+
+    Returns
+    -------
+    pd.DataFrame
+        A subset of df (or the full df if the filter matched nothing).
+    """
+    if fields_to_match is None:
+        fields_to_match = ['actors', 'acts']
+
+    if hasattr(query, 'to_dict'):
+        query = query.to_dict()
+    query = dict(query)
+
+    query_sets = {f: set(query.get(f, []) or []) for f in fields_to_match}
+
+    # If the query has no tags in any of the fields, the filter is a no-op
+    if not any(query_sets.values()):
+        return df
+
+    def _atom_matches(row):
+        for field, qtags in query_sets.items():
+            if not qtags:
+                continue
+            if qtags & set(row[field]):
+                return True
+        return False
+
+    survivors = df[df.apply(_atom_matches, axis=1)]
+
+    # Fallback: if the filter is too strict, don't leave the caller empty-handed
+    if len(survivors) == 0:
+        print("No survivors found, falling back on full corpus")
+        return df
+
+    return survivors
+
 def classify_atom(
     query,
     df: pd.DataFrame,
@@ -485,6 +548,7 @@ def classify_atom(
     sim_pairs: pd.DataFrame | None = None,
     alpha: float = 0.5,
     top_k: int = 5,
+    filter_fields: list[str] | None = None,
 ) -> dict:
     """Score a query atom against every atom in the corpus and return the top-k.
 
@@ -514,6 +578,10 @@ def classify_atom(
     if hasattr(query, "to_dict"):
         query = query.to_dict()
     query = dict(query)  # shallow copy
+
+    # Optional pre-filter: narrow candidates by tag overlap on specified fields
+    if filter_fields is not None:
+        df = filter_candidates(df, query, fields_to_match=filter_fields)
 
     # Build a (field, tag) -> [(other_tag, sim), ...] lookup for semantic matches
     sem_lookup: dict[tuple[str, str], list[tuple[str, float]]] = {}

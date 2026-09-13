@@ -1,0 +1,191 @@
+[
+  {
+    "atom_id": "7:457(1).a",
+    "article_id": "7:457",
+    "lid": 1,
+    "text": "Without prejudice to article 448 paragraph 3, second sentence, the care provider ensures that no information about the patient nor inspection of or copies of the documents referred to in article 454 are provided to persons other than the patient except with the consent of the patient",
+    "text_nl": "Onverminderd het in artikel 448 lid 3, tweede volzin, bepaalde draagt de hulpverlener zorg, dat aan anderen dan de patiënt geen inlichtingen over de patiënt dan wel inzage in of afschrift van de bescheiden, bedoeld in artikel 454, worden verstrekt dan met toestemming van de patiënt",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient",
+      "someone other than patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "ensures",
+      "provides"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "article 448",
+      "article 454"
+    ],
+    "hierarchies": [
+      "Without prejudice to article 448 paragraph 3, second sentence"
+    ],
+    "residual": [
+      "information",
+      "inspection",
+      "copies",
+      "documents",
+      "consent",
+      "confidentiality"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Core confidentiality duty. Two explicit references — will create edges to 7:448 (third-party informing) and 7:454 (records). Rich atom for demoing chained reasoning."
+  },
+  {
+    "atom_id": "7:457(1).b",
+    "article_id": "7:457",
+    "lid": 1,
+    "text": "If provision takes place, it occurs only insofar as the personal privacy of another is not thereby harmed",
+    "text_nl": "Indien verstrekking plaatsvindt, geschiedt deze slechts voor zover daardoor de persoonlijke levenssfeer van een ander niet wordt geschaad",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "pre_condition",
+    "actors": [
+      "someone other than patient"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "provides"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "personal privacy",
+      "harm"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Third-party privacy protection qualifier on provision."
+  },
+  {
+    "atom_id": "7:457(1).c",
+    "article_id": "7:457",
+    "lid": 1,
+    "text": "The provision may take place without observance of the preceding limitations if what is provided by or under the law obliges to do so",
+    "text_nl": "De verstrekking kan geschieden zonder inachtneming van de beperkingen indien het bij of krachtens de wet bepaalde daartoe verplicht",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [
+      "provides"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "limitations",
+      "law",
+      "obligation"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Legal-obligation exception (e.g. mandatory reporting statutes)."
+  },
+  {
+    "atom_id": "7:457(2).a",
+    "article_id": "7:457",
+    "lid": 2,
+    "text": "Persons other than the patient do not include those who are directly involved in the performance of the treatment agreement and the person acting as substitute for the care provider, insofar as the provision is necessary for the activities they are to perform",
+    "text_nl": "Onder anderen dan de patiënt zijn niet begrepen degenen die rechtstreeks betrokken zijn bij de uitvoering van de behandelingsovereenkomst en degene die optreedt als vervanger van de hulpverlener, voor zover de verstrekking noodzakelijk is voor de door hen in dat kader te verrichten werkzaamheden",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider",
+      "patient",
+      "substitute",
+      "directly involved persons"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [
+      "provides"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "substitute",
+      "activities",
+      "necessary",
+      "performance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Exception for the treatment team — nurses, colleagues, substitutes. Provision to them isn't a confidentiality breach."
+  },
+  {
+    "atom_id": "7:457(3).a",
+    "article_id": "7:457",
+    "lid": 3,
+    "text": "Persons other than the patient also do not include those whose consent for the performance of the treatment agreement is required under articles 450 and 465",
+    "text_nl": "Daaronder zijn evenmin begrepen degenen wier toestemming ter zake van de uitvoering van de behandelingsovereenkomst op grond van de artikelen 450 en 465 is vereist",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "patient"
+    ],
+    "legal_relations": [
+      "treatment agreement"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "article 450",
+      "article 465"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "consent",
+      "performance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Extends the (2) exception to consent-holders (parents/guardians for minors and incompetent patients). References articles 7:450 and 7:465 which are NOT yet in the corpus — will show as dangling reference edges."
+  },
+  {
+    "atom_id": "7:457(3).b",
+    "article_id": "7:457",
+    "lid": 3,
+    "text": "The provision of paragraph 2 applies mutatis mutandis to them insofar as the care provider does not breach his confidentiality duty by providing information or inspection of the documents",
+    "text_nl": "Het bepaalde in het tweede lid is ten aanzien van hen van overeenkomstige toepassing indien de hulpverlener door inlichtingen te verstrekken zijn geheimhoudingsplicht niet schendt",
+    "source": "Dutch Civil Code, Book 7, Title 7.7.5",
+    "condition_type": "post_condition",
+    "actors": [
+      "care provider"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "breaches",
+      "provides"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "paragraph 2"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "confidentiality duty",
+      "information",
+      "documents"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "12/09/2026",
+    "notes": "Fallback clause preserving confidentiality protections."
+  }
+]
