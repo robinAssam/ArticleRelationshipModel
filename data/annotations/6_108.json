@@ -1,0 +1,64 @@
+[
+  {
+    "atom_id": "6:108(1).a",
+    "article_id": "6:108",
+    "lid": 1,
+    "text": "If a person dies as a result of an event for which another is liable to him, that other is obliged to compensate the damage due to loss of maintenance of the surviving relatives to the extent specified in the law",
+    "text_nl": "Indien iemand ten gevolge van een gebeurtenis waarvoor een ander aansprakelijk is, overlijdt, is die ander verplicht tot vergoeding van schade door het derven van levensonderhoud aan de nabestaanden",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "deceased",
+      "liable person",
+      "surviving relatives"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "compensates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "death",
+      "damage",
+      "loss of maintenance",
+      "surviving relatives",
+      "liability"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Compensation for loss of maintenance when the victim dies. Core wrongful-death provision."
+  },
+  {
+    "atom_id": "6:108(2).a",
+    "article_id": "6:108",
+    "lid": 2,
+    "text": "The liable person is also obliged to compensate the costs of the funeral, insofar as they are reasonable in view of the circumstances of the deceased",
+    "text_nl": "De aansprakelijke is verplicht aan degene te wiens laste de kosten van lijkbezorging zijn gekomen, deze kosten te vergoeden voor zover zij in overeenstemming zijn met de omstandigheden van de overledene",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "deceased",
+      "liable person"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "compensates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "funeral costs",
+      "reasonable",
+      "circumstances",
+      "deceased"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Funeral cost compensation. Reasonableness qualifier applies."
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "atom_id": "6:81(1).a",
+    "article_id": "6:81",
+    "lid": 1,
+    "text": "The debtor is in default during the period that performance fails to occur after it has become due and the requirements of articles 82 and 83 have been met, unless the failure cannot be attributed to the debtor or performance is already permanently impossible",
+    "text_nl": "De schuldenaar is in verzuim gedurende de tijd dat de prestatie uitblijft nadat zij opeisbaar is geworden en aan de eisen van de artikelen 82 en 83 is voldaan, behalve voor zover de vertraging hem niet kan worden toegerekend of nakoming reeds blijvend onmogelijk is",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "article 82",
+      "article 83"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "default",
+      "verzuim",
+      "performance",
+      "due",
+      "attribution",
+      "permanently impossible"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Central 'default' (verzuim) rule linking to the notice rules of 6:82 and 6:83 — creates two reference edges."
+  }
+]

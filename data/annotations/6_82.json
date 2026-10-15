@@ -1,0 +1,67 @@
+[
+  {
+    "atom_id": "6:82(1).a",
+    "article_id": "6:82",
+    "lid": 1,
+    "text": "The default occurs when the debtor is put on notice by written demand in which a reasonable period for performance is granted and performance fails within that period",
+    "text_nl": "Het verzuim treedt in, wanneer de schuldenaar in gebreke wordt gesteld bij een schriftelijke aanmaning waarbij hem een redelijke termijn voor de nakoming wordt gesteld, en nakoming binnen deze termijn uitblijft",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [
+      "puts on notice"
+    ],
+    "geographical_domain": [],
+    "temporal": [
+      "reasonable period"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "default",
+      "written demand",
+      "notice",
+      "performance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "How default is triggered by formal notice. Standard 'ingebrekestelling' rule."
+  },
+  {
+    "atom_id": "6:82(2).a",
+    "article_id": "6:82",
+    "lid": 2,
+    "text": "If the debtor temporarily cannot perform, or if it becomes apparent from his statement that a written demand would be pointless, the default takes effect when the creditor issues a written notification in which the debtor is held liable for the failure",
+    "text_nl": "Indien de schuldenaar tijdelijk niet kan nakomen of uit zijn houding blijkt dat aanmaning nutteloos zou zijn, kan de ingebrekestelling plaatsvinden door een schriftelijke mededeling waaruit blijkt dat hij voor het uitblijven van de nakoming aansprakelijk wordt gesteld",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor",
+      "creditor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [
+      "notifies"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "temporary inability",
+      "default",
+      "written notification",
+      "liability"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Alternative notice rule when a demand would be futile."
+  }
+]

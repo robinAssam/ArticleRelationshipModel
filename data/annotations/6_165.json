@@ -1,0 +1,32 @@
+[
+  {
+    "atom_id": "6:165(1).a",
+    "article_id": "6:165",
+    "lid": 1,
+    "text": "The circumstance that an act as referred to in article 162 paragraph 2 committed by a person aged fourteen years or older is committed under the influence of a mental or physical disability does not prevent the act from being attributed to him as a tortious act",
+    "text_nl": "De omstandigheid dat een als een doen te beschouwen gedraging van een persoon van veertien jaren of ouder verricht onder invloed van een geestelijke of lichamelijke tekortkoming, is geen beletsel haar als een onrechtmatige daad aan de dader toe te rekenen",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.1",
+    "condition_type": "post_condition",
+    "actors": [
+      "wrongdoer"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "article 162"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "mental disability",
+      "physical disability",
+      "attribution",
+      "tortious act",
+      "age fourteen"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Removes mental/physical disability as an attribution defense above age 14. References 6:162 — creates a reference edge."
+  }
+]

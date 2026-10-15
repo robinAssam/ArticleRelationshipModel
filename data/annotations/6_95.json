@@ -1,0 +1,28 @@
+[
+  {
+    "atom_id": "6:95(1).a",
+    "article_id": "6:95",
+    "lid": 1,
+    "text": "The damage that must be compensated on the basis of a statutory obligation to make good damage consists of property damage and other harm — the latter insofar as the law confers a right to compensation for it",
+    "text_nl": "De schade die op grond van een wettelijke verplichting tot schadevergoeding moet worden vergoed, bestaat in vermogensschade en ander nadeel, dit laatste voor zover de wet op vergoeding hiervan recht geeft",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "compensation",
+      "property damage",
+      "other harm",
+      "statutory obligation"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Foundational scope of statutory damages. Directly connects to 6:96 (property damage definition) and 6:106 (non-property harm)."
+  }
+]

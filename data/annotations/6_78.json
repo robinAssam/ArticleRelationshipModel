@@ -1,0 +1,36 @@
+[
+  {
+    "atom_id": "6:78(1).a",
+    "article_id": "6:78",
+    "lid": 1,
+    "text": "If a debtor obtains an advantage as a result of a failure to perform that cannot be attributed to him and that advantage would not have been obtained had he performed properly, the creditor has a right to compensation of his damage up to the amount of that advantage",
+    "text_nl": "Wanneer de tekortkoming van een schuldenaar hem niet kan worden toegerekend en hij in verband met die tekortkoming een voordeel geniet dat hij bij behoorlijke nakoming niet zou hebben gehad, heeft de schuldeiser met toepassing van de regels betreffende ongerechtvaardigde verrijking recht op vergoeding van zijn schade tot ten hoogste het bedrag van dit voordeel",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor",
+      "creditor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [
+      "obtains",
+      "compensates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "failure to perform",
+      "attribution",
+      "advantage",
+      "unjustified enrichment",
+      "damage"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Prevents debtor from profiting even when they escape attribution. Uses unjust-enrichment logic."
+  }
+]

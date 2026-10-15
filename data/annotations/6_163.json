@@ -1,0 +1,30 @@
+[
+  {
+    "atom_id": "6:163(1).a",
+    "article_id": "6:163",
+    "lid": 1,
+    "text": "There is no obligation to compensate damage when the violated norm does not aim to protect against damage such as the injured party has suffered",
+    "text_nl": "Geen verplichting tot schadevergoeding bestaat, wanneer de geschonden norm niet strekt tot bescherming tegen de schade zoals de benadeelde die heeft geleden",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.1",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured party"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "compensation",
+      "norm",
+      "damage",
+      "protective scope",
+      "Schutznorm"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Relativity requirement (Schutznorm doctrine). Critical filter on tort liability. Shares 'damage', 'compensation' with 6:162, 6:74."
+  }
+]

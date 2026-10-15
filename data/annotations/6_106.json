@@ -1,0 +1,124 @@
+[
+  {
+    "atom_id": "6:106(1).a",
+    "article_id": "6:106",
+    "lid": 1,
+    "text": "For harm that does not consist of property damage, the injured party has a right to compensation to be determined according to equity if the liable person had the intention to cause such harm",
+    "text_nl": "Voor nadeel dat niet in vermogensschade bestaat, heeft de benadeelde recht op een naar billijkheid vast te stellen schadevergoeding indien de aansprakelijke persoon het oogmerk had zodanig nadeel toe te brengen",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured party",
+      "liable person"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "non-property harm",
+      "compensation",
+      "equity",
+      "intention"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Intentional-harm ground. Shares 'compensation' with 6:74(1).a and 6:162(1).a."
+  },
+  {
+    "atom_id": "6:106(1).b",
+    "article_id": "6:106",
+    "lid": 1,
+    "text": "For non-property harm, the injured party has a right to compensation to be determined according to equity if he has suffered bodily injury, has been harmed in his honour or good name, or has otherwise been impaired in his person",
+    "text_nl": "Voor nadeel dat niet in vermogensschade bestaat, heeft de benadeelde recht op een naar billijkheid vast te stellen schadevergoeding indien de benadeelde lichamelijk letsel heeft opgelopen, in zijn eer of goede naam is geschaad of op andere wijze in zijn persoon is aangetast",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured party"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "non-property harm",
+      "compensation",
+      "equity",
+      "bodily injury",
+      "honour",
+      "good name",
+      "impairment"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Physical/reputational harm ground. Directly relevant to medical malpractice — most patient injury claims trace here."
+  },
+  {
+    "atom_id": "6:106(1).c",
+    "article_id": "6:106",
+    "lid": 1,
+    "text": "For non-property harm, compensation is available if the harm consists of impairment of the memory of a deceased person and has been inflicted on the not-legally-separated spouse, the registered partner, or a blood relative up to the second degree of the deceased, provided the impairment took place in a manner that would have given the deceased, had he still been alive, a right to compensation for damage to his honour or good name",
+    "text_nl": "Voor nadeel dat niet in vermogensschade bestaat, heeft de benadeelde recht op een naar billijkheid vast te stellen schadevergoeding indien het nadeel gelegen is in aantasting van de nagedachtenis van een overledene en toegebracht is aan de niet van tafel en bed gescheiden echtgenoot, de geregistreerde partner of een bloedverwant tot in de tweede graad van de overledene, mits de aantasting plaatsvond op een wijze die de overledene, ware hij nog in leven geweest, recht zou hebben gegeven op schadevergoeding wegens het schaden van zijn eer of goede naam",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured party",
+      "deceased",
+      "spouse",
+      "registered partner",
+      "blood relative"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "non-property harm",
+      "compensation",
+      "memory",
+      "deceased",
+      "spouse",
+      "registered partner",
+      "blood relative",
+      "impairment"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Edge case for defamation of the deceased. Long atom because the sub-conditions describe *who* qualifies as the injured party, not separate rules. Legally important but unlikely to surface in medical malpractice queries."
+  },
+  {
+    "atom_id": "6:106(2).a",
+    "article_id": "6:106",
+    "lid": 2,
+    "text": "The right to non-property compensation is not susceptible to transfer or seizure, unless it has been established by agreement or a claim has been brought in court",
+    "text_nl": "Het recht op een vergoeding is niet vatbaar voor overgang en beslag, tenzij het bij overeenkomst is vastgelegd of ter zake een vordering in rechte is ingesteld",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured party"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "previous paragraph"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "transfer",
+      "seizure",
+      "agreement",
+      "court claim"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Procedural rule limiting when non-property claims can be transferred. Skipped the second sentence about universal succession — procedural minutia unlikely to surface in reasoning queries."
+  }
+]

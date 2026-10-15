@@ -1,0 +1,63 @@
+[
+  {
+    "atom_id": "6:102(1).a",
+    "article_id": "6:102",
+    "lid": 1,
+    "text": "If two or more persons are liable to compensate the same damage, they are jointly and severally liable, without prejudice to their internal contribution obligations under article 10",
+    "text_nl": "Rust op ieder van twee of meer personen een verplichting tot vergoeding van dezelfde schade, dan zijn zij hoofdelijk verbonden, onverminderd de tussen hen bestaande verplichting tot bijdragen krachtens artikel 10",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "liable persons"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "article 10"
+    ],
+    "hierarchies": [
+      "without prejudice to their internal contribution obligations under article 10"
+    ],
+    "residual": [
+      "damage",
+      "joint and several liability",
+      "compensation",
+      "contribution"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Joint and several liability rule. Reference to art. 10 concerns internal recourse between debtors."
+  },
+  {
+    "atom_id": "6:102(2).a",
+    "article_id": "6:102",
+    "lid": 2,
+    "text": "For the determination of what these persons must contribute among themselves, the damage is divided in application of article 101 in proportion to what can be attributed to each of them, unless equity requires a different division",
+    "text_nl": "Voor de bepaling van hetgeen zij krachtens artikel 101 jegens elkaar moeten bijdragen, wordt de schade over hen verdeeld met overeenkomstige toepassing van artikel 101, tenzij uit wet of rechtshandeling een andere verdeling voortvloeit",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "liable persons"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "article 101"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "division",
+      "contribution",
+      "proportion",
+      "equity"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Internal division of joint liability by reference to 6:101 (contributory fault rules)."
+  }
+]

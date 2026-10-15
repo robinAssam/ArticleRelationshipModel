@@ -1,0 +1,32 @@
+[
+  {
+    "atom_id": "6:97(1).a",
+    "article_id": "6:97",
+    "lid": 1,
+    "text": "The court assesses damage in the manner most consistent with its nature; if the extent of damage cannot be precisely determined, it is estimated",
+    "text_nl": "De rechter begroot de schade op de wijze die het meest met de aard ervan in overeenstemming is; kan de omvang van de schade niet nauwkeurig worden vastgesteld, dan wordt zij geschat",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "court"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "assesses",
+      "estimates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "assessment",
+      "estimation",
+      "nature"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Court's discretion in damage assessment. Widely-cited article — appears in almost every damages ruling."
+  }
+]

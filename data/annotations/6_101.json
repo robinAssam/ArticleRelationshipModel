@@ -1,0 +1,94 @@
+[
+  {
+    "atom_id": "6:101(1).a",
+    "article_id": "6:101",
+    "lid": 1,
+    "text": "When damage is also a consequence of a circumstance that can be attributed to the injured party, the obligation to compensate is reduced by dividing the damage between the injured party and the party obliged to compensate in proportion to the degree in which the circumstances attributable to each contributed to the damage",
+    "text_nl": "Wanneer de schade mede een gevolg is van een omstandigheid die aan de benadeelde kan worden toegerekend, wordt de vergoedingsplicht verminderd door de schade over de benadeelde en de vergoedingsplichtige te verdelen in evenredigheid met de mate waarin de aan ieder toe te rekenen omstandigheden tot de schade hebben bijgedragen",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured party",
+      "party obliged to compensate"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "reduces",
+      "divides"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "circumstance",
+      "attribution",
+      "proportion",
+      "contribution"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Proportional-reduction rule for contributory fault. Central defense in malpractice cases where the patient's own actions contributed to harm."
+  },
+  {
+    "atom_id": "6:101(1).b",
+    "article_id": "6:101",
+    "lid": 1,
+    "text": "with the understanding that a different division takes place, or the obligation to compensate is completely cancelled or maintained, if equity so requires by reason of the differing severity of the mistakes made or other circumstances of the case",
+    "text_nl": "met dien verstande dat een andere verdeling plaatsvindt of de vergoedingsplicht geheel vervalt of in stand blijft, indien de billijkheid dit wegens de uiteenlopende ernst van de gemaakte fouten of andere omstandigheden van het geval eist",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "pre_condition",
+    "actors": [
+      "injured party",
+      "party obliged to compensate"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "division",
+      "obligation",
+      "equity",
+      "severity",
+      "mistakes",
+      "circumstances"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Equity override on (1).a's proportional division — allows courts to depart from strict proportionality."
+  },
+  {
+    "atom_id": "6:101(2).a",
+    "article_id": "6:101",
+    "lid": 2,
+    "text": "If for the damage there also exists a ground for liability of a third party, paragraph 1 applies mutatis mutandis between the injured party and that third party",
+    "text_nl": "Indien voor de schade tevens een grond voor aansprakelijkheid van een derde bestaat, is lid 1 tussen de benadeelde en die derde van overeenkomstige toepassing",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured party",
+      "third party"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "paragraph 1"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "liability",
+      "ground",
+      "mutatis mutandis"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Extends contributory fault to third-party defendants (e.g. multiple tortfeasors)."
+  }
+]

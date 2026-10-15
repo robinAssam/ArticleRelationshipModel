@@ -1,0 +1,34 @@
+[
+  {
+    "atom_id": "6:77(1).a",
+    "article_id": "6:77",
+    "lid": 1,
+    "text": "If in performing an obligation the debtor uses a thing that is unsuitable, the resulting failure to perform is attributed to him, unless this would be unreasonable in view of the content and purpose of the obligation, ordinary opinions, and the other circumstances of the case",
+    "text_nl": "Wordt bij de uitvoering van een verbintenis een zaak gebruikt die daartoe ongeschikt is, dan wordt de tekortkoming die daardoor ontstaat de schuldenaar toegerekend, tenzij dit, gelet op inhoud en strekking van de verbintenis, de in het verkeer geldende opvattingen en de overige omstandigheden van het geval, onredelijk zou zijn",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [
+      "uses"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "thing",
+      "unsuitable",
+      "failure to perform",
+      "attribution",
+      "reasonableness"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Attributes to debtor the failure caused by using unsuitable things. Shares 'attribution', 'failure to perform' with 6:74, 6:75."
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "atom_id": "6:173(1).a",
+    "article_id": "6:173",
+    "lid": 1,
+    "text": "The possessor of a movable thing that is known to constitute a special danger of harm to persons or things if it does not satisfy the requirements one may set for such a thing under the given circumstances, is liable if this danger materializes, unless liability under the previous section would not have existed if he had known the danger at the time of its materialization",
+    "text_nl": "De bezitter van een roerende zaak waarvan bekend is dat zij, zo zij niet voldoet aan de eisen die men in de gegeven omstandigheden aan de zaak mag stellen, een bijzonder gevaar van schade voor personen of zaken oplevert, is, wanneer dit gevaar zich verwezenlijkt, aansprakelijk, tenzij aansprakelijkheid op grond van de vorige afdeling zou hebben ontbroken",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.2",
+    "condition_type": "post_condition",
+    "actors": [
+      "possessor"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "movable thing",
+      "special danger",
+      "harm",
+      "materialization",
+      "liability",
+      "requirements"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Strict liability for defective movable things. Product liability under Dutch law flows partly through this article."
+  },
+  {
+    "atom_id": "6:173(2).a",
+    "article_id": "6:173",
+    "lid": 2,
+    "text": "If the thing is defective within the meaning of the section on liability for defective products, then during the time the producer was subjected to a claim of liability for a product put into circulation by him, the person referred to in paragraph 1 is not liable",
+    "text_nl": "Indien een zaak die naar haar aard een bijzonder gevaar van schade oplevert, gebrekkig is in de zin van de afdeling betreffende produktenaansprakelijkheid, dan is de bezitter niet op de voet van lid 1 aansprakelijk",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.2",
+    "condition_type": "pre_condition",
+    "actors": [
+      "possessor",
+      "producer"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "defective product",
+      "product liability",
+      "circulation"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Deferral to product-liability regime for defective products (Afd 6.3.3, not in corpus)."
+  }
+]

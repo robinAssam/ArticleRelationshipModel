@@ -1,0 +1,58 @@
+[
+  {
+    "atom_id": "6:174(1).a",
+    "article_id": "6:174",
+    "lid": 1,
+    "text": "The possessor of a structure that does not meet the requirements one may set for it in the given circumstances and thereby constitutes a danger for persons or things, is liable when this danger materializes, unless liability under the previous section would not have existed if he had known the danger at the time of its materialization",
+    "text_nl": "De bezitter van een opstal die niet voldoet aan de eisen die men daaraan in de gegeven omstandigheden mag stellen, en daardoor gevaar voor personen of zaken oplevert, is, wanneer dit gevaar zich verwezenlijkt, aansprakelijk, tenzij aansprakelijkheid op grond van de vorige afdeling zou hebben ontbroken",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.2",
+    "condition_type": "post_condition",
+    "actors": [
+      "possessor"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "structure",
+      "opstal",
+      "requirements",
+      "danger",
+      "materialization",
+      "liability"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Strict liability for defective real property (buildings/structures). Central to premises-liability cases — including hospitals as buildings."
+  },
+  {
+    "atom_id": "6:174(2).a",
+    "article_id": "6:174",
+    "lid": 2,
+    "text": "In case of danger of persons or things by a state of a public road, liability rests on the public body that must ensure that the road is in a proper state",
+    "text_nl": "Bij openbare wegen rust de aansprakelijkheid op het openbaar lichaam dat moet zorgen dat de weg in goede staat verkeert",
+    "source": "Dutch Civil Code, Book 6, Title 6.3.2",
+    "condition_type": "post_condition",
+    "actors": [
+      "public body"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "public road",
+      "state",
+      "danger",
+      "liability"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Extends 6:174 liability to public authorities for public roads."
+  }
+]

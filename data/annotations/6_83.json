@@ -1,0 +1,92 @@
+[
+  {
+    "atom_id": "6:83(1).a",
+    "article_id": "6:83",
+    "lid": 1,
+    "text": "The default occurs without notice when a term set for performance passes without performance having taken place, unless the term has a different purpose",
+    "text_nl": "Het verzuim treedt zonder ingebrekestelling in wanneer een voor de voldoening bepaalde termijn verstrijkt zonder dat de verbintenis is nagekomen, tenzij blijkt dat de termijn een andere strekking heeft",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [
+      "term for performance"
+    ],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "default",
+      "term",
+      "performance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Automatic default when a fixed-date obligation isn't met. First of three automatic-default triggers."
+  },
+  {
+    "atom_id": "6:83(1).b",
+    "article_id": "6:83",
+    "lid": 1,
+    "text": "The default occurs without notice when the obligation arises from a tortious act or requires compensation of damage as referred to in article 74 paragraph 1 and the obligation is not immediately performed",
+    "text_nl": "Het verzuim treedt zonder ingebrekestelling in wanneer de verbintenis voortvloeit uit onrechtmatige daad of strekt tot schadevergoeding als bedoeld in artikel 74 lid 1 en de verbintenis niet terstond wordt nagekomen",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "article 74"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "default",
+      "tortious act",
+      "compensation",
+      "damage"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Automatic default for tort and breach obligations — no notice needed. Creates reference edge to 6:74."
+  },
+  {
+    "atom_id": "6:83(1).c",
+    "article_id": "6:83",
+    "lid": 1,
+    "text": "The default occurs without notice when the creditor infers from a statement of the debtor that the debtor will not perform the obligation",
+    "text_nl": "Het verzuim treedt zonder ingebrekestelling in wanneer de schuldeiser uit een mededeling van de schuldenaar moet afleiden dat deze in de nakoming van de verbintenis zal tekortschieten",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.9",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor",
+      "creditor"
+    ],
+    "legal_relations": [
+      "obligation"
+    ],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "default",
+      "anticipated failure",
+      "performance"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Automatic default for anticipated repudiation."
+  }
+]

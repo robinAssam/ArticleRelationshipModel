@@ -1,0 +1,32 @@
+[
+  {
+    "atom_id": "6:99(1).a",
+    "article_id": "6:99",
+    "lid": 1,
+    "text": "If damage may have arisen from two or more events for each of which a different person is liable, and it is established that the damage has arisen from at least one of these events, the obligation to make good the damage rests on each of these persons, unless he proves that the damage is not a result of the event for which he himself is liable",
+    "text_nl": "Kan de schade een gevolg zijn van twee of meer gebeurtenissen voor elk waarvan een andere persoon aansprakelijk is, en staat vast dat de schade door ten minste één van deze gebeurtenissen is ontstaan, dan rust de verplichting om de schade te vergoeden op ieder van deze personen, tenzij hij bewijst dat deze niet het gevolg is van een gebeurtenis waarvoor hijzelf aansprakelijk is",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "liable persons"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "compensates",
+      "proves"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "alternative causation",
+      "liability",
+      "burden of proof"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Alternative causation rule — landmark Kalimijnen/DES doctrine. Shifts burden of proof to defendants when causation is uncertain."
+  }
+]

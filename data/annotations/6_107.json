@@ -1,0 +1,63 @@
+[
+  {
+    "atom_id": "6:107(1).a",
+    "article_id": "6:107",
+    "lid": 1,
+    "text": "If a person suffers bodily or mental injury as a result of an event for which another is liable to him, that other is also obliged to compensate the injured person's damage",
+    "text_nl": "Indien iemand ten gevolge van een gebeurtenis waarvoor een ander aansprakelijk is, lichamelijk of geestelijk letsel oploopt, is die ander verplicht tot vergoeding van de schade van de gekwetste",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured person",
+      "liable person"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "compensates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "bodily injury",
+      "mental injury",
+      "damage",
+      "liability"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Central provision for personal-injury damages — the pathway most medical malpractice claims follow."
+  },
+  {
+    "atom_id": "6:107(1).b",
+    "article_id": "6:107",
+    "lid": 1,
+    "text": "The liable person is also obliged to compensate the costs incurred by a third party for the benefit of the injured person, which the injured person would have been able to claim as damage had he incurred them himself",
+    "text_nl": "De aansprakelijke is bovendien verplicht tot vergoeding van de kosten die een derde ten behoeve van de gekwetste heeft gemaakt en die deze, waren zij door hem zelf gemaakt, als schade had kunnen vorderen",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "injured person",
+      "liable person",
+      "third party"
+    ],
+    "legal_relations": [],
+    "acts": [
+      "compensates"
+    ],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "costs",
+      "third party",
+      "benefit",
+      "damage"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Compensation of third-party costs (e.g. family caring for the injured person)."
+  }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "atom_id": "6:96(1).a",
+    "article_id": "6:96",
+    "lid": 1,
+    "text": "Property damage includes both loss suffered and profit missed",
+    "text_nl": "Vermogensschade omvat zowel geleden verlies als gederfde winst",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "property damage",
+      "loss",
+      "profit"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Definitional atom. 'Property damage' is a foundational term that appears throughout the damages framework — expect strong shared-tag edges to 6:74, 6:162, and other compensation rules."
+  },
+  {
+    "atom_id": "6:96(2).a",
+    "article_id": "6:96",
+    "lid": 2,
+    "text": "Reasonable costs to prevent or limit damage that could be expected as a result of the event on which liability is based are also compensable as property damage",
+    "text_nl": "Als vermogensschade komen mede voor vergoeding in aanmerking redelijke kosten ter voorkoming of beperking van schade die als gevolg van de gebeurtenis waarop de aansprakelijkheid berust, mocht worden verwacht",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "reasonable costs",
+      "prevention",
+      "damage limitation",
+      "liability",
+      "compensable",
+      "property damage"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Extends property damage to include mitigation costs — real practical relevance in medical malpractice (e.g. corrective treatment costs)."
+  },
+  {
+    "atom_id": "6:96(2).b",
+    "article_id": "6:96",
+    "lid": 2,
+    "text": "Reasonable costs to determine damage and liability are also compensable as property damage",
+    "text_nl": "Als vermogensschade komen mede voor vergoeding in aanmerking redelijke kosten ter vaststelling van schade en aansprakelijkheid",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "reasonable costs",
+      "damage assessment",
+      "liability",
+      "compensable",
+      "property damage"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Expert costs, investigation costs."
+  },
+  {
+    "atom_id": "6:96(2).c",
+    "article_id": "6:96",
+    "lid": 2,
+    "text": "Reasonable costs to obtain satisfaction out of court are also compensable as property damage",
+    "text_nl": "Als vermogensschade komen mede voor vergoeding in aanmerking redelijke kosten ter verkrijging van voldoening buiten rechte",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "reasonable costs",
+      "satisfaction",
+      "extrajudicial",
+      "compensable",
+      "property damage"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Pre-litigation negotiation costs."
+  },
+  {
+    "atom_id": "6:96(3).a",
+    "article_id": "6:96",
+    "lid": 3,
+    "text": "Paragraph 2 subs b and c does not apply insofar as the rules on legal costs of article 241 of the Code of Civil Procedure apply",
+    "text_nl": "Lid 2 onder b en c is niet van toepassing voor zover in het gegeven geval krachtens artikel 241 van het Wetboek van Burgerlijke Rechtsvordering de regels betreffende proceskosten van toepassing zijn",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "pre_condition",
+    "actors": [],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [
+      "paragraph 2"
+    ],
+    "hierarchies": [],
+    "residual": [
+      "legal costs",
+      "Code of Civil Procedure"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "Cross-code reference to art. 241 Rv (Code of Civil Procedure) — NOT added to explicit_references because the reference parser only resolves BW-internal citations. External reference preserved in text only."
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "atom_id": "6:98(1).a",
+    "article_id": "6:98",
+    "lid": 1,
+    "text": "Only damage that is in such a connection with the event on which the debtor's liability is based that it can be attributed to him as a consequence of that event, taking into account the nature of the liability and of the damage, is eligible for compensation",
+    "text_nl": "Voor vergoeding komt slechts in aanmerking schade die in zodanig verband staat met de gebeurtenis waarop de aansprakelijkheid van de schuldenaar berust, dat zij hem, mede gezien de aard van de aansprakelijkheid en van de schade, als een gevolg van deze gebeurtenis kan worden toegerekend",
+    "source": "Dutch Civil Code, Book 6, Title 6.1.10",
+    "condition_type": "post_condition",
+    "actors": [
+      "debtor"
+    ],
+    "legal_relations": [],
+    "acts": [],
+    "geographical_domain": [],
+    "temporal": [],
+    "explicit_references": [],
+    "hierarchies": [],
+    "residual": [
+      "damage",
+      "connection",
+      "event",
+      "liability",
+      "attribution",
+      "compensation",
+      "nature"
+    ],
+    "annotator": "Claude-draft",
+    "annotated_at": "13/09/2026",
+    "notes": "The 'legal causation' test — one of the most cited articles in Dutch tort/contract law. Shares 'attribution' with 6:75, 6:162(3), 6:74(1).b — expect strong edges to those atoms."
+  }
+]
