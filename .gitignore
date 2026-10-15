@@ -1,7 +1,3 @@
-*.db
-.states
-.web
-assets/external/
 # --- Python ---
 __pycache__/
 *.py[cod]
@@ -26,6 +22,8 @@ dist/
 .idea/
 *.swp
 .DS_Store
+# Office lock files (created while a document is open)
+~$*
 
 # --- Project-specific ---
 # never commit large model files or full case-law dumps
@@ -42,4 +40,3 @@ data/raw/case_law/*.json
 # notebook outputs (clear before commit, or use nbstripout)
 # uncomment if you set up nbstripout:
 # notebooks/*.ipynb
-/docs/

@@ -5,16 +5,16 @@ decomposed into the smallest units that carry a single legal meaning ("atoms"),
 annotated against a 9-label schema, and connected into a graph that can be
 navigated and queried in natural language.
 
-Anchored on the WGBO (Book 7, Title 7.7.5 BW) and extended into the Book 6
-obligations articles that are typically referenced from medical malpractice
-cases.
+nchored on the WGBO (Book 7, Title 7.7.5 BW)
+and extended into the Book 6 obligations articles that are typically referenced
+from medical malpractice cases.
 
 
 ## Motivation
 
 Statutes are written for lawyers, not machines. A single article stacks
 duties, qualifying conditions, and cross-references in dense prose. Treating
-the article as one opaque unit — the usual approach in statutory retrieval —
+the article as one opaque unit  the usual approach in statutory retrieval 
 throws away most of that structure. This project decomposes articles into
 atoms, so the internal structure of each article becomes explicit and
 addressable.
@@ -25,24 +25,19 @@ addressable.
 Each article is annotated by hand against the lab's 9-label extraction schema
 (actors, legal relations, acts, geographical domain, temporal, explicit
 references, hierarchies, residual, plus pre- vs post-condition). Annotated
-atoms are connected through four edge channels:
+atoms are connected through three edge channels:
 
 1. Shared annotation tags (exact set intersection, weighted by IDF)
 2. Semantic similarity between tag values via sentence embeddings
 3. Hierarchical containment through the Dutch legal tree
-   (rechtsgebied → wetboek → boek → titel → afdeling → artikel)
-4. Explicit cross-article references extracted from atom text
-   ("Without prejudice to article 455" becomes a directed edge)
+   (rechtsgebied - wetboek - boek - titel - afdeling - artikel)
 
-A classifier scores an atom-shaped query against every corpus atom and
-returns a predicted position in the tree. On top of that, a chained-reasoning
-walker starts at the classifier's top matches and expands outward through the
-graph, surfacing related atoms via reference and shared-tag edges — so a query
-about record destruction anchors on 7:455 and then follows the reference edge
-back to 7:454's retention duty, without the user asking for it.
-
-Evaluation is leave-one-out, reported at each hierarchy level rather than only
-at the article level.
+A classifier takes an atom-shaped query, scores every corpus atom with a
+normalised (weighted cosine) tag similarity, and ranks articles by their
+best-matching atom. A natural-language question can be turned into query
+atoms with an LLM first (`src/data/query.py`). Evaluation is leave-one-out at
+article level (MRR, hit@k, against a random baseline), and also per level of
+the legal tree.
 
 
 ## Corpus
@@ -51,8 +46,9 @@ at the article level.
 - Book 6 fallbacks: 6:74, 6:75, 6:76, 6:162, 6:170 (12 atoms)
 - Synthetic corpus (Lunar Medical Code): 15 articles, 38 atoms
 
-The synthetic corpus is used to exercise the pipeline without leaking real
-statutory text into training and to keep automated evaluation honest.
+The synthetic corpus is a test fixture: `tests/test_pipeline.py` runs every
+pipeline stage on it. It is excluded from evaluation, which uses the real
+articles only (see the 15/10/2026 entry in `docs/03_decisions_log.md`).
 
 
 ## Repository layout
@@ -69,15 +65,23 @@ statutory text into training and to keep automated evaluation honest.
 
     src/
       annotation/schema.py         Atom dataclass and field definitions.
-      data/atom_table.py           Loaders, edges, weighting, classifier.
-      data/hierarchy.py            Legal tree, containment and reference edges.
-      data/reasoning.py            Chained-reasoning walker and trace formatting.
+      data/atom_table.py           Loaders, edges, weighting, scoring, evaluation.
+      data/hierarchy.py            Legal tree and taxonomy lookup.
+      data/reasoning.py            Chained-reasoning graph walker.
+      data/query.py                Question text -> query atoms (Claude) -> articles.
+
+    scripts/
+      run_eval.py                  Article-level evaluation; writes outputs/tables/.
+
+    tests/
+      test_pipeline.py             Pipeline tests on the synthetic corpus.
 
     notebooks/
-        01_explore_atoms.ipynb       End-to-end exploration and evaluation.
-        02_experiments.ipynb         Decision-support experiments (model comparison, alpha and top-k sweeps).
+      01_explore_atoms.ipynb       End-to-end exploration and evaluation.
+      02_experiments.ipynb         Encoder comparison, alpha/normalisation sweep.
 
     outputs/                       Figures, tables, exported artefacts.
+      tables/                      Evaluation results with their config (JSON).
 
 
 ## Setup
@@ -86,12 +90,20 @@ statutory text into training and to keep automated evaluation honest.
     source .venv/bin/activate           # Windows: .venv\Scripts\activate
     pip install -r requirements.txt
 
-The primary entry point is `notebooks/01_explore_atoms.ipynb`. It loads
-the annotations, builds the edge tables, runs the classifier and the
-chained-reasoning demos, and produces the figures used in the write-up.
-`notebooks/02_experiments.ipynb` holds standalone experiments that
-informed defaults in the primary pipeline; re-run only when a decision
-needs revisiting.
+The notebook is the entry point. It loads the annotations, builds the edge
+tables, runs the classifier, and produces the figures used in the write-up.
+
+Run the tests from the repo root:
+
+    python -m unittest discover tests
+
+Reproduce the evaluation tables (results and config land in outputs/tables/):
+
+    python scripts/run_eval.py
+    python scripts/run_eval.py --name scoring_sweep --sweep
+
+Natural-language queries call the Anthropic API and need credentials
+(`ANTHROPIC_API_KEY`, or `ant auth login`).
 
 
 ## Conventions
@@ -100,23 +112,21 @@ Files under data/raw/ are the source of truth and are not edited in place.
 Derived data lives under data/processed/. Notebooks are for exploration;
 stable code moves into src/.
 
-
 ## Status
 
 Implemented:
-- Atom-level annotation for 7 real articles (WGBO + Book 6) and a 15-article
-  synthetic corpus
-- Four-channel edge construction: shared tags (IDF-weighted), semantic
-  similarity, hierarchical containment, and explicit cross-article references
-- Legal tree parsing (rechtsgebied → article) with per-level LOO evaluation
-- Chained-reasoning walker that traverses reference and tag edges from
-  anchor atoms, with auditable per-step provenance
+- Atom-level annotation for 7 real articles and a 15-article synthetic corpus
+- Three-channel edge construction (exact, IDF-weighted, semantic)
+- Legal tree parsing and per-level LOO evaluation
 - Encoder comparison across three sentence transformers, including two
   legal-domain models
 - Obsidian vault export of the annotated graph
 
 In progress:
-- Streamlit interface for interactive queries and subgraph visualisation
 - Extending the corpus to a wider cluster of medical-malpractice articles
 - Filter-then-semantic retrieval, following the pattern in G-DSR
+- BM25 as an additional retrieval channel for baseline comparison
+- A Streamlit interface for interactive queries
 - A short technical write-up
+
+

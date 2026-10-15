@@ -41,3 +41,61 @@ back on the full corpus per the safety default. Even with those fallbacks
 counted in the pooled metrics, the filter improves top-1 by ~8 points.
 
 See notebooks/01_explore_atoms.ipynb, sections 7.5 and 7.6.
+
+## 15/10/2026 — Synthetic corpus removed from evaluation
+
+The Lunar Medical Code (38 atoms) no longer takes part in leave-one-out
+evaluation, either as queries or as candidates. Its vocabulary is disjoint
+from Dutch law, so it inflated coarse-level accuracy (rechtsgebied/wetboek
+mostly measured "real vs synthetic") and added distractors at article level.
+It is kept as a pipeline fixture in `tests/test_pipeline.py`. IDF weights for
+evaluation are computed on the real corpus only.
+
+`evaluate_classifier_loo` and `evaluate_at_levels` now drop synthetic atoms
+by default (`include_synthetic=True` to opt back in), and
+`evaluate_classifier_loo` takes `filter_fields`.
+
+Re-run on 80 real atoms / 30 articles, alpha=0.5, top_k=3:
+
+    Before (118 atoms incl. synthetic): top1=0.36, top3=0.50, MRR=0.42
+    Real only, no filter:               top1=0.48, top3=0.65, MRR=0.55
+    Real only, filter (actors, acts):   top1=0.51, top3=0.64, MRR=0.56
+
+The earlier filter gain (0.22 -> 0.30) does not hold on the current corpus;
+the filter is now roughly neutral. Rechtsgebied/wetboek accuracy is trivially
+1.0 because every real article is in the BW. Encoder and alpha/top_k
+decisions are unchanged on the real corpus (mpnet still best; alpha=0.5).
+
+
+## 15/10/2026 — Normalised scoring, article-level evaluation, text queries
+
+**Scoring.** `classify_atom` now normalises both channels with
+`normalize="cosine"` (default): each tag is weighted by IDF, and the score is
+the weighted cosine (Ochiai) similarity of the query's and candidate's tag
+sets. The semantic channel uses the same weights and denominator, so `alpha`
+mixes like with like. Scores are scaled so 1.0 = identical tags (alpha >= 0.5).
+`normalize="none"` reproduces the old raw sums.
+
+**Evaluation.** New headline metric `evaluate_article_retrieval`: LOO where
+the *articles* are ranked (an article scores as its best atom), IDF is
+recomputed inside each fold, ties count by their expected value, and a random
+baseline is reported. 11 of the 30 real articles have a single atom, so 11 of
+80 queries cannot be answered (ceiling MRR = hit@k = 0.8625).
+
+Real corpus, 80 queries, mpnet tag similarity at 0.55, article = max atom:
+
+    old scoring (none), alpha=0.5:   MRR=0.593  hit@1=0.448  hit@3=0.713
+    new scoring (cosine), alpha=0.5: MRR=0.611  hit@1=0.494  hit@3=0.726
+    random ranking:                  MRR=0.115  hit@1=0.029  hit@3=0.086
+
+The gain is about 4 queries out of 80: real but within noise at this size.
+Fixing the IDF leak changes MRR by 0.002. Semantic-only (alpha=0) is
+MRR 0.23, close to random; exact matches carry the signal. `agg="sum"` is
+worse than `max` in every setting. alpha=0.75 gives MRR 0.621, but the default
+stays 0.5 rather than tuning on the evaluation set. Results:
+`outputs/tables/article_retrieval_*`, `outputs/tables/scoring_sweep_*`.
+
+**Text queries.** `src/data/query.py` decomposes a Dutch or English question
+into query atoms with Claude Opus 5.5 (structured JSON output, the corpus tag
+vocabulary in the prompt so exact matches can fire) and sums each article's
+score over the query atoms. Not yet evaluated — that is study A.

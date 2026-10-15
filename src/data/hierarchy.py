@@ -405,8 +405,13 @@ def evaluate_at_levels(
     sim_pairs: pd.DataFrame | None = None,
     alpha: float = 0.5,
     top_k: int = 3,
+    include_synthetic: bool = False,
 ) -> tuple[pd.DataFrame, dict]:
     """Leave-one-out classifier accuracy at each hierarchy level.
+
+    Synthetic atoms are dropped from both the queries and the candidate pool
+    unless ``include_synthetic`` is True — otherwise rechtsgebied/wetboek
+    accuracy mostly measures "real vs synthetic".
 
     For each atom, remove it, classify against the rest, and look up the
     taxonomy of the top-1 predicted atom. Compare the predicted taxonomy to
@@ -422,9 +427,11 @@ def evaluate_at_levels(
     multiple sections.
     """
     # Delayed import to avoid circular reference with atom_table
-    from src.data.atom_table import classify_atom
+    from src.data.atom_table import classify_atom, drop_synthetic
 
     df = add_taxonomy_columns(df) if "boek" not in df.columns else df
+    if not include_synthetic:
+        df = drop_synthetic(df)
     levels = ["rechtsgebied", "wetboek", "boek", "titel", "afdeling", "article_id"]
     rows = []
 

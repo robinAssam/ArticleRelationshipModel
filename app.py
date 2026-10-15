@@ -39,11 +39,15 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.data.atom_table import (  # noqa: E402
-    build_atom_table, build_edge_table, compute_tag_weights,
-    compute_tag_similarities, unique_tags_by_field, LIST_FIELDS,
+    build_atom_table, build_edge_table, build_semantic_lookup, classify_atom,
+    compute_tag_weights, compute_tag_similarities, drop_synthetic,
+    unique_tags_by_field, LIST_FIELDS,
 )
 from src.data.hierarchy import (  # noqa: E402
     add_taxonomy_columns, build_reference_edges,
+)
+from src.data.query import (  # noqa: E402
+    rank_articles_for_query_atoms, text_to_query_atoms,
 )
 from src.data.reasoning import chained_reasoning  # noqa: E402
 
@@ -67,7 +71,8 @@ st.set_page_config(
 @st.cache_resource(show_spinner="Loading atoms, edges, and encoder…")
 def load_pipeline() -> dict:
     """One-time pipeline load. Rebuilds only if the underlying files change."""
-    df = build_atom_table(PROJECT_ROOT / "data" / "annotations")
+    # Real articles only: the synthetic Lunar corpus is a test fixture.
+    df = drop_synthetic(build_atom_table(PROJECT_ROOT / "data" / "annotations"))
     df_tax = add_taxonomy_columns(df)
     weights_idf = compute_tag_weights(df, method="idf")
     edges_weighted = build_edge_table(df, weights=weights_idf)
@@ -85,6 +90,7 @@ def load_pipeline() -> dict:
         "weights_idf": weights_idf,
         "edges_weighted": edges_weighted,
         "sim_pairs": sim_pairs,
+        "sem_lookup": build_semantic_lookup(sim_pairs),
         "ref_edges": ref_edges,
         "tags_by_field": unique_tags_by_field(df),
     }
@@ -123,23 +129,63 @@ def _query_template() -> dict:
     return q
 
 
+def _merge_query_atoms(atoms: list[dict]) -> dict:
+    """Union the tags of several query atoms into one query for the walker."""
+    q = _query_template()
+    for atom in atoms:
+        for field in LIST_FIELDS:
+            for tag in atom.get(field, []):
+                if tag not in q[field]:
+                    q[field].append(tag)
+    return q
+
+
+@st.cache_data(show_spinner=False)
+def decompose_question(question: str, vocabulary: dict[str, list[str]]) -> list[dict]:
+    """LLM call, cached so re-running the same question costs nothing."""
+    return text_to_query_atoms(question, vocabulary=vocabulary)
+
+
+QUESTION_EXAMPLE = (
+    "Het ziekenhuis heeft mijn medisch dossier kwijtgeraakt en nu kan ik "
+    "niet bewijzen dat de behandeling verkeerd is gegaan."
+)
+
+
 # ---------------------------------------------------------------------------
 # Sidebar: query builder
 # ---------------------------------------------------------------------------
 
-def build_sidebar_query(tags_by_field: dict[str, list[str]]) -> tuple[dict, str]:
-    """Render the sidebar UI and return the query dict + a label for display."""
+def build_sidebar_query(tags_by_field: dict[str, list[str]]) -> tuple[dict, str, dict, str | None]:
+    """Render the sidebar UI.
+
+    Returns the query dict, a label for display, the parameters, and the
+    question text when the plain-language mode is used (else None).
+    """
     st.sidebar.header("Query")
     mode = st.sidebar.radio(
         "Input mode",
-        ["Preset query", "Custom tag builder"],
+        ["Plain-language question", "Preset query", "Custom tag builder"],
         index=0,
     )
 
     query = _query_template()
     label = ""
+    question: str | None = None
 
-    if mode == "Preset query":
+    if mode == "Plain-language question":
+        question = st.sidebar.text_area(
+            "Describe the legal problem (Dutch or English)",
+            QUESTION_EXAMPLE, height=140,
+        ).strip()
+        label = question
+        st.sidebar.caption(
+            "An LLM splits the question into atoms and labels them with the "
+            "same 9-label schema as the corpus. Needs an Anthropic API key; "
+            "each new question costs a few cents."
+        )
+
+    elif mode == "Preset query":
         preset_name = st.sidebar.selectbox(
             "Choose a query",
             list(PRESETS.keys()),
@@ -183,7 +229,8 @@ def build_sidebar_query(tags_by_field: dict[str, list[str]]) -> tuple[dict, str]
     alpha = st.sidebar.slider(
         "alpha (exact vs semantic)", 0.0, 1.0, 0.5, 0.05,
         help="Higher values weight exact tag matches more; lower values weight "
-             "semantic similarity more.",
+             "semantic similarity more. 0.5 values an exact match and a perfect "
+             "semantic match equally.",
     )
     top_k = st.sidebar.slider("Top-k anchors", 1, 5, 3)
     max_hops = st.sidebar.slider("Max hops", 1, 2, 1)
@@ -196,16 +243,58 @@ def build_sidebar_query(tags_by_field: dict[str, list[str]]) -> tuple[dict, str]
         "top_k": top_k,
         "max_hops": max_hops,
         "min_edge_strength": min_edge,
-    }
+    }, question
 
 
 # ---------------------------------------------------------------------------
 # Panels
 # ---------------------------------------------------------------------------
 
+def render_query_atoms(atoms: list[dict]) -> None:
+    with st.expander(f"How the question was decomposed ({len(atoms)} atoms)", expanded=True):
+        for atom in atoms:
+            tags = "  ·  ".join(
+                f"**{f}** = {', '.join(atom[f])}" for f in LIST_FIELDS if atom[f]
+            )
+            st.markdown(f"`{atom['atom_id']}` *{atom['condition_type']}* — {atom['text']}")
+            st.caption(tags or "no tags")
+
+
+def render_article_ranking(ranking: pd.DataFrame, df: pd.DataFrame,
+                           multi_atom: bool, top_n: int = 10) -> None:
+    st.subheader("Article ranking")
+    if multi_atom:
+        st.caption(
+            "Each query atom scores every article by its best-matching atom; an "
+            "article's score is the sum over query atoms, so articles that "
+            "answer several parts of the question rank higher."
+        )
+    else:
+        st.caption(
+            "Each article scores as its best-matching atom. Scores run from 0 "
+            "(nothing in common) to 1 (identical tags)."
+        )
+    texts = df.set_index("atom_id")["text"]
+    rows = []
+    for r in ranking.head(top_n).itertuples(index=False):
+        if multi_atom:
+            best = ", ".join(sorted(set(r.best_atoms.values()))) or "—"
+            rows.append({"article": r.article_id, "score": r.score,
+                         "query atoms matched": r.n_query_atoms_matched,
+                         "best-matching atoms": best})
+        else:
+            rows.append({"article": r.article_id, "score": r.article_score,
+                         "best-matching atom": r.best_atom,
+                         "text": texts.get(r.best_atom, "")})
+    st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
+
+
 def render_anchors(result: dict, df: pd.DataFrame) -> None:
     st.subheader("Anchor matches")
-    st.caption("Top-k atoms returned by the classifier before graph expansion.")
+    st.caption(
+        "Top-k atoms returned by the classifier before graph expansion. "
+        "Scores run from 0 (nothing in common) to 1 (identical tags)."
+    )
     primary = result["primary_matches"]
     if primary.empty:
         st.info("No anchor matches — try loosening the query.")
@@ -275,7 +364,7 @@ def render_subgraph_table(result: dict, ref_edges: pd.DataFrame,
         if len(ref_sub):
             st.dataframe(
                 ref_sub[["source", "target", "ref_text"]].reset_index(drop=True),
-                use_container_width=True,
+                width="stretch",
             )
         else:
             st.caption("No cross-article references among the surfaced atoms.")
@@ -285,7 +374,7 @@ def render_subgraph_table(result: dict, ref_edges: pd.DataFrame,
             st.dataframe(
                 tag_sub[cols].sort_values("weighted_strength", ascending=False)
                              .reset_index(drop=True),
-                use_container_width=True,
+                width="stretch",
             )
         else:
             st.caption("No shared-tag edges among the surfaced atoms.")
@@ -408,7 +497,7 @@ def render_subgraph_plot(result: dict, ref_edges: pd.DataFrame,
             legend=dict(orientation="h", y=-0.05),
         ),
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
     st.caption(
         "Blue = anchor articles (from the classifier). "
         "Grey = surfaced via graph expansion. "
@@ -422,18 +511,42 @@ def render_subgraph_plot(result: dict, ref_edges: pd.DataFrame,
 
 def main() -> None:
     st.title("Article Relationship Model")
+    pipe = load_pipeline()
+    df = pipe["df"]
     st.caption(
-        "Atom-level knowledge graph over Dutch statutory law. "
+        "Atom-level knowledge graph over Dutch statutory law "
+        f"({df['article_id'].nunique()} articles, {len(df)} atoms). "
         "Query in the sidebar, results below."
     )
 
-    pipe = load_pipeline()
-    df = pipe["df"]
-
-    query, label, params = build_sidebar_query(pipe["tags_by_field"])
-    run = st.sidebar.button("Run", type="primary", use_container_width=True)
+    query, label, params, question = build_sidebar_query(pipe["tags_by_field"])
+    run = st.sidebar.button("Run", type="primary", width="stretch")
 
     st.markdown(f"### Query: *{label}*")
+
+    query_atoms: list[dict] | None = None
+    if question is not None:
+        if not question:
+            st.warning("Type a question in the sidebar.")
+            return
+        if not run:
+            st.info("Click Run to decompose the question and search.")
+            return
+        try:
+            with st.spinner("Decomposing the question into atoms…"):
+                query_atoms = decompose_question(question, pipe["tags_by_field"])
+        except Exception as e:  # missing key, network, refusal: show, don't crash
+            st.error(
+                f"Could not decompose the question ({type(e).__name__}: {e}). "
+                "Check that ANTHROPIC_API_KEY is set, or use a preset or the "
+                "tag builder instead."
+            )
+            return
+        if not query_atoms:
+            st.warning("The question produced no atoms. Try rephrasing it.")
+            return
+        render_query_atoms(query_atoms)
+        query = _merge_query_atoms(query_atoms)
 
     # Show the tags the query will actually use
     active_tags = {
@@ -453,6 +566,21 @@ def main() -> None:
     if not run:
         st.info("Configure the query in the sidebar and click Run.")
         return
+
+    # Article ranking: the quantity the evaluation measures
+    if query_atoms is not None:
+        ranking = rank_articles_for_query_atoms(
+            query_atoms, df, weights=pipe["weights_idf"],
+            sim_pairs=pipe["sim_pairs"], alpha=params["alpha"],
+        )
+    else:
+        ranking = classify_atom(
+            query, df, weights=pipe["weights_idf"], sem_lookup=pipe["sem_lookup"],
+            alpha=params["alpha"],
+        )["article_ranking"]
+    render_article_ranking(ranking, df, multi_atom=query_atoms is not None)
+
+    st.divider()
 
     with st.spinner("Walking the graph…"):
         result = chained_reasoning(

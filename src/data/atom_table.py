@@ -16,7 +16,9 @@ Usage:
 
 from __future__ import annotations
 
+import warnings
 from pathlib import Path
+
 import pandas as pd
 
 from src.annotation.schema import load_atoms
@@ -33,6 +35,12 @@ LIST_FIELDS = [
     "hierarchies",
     "residual",
 ]
+
+# Article ids of the synthetic Lunar Medical Code start with this prefix.
+# The synthetic corpus exercises the pipeline (see tests/) but is excluded
+# from evaluation: its vocabulary is disjoint from the real articles, so it
+# inflates coarse-level accuracy without saying anything about Dutch law.
+SYNTHETIC_PREFIX = "synth:"
 
 # Preferred column ordering for display.
 COLUMN_ORDER = [
@@ -65,6 +73,21 @@ def build_atom_table(annotations_dir: str | Path = "data/annotations") -> pd.Dat
     ordered = [c for c in COLUMN_ORDER if c in df.columns]
     extra = [c for c in df.columns if c not in ordered]
     return df[ordered + extra]
+
+
+def is_synthetic(article_id: str) -> bool:
+    """True if the article belongs to the synthetic Lunar Medical Code."""
+    return str(article_id).startswith(SYNTHETIC_PREFIX)
+
+
+def drop_synthetic(df: pd.DataFrame) -> pd.DataFrame:
+    """Return only the atoms from real statutory articles."""
+    return df[~df["article_id"].map(is_synthetic)]
+
+
+def only_synthetic(df: pd.DataFrame) -> pd.DataFrame:
+    """Return only the atoms from the synthetic corpus."""
+    return df[df["article_id"].map(is_synthetic)]
 
 
 def summary_stats(df: pd.DataFrame) -> pd.DataFrame:
@@ -536,10 +559,56 @@ def filter_candidates(
 
     # Fallback: if the filter is too strict, don't leave the caller empty-handed
     if len(survivors) == 0:
-        print("No survivors found, falling back on full corpus")
+        warnings.warn("Filter left no candidates; falling back on the full corpus.")
         return df
 
     return survivors
+
+NORMALIZE_MODES = ("cosine", "query", "none")
+
+
+def build_semantic_lookup(sim_pairs: pd.DataFrame | None) -> dict:
+    """Index tag-similarity pairs as ``{(field, tag): [(other_tag, sim), ...]}``.
+
+    Build this once and pass it to classify_atom() as ``sem_lookup`` when
+    scoring many queries; rebuilding it on every call dominates runtime.
+    """
+    lookup: dict[tuple[str, str], list[tuple[str, float]]] = {}
+    if sim_pairs is None or len(sim_pairs) == 0:
+        return lookup
+    cols = sim_pairs[["field", "tag_a", "tag_b", "similarity"]]
+    for field, tag_a, tag_b, sim in cols.itertuples(index=False):
+        lookup.setdefault((field, tag_a), []).append((tag_b, float(sim)))
+        lookup.setdefault((field, tag_b), []).append((tag_a, float(sim)))
+    return lookup
+
+
+def rank_articles(scores_by_atom: pd.DataFrame, agg: str = "max") -> pd.DataFrame:
+    """Collapse atom scores into one score per article.
+
+    ``agg="max"`` scores an article by its best-matching atom; ``"sum"``
+    adds up all its atoms (favours articles with many matching atoms).
+    Ties are broken by article id so the ranking is deterministic.
+
+    Returns columns: article_id, article_score, best_atom, n_atoms.
+    """
+    if scores_by_atom.empty:
+        return pd.DataFrame(columns=["article_id", "article_score", "best_atom", "n_atoms"])
+    if agg not in ("max", "sum"):
+        raise ValueError(f"Unknown agg {agg!r}. Use 'max' or 'sum'.")
+
+    grouped = scores_by_atom.groupby("article_id")["combined_score"]
+    best_idx = grouped.idxmax()
+    out = pd.DataFrame({
+        "article_score": grouped.max() if agg == "max" else grouped.sum(),
+        "best_atom": scores_by_atom.loc[best_idx.values, "atom_id"].values,
+        "n_atoms": grouped.size(),
+    }).reset_index()
+    out["article_score"] = out["article_score"].round(4)
+    return out.sort_values(
+        ["article_score", "article_id"], ascending=[False, True]
+    ).reset_index(drop=True)
+
 
 def classify_atom(
     query,
@@ -549,6 +618,9 @@ def classify_atom(
     alpha: float = 0.5,
     top_k: int = 5,
     filter_fields: list[str] | None = None,
+    normalize: str = "cosine",
+    sem_lookup: dict | None = None,
+    article_agg: str = "max",
 ) -> dict:
     """Score a query atom against every atom in the corpus and return the top-k.
 
@@ -557,24 +629,46 @@ def classify_atom(
       - a dict matching the atom schema
       - a partial dict containing only some fields (others default to empty)
 
-    For each candidate atom in df, compute two scores:
-      - exact_score:    sum of IDF weights of tags the query shares exactly
-                        with the candidate, summed across fields
-      - semantic_score: sum of best semantic-similarity matches between the
-                        query's tags and the candidate's tags (excluding tags
-                        already matched exactly)
+    Every tag carries a weight: its IDF from ``weights`` (tags the corpus has
+    never seen get the highest IDF, i.e. they count as rare), or 1.0 when
+    ``weights`` is None. For each candidate atom two channels are computed:
 
-    The final score is alpha * exact + (1 - alpha) * semantic. The function
-    skips any candidate whose atom_id equals the query's atom_id (so you can
-    pass an existing atom for self-comparison without it always topping itself).
+      - exact:    weight of the tags the query shares exactly with the candidate
+      - semantic: for each query tag *not* matched exactly, the candidate's most
+                  similar tag (from ``sim_pairs``), counted as similarity x weight
+
+    ``normalize`` puts both channels on the same 0-1 scale:
+
+      - ``"cosine"`` (default): divide by sqrt(query weight x candidate weight).
+        This is the weighted cosine (Ochiai) similarity of the two tag sets, so
+        a candidate is not rewarded just for having many tags.
+      - ``"query"``: divide by the query's total weight, i.e. "what fraction
+        of the query does this candidate cover?"
+      - ``"none"``: the original unnormalised sums (exact = summed IDF,
+        semantic = summed raw similarities). Kept as a baseline.
+
+    The final score is ``alpha * exact + (1 - alpha) * semantic``; with a
+    normalised mode it is divided by max(alpha, 1 - alpha) so that 1.0 is the
+    best possible match: identical tags when alpha >= 0.5 (the usual range).
+    It can slightly exceed 1 in the rare case where several query tags match
+    the same candidate tag semantically. alpha=0.5 values an exact match and a
+    perfect semantic match equally. The function skips any
+    candidate whose atom_id equals the query's atom_id (so you can pass an
+    existing atom for self-comparison without it always topping itself).
 
     Returns
     -------
     dict with:
-      'top_matches':       DataFrame of the top_k by combined_score
-      'predicted_article': the most common article_id among the top_k
-      'scores_by_atom':    the full ranked DataFrame (all candidates)
+      'top_matches':       DataFrame of the top_k atoms by combined_score
+      'article_ranking':   every article, scored by its atoms (see rank_articles)
+      'predicted_article': the top article of article_ranking
+      'scores_by_atom':    the full ranked atom DataFrame (all candidates)
     """
+    import math
+
+    if normalize not in NORMALIZE_MODES:
+        raise ValueError(f"Unknown normalize {normalize!r}. Use one of {NORMALIZE_MODES}.")
+
     if hasattr(query, "to_dict"):
         query = query.to_dict()
     query = dict(query)  # shallow copy
@@ -583,43 +677,50 @@ def classify_atom(
     if filter_fields is not None:
         df = filter_candidates(df, query, fields_to_match=filter_fields)
 
-    # Build a (field, tag) -> [(other_tag, sim), ...] lookup for semantic matches
-    sem_lookup: dict[tuple[str, str], list[tuple[str, float]]] = {}
-    if sim_pairs is not None and len(sim_pairs) > 0:
-        for _, row in sim_pairs.iterrows():
-            key_a = (row["field"], row["tag_a"])
-            key_b = (row["field"], row["tag_b"])
-            sem_lookup.setdefault(key_a, []).append((row["tag_b"], row["similarity"]))
-            sem_lookup.setdefault(key_b, []).append((row["tag_a"], row["similarity"]))
+    if sem_lookup is None:
+        sem_lookup = build_semantic_lookup(sim_pairs)
+
+    unseen_weight = max(weights.values()) if weights else 1.0
+
+    def weight(field: str, tag: str) -> float:
+        if weights is None:
+            return 1.0
+        return weights.get((field, tag), unseen_weight)
+
+    q_tags = {f: set(query.get(f, []) or []) for f in LIST_FIELDS}
+    q_mass = sum(weight(f, t) for f in LIST_FIELDS for t in q_tags[f])
 
     query_id = query.get("atom_id")
     rows = []
 
-    for _, cand in df.iterrows():
+    for cand in df.to_dict("records"):
         if cand["atom_id"] == query_id:
             continue
 
-        exact_score = 0.0
-        semantic_score = 0.0
+        exact_raw = 0.0
+        semantic_raw = 0.0       # summed similarities (the original formula)
+        semantic_weighted = 0.0  # similarities weighted like the exact channel
+        c_mass = 0.0
         exact_matches: list[tuple[str, str, float]] = []
         semantic_matches: list[tuple[str, str, str, float]] = []
 
         for field in LIST_FIELDS:
-            q_tags = set(query.get(field, []) or [])
             c_tags = set(cand[field])
-            if not q_tags or not c_tags:
+            c_mass += sum(weight(field, t) for t in c_tags)
+            q_field = q_tags[field]
+            if not q_field or not c_tags:
                 continue
 
             # Exact overlap
-            shared = q_tags & c_tags
+            shared = q_field & c_tags
             for tag in shared:
-                w = weights.get((field, tag), 1.0) if weights else 1.0
-                exact_score += w
+                w = weight(field, tag)
+                exact_raw += w
                 exact_matches.append((field, tag, round(w, 4)))
 
-            # Semantic matches — for each query tag not exactly matched, find
+            # Semantic matches: for each query tag not exactly matched, find
             # the best semantically-similar tag on the candidate
-            for q_tag in q_tags - shared:
+            for q_tag in q_field - shared:
                 best_sim = 0.0
                 best_match: str | None = None
                 for related_tag, sim in sem_lookup.get((field, q_tag), []):
@@ -627,33 +728,155 @@ def classify_atom(
                         best_sim = sim
                         best_match = related_tag
                 if best_match is not None:
-                    semantic_score += best_sim
+                    semantic_raw += best_sim
+                    semantic_weighted += best_sim * weight(field, q_tag)
                     semantic_matches.append((field, q_tag, best_match, round(best_sim, 4)))
 
-        combined = alpha * exact_score + (1.0 - alpha) * semantic_score
+        if normalize == "none":
+            exact, semantic = exact_raw, semantic_raw
+        else:
+            denom = q_mass if normalize == "query" else math.sqrt(q_mass * c_mass)
+            exact = exact_raw / denom if denom else 0.0
+            semantic = semantic_weighted / denom if denom else 0.0
+
+        combined = alpha * exact + (1.0 - alpha) * semantic
+        if normalize != "none":
+            # Rescale so the best possible match (identical tags, or every
+            # tag matched at similarity 1) scores 1.0. Constant factor, so
+            # rankings are unchanged.
+            combined /= max(alpha, 1.0 - alpha)
         rows.append({
             "atom_id": cand["atom_id"],
             "article_id": cand["article_id"],
             "combined_score": round(combined, 4),
-            "exact_score": round(exact_score, 4),
-            "semantic_score": round(semantic_score, 4),
+            "exact_score": round(exact, 4),
+            "semantic_score": round(semantic, 4),
             "exact_matches": exact_matches,
             "semantic_matches": semantic_matches,
         })
 
-    scores_df = pd.DataFrame(rows).sort_values(
-        "combined_score", ascending=False
+    scores_df = pd.DataFrame(rows, columns=[
+        "atom_id", "article_id", "combined_score", "exact_score",
+        "semantic_score", "exact_matches", "semantic_matches",
+    ])
+    scores_df = scores_df.sort_values(
+        ["combined_score", "atom_id"], ascending=[False, True]
     ).reset_index(drop=True)
 
-    top = scores_df.head(top_k)
-    predicted_article = top["article_id"].mode().iloc[0] if len(top) else None
+    articles = rank_articles(scores_df, agg=article_agg)
 
     return {
-        "top_matches": top[["atom_id", "article_id", "combined_score",
-                            "exact_score", "semantic_score"]],
-        "predicted_article": predicted_article,
+        "top_matches": scores_df.head(top_k)[["atom_id", "article_id", "combined_score",
+                                              "exact_score", "semantic_score"]],
+        "article_ranking": articles,
+        "predicted_article": articles["article_id"].iloc[0] if len(articles) else None,
         "scores_by_atom": scores_df,
     }
+
+
+def _tied_rank_metrics(ranking: pd.DataFrame, target: str, ks) -> dict:
+    """Expected rank metrics for ``target`` under random tie-breaking.
+
+    If the target article is tied with other articles on score, every order
+    of the tied group is equally likely, so we report the *expected*
+    reciprocal rank and hit@k over that group instead of trusting an
+    arbitrary sort order. A query whose article is absent scores 0.
+    """
+    if target not in set(ranking["article_id"]):
+        return {"rank": None, "rr": 0.0, **{f"hit@{k}": 0.0 for k in ks}}
+    scores = ranking["article_score"].to_numpy()
+    t_score = ranking.loc[ranking["article_id"] == target, "article_score"].iloc[0]
+    better = int((scores > t_score).sum())
+    tied = int((scores == t_score).sum())  # includes the target itself
+    ranks = range(better + 1, better + tied + 1)
+    return {
+        "rank": better + (tied + 1) / 2,
+        "rr": sum(1.0 / r for r in ranks) / tied,
+        **{f"hit@{k}": sum(r <= k for r in ranks) / tied for k in ks},
+    }
+
+
+def evaluate_article_retrieval(
+    df: pd.DataFrame,
+    sim_pairs: pd.DataFrame | None = None,
+    alpha: float = 0.5,
+    normalize: str = "cosine",
+    article_agg: str = "max",
+    ks: tuple[int, ...] = (1, 3, 5, 10),
+    filter_fields: list[str] | None = None,
+    weights: dict | None = None,
+    include_synthetic: bool = False,
+) -> tuple[pd.DataFrame, dict]:
+    """Leave-one-out *article* retrieval: the headline evaluation.
+
+    Each atom in turn becomes the query. It is removed from the corpus, the
+    remaining atoms are scored, atom scores are collapsed into an article
+    ranking, and we record where the atom's true article lands.
+
+    Differences from evaluate_classifier_loo (the older, atom-level metric):
+
+    - Ranks are over *articles*, so hit@3 means "the right article is among
+      the top 3 articles", comparable to recall@k in G-DSR.
+    - IDF weights are recomputed inside every fold from the remaining atoms,
+      so the held-out atom never influences its own weights. Pass ``weights``
+      only to reproduce the older, leaky setup.
+    - Ties are scored by their expected value (see _tied_rank_metrics).
+    - A query whose article has no other atoms cannot be answered; it is kept
+      in the averages (scoring 0) and flagged in the ``answerable`` column.
+
+    The summary also reports what a random ranking would score on the same
+    queries (``random_mrr``, ``random_hit@k``), as a floor for comparison.
+    """
+    if not include_synthetic:
+        df = drop_synthetic(df)
+    if df.empty:
+        raise ValueError(
+            "No atoms left to evaluate. Pass include_synthetic=True to "
+            "evaluate the synthetic corpus."
+        )
+
+    sem_lookup = build_semantic_lookup(sim_pairs)
+    rows = []
+    for idx, atom in df.iterrows():
+        rest = df.drop(idx)
+        fold_weights = weights if weights is not None else compute_tag_weights(rest)
+        out = classify_atom(
+            atom.to_dict(), rest,
+            weights=fold_weights, sem_lookup=sem_lookup,
+            alpha=alpha, top_k=1, filter_fields=filter_fields,
+            normalize=normalize, article_agg=article_agg,
+        )
+        ranking = out["article_ranking"]
+        true_article = atom["article_id"]
+        n_articles = rest["article_id"].nunique()
+        answerable = true_article in set(rest["article_id"])
+
+        harmonic = sum(1.0 / r for r in range(1, n_articles + 1))
+        rows.append({
+            "atom_id": atom["atom_id"],
+            "true_article": true_article,
+            "predicted_article": out["predicted_article"],
+            "answerable": answerable,
+            "n_candidate_articles": n_articles,
+            **_tied_rank_metrics(ranking, true_article, ks),
+            "random_rr": harmonic / n_articles if answerable else 0.0,
+            **{f"random_hit@{k}": (min(k, n_articles) / n_articles if answerable else 0.0)
+               for k in ks},
+        })
+
+    eval_df = pd.DataFrame(rows)
+    answerable = eval_df[eval_df["answerable"]]
+    summary = {
+        "n_queries": len(eval_df),
+        "n_answerable": len(answerable),
+        "n_candidate_articles": float(round(eval_df["n_candidate_articles"].mean(), 1)),
+        "mrr": float(round(eval_df["rr"].mean(), 4)),
+        **{f"hit@{k}": float(round(eval_df[f"hit@{k}"].mean(), 4)) for k in ks},
+        "mrr_answerable_only": float(round(answerable["rr"].mean(), 4)) if len(answerable) else 0.0,
+        "random_mrr": float(round(eval_df["random_rr"].mean(), 4)),
+        **{f"random_hit@{k}": float(round(eval_df[f"random_hit@{k}"].mean(), 4)) for k in ks},
+    }
+    return eval_df, summary
 
 
 def evaluate_classifier_loo(
@@ -662,11 +885,24 @@ def evaluate_classifier_loo(
     sim_pairs: pd.DataFrame | None = None,
     alpha: float = 0.5,
     top_k: int = 5,
+    filter_fields: list[str] | None = None,
+    include_synthetic: bool = False,
+    normalize: str = "cosine",
 ) -> tuple[pd.DataFrame, dict]:
-    """Leave-one-out evaluation of the atom classifier.
+    """Leave-one-out evaluation of the atom classifier (atom-level metric).
 
     For each atom in df: remove it, classify it against the rest, then check
     whether the correct article appears at rank 1, in the top_k, and where.
+
+    Note: "top_k" here counts *atoms*, so the top 3 can all come from the same
+    article. Prefer evaluate_article_retrieval(), which ranks articles; this
+    function is kept so older results stay reproducible.
+
+    Synthetic atoms are dropped from both the queries and the candidate pool
+    unless ``include_synthetic`` is True. ``weights`` should be computed on
+    the same corpus that is evaluated (e.g. ``compute_tag_weights(
+    drop_synthetic(df))``). ``filter_fields`` is passed to classify_atom()
+    to enable the filter-then-semantic pre-filter.
 
     Returns
     -------
@@ -674,13 +910,22 @@ def evaluate_classifier_loo(
               predicted_article, top1_hit, topk_hit, rank, reciprocal_rank)
     summary : dict with overall top-1 accuracy, top-k accuracy, and MRR
     """
+    if not include_synthetic:
+        df = drop_synthetic(df)
+    if df.empty:
+        raise ValueError(
+            "No atoms left to evaluate. Pass include_synthetic=True to "
+            "evaluate the synthetic corpus."
+        )
+
     results = []
     for idx, atom in df.iterrows():
         rest = df.drop(idx)
         out = classify_atom(
             atom.to_dict(), rest,
             weights=weights, sim_pairs=sim_pairs,
-            alpha=alpha, top_k=top_k,
+            alpha=alpha, top_k=top_k, filter_fields=filter_fields,
+            normalize=normalize,
         )
         top = out["top_matches"]
         true_article = atom["article_id"]
