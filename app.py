@@ -199,9 +199,9 @@ EXAMPLES: dict[str, str] = {
         "Mijn huisarts heeft zonder mijn toestemming informatie over mijn diagnose "
         "aan mijn werkgever gegeven. Mag dat?"
     ),
-    "Father died after an error": (
-        "Mijn vader is overleden door een fout van de anesthesist. Kunnen wij als "
-        "nabestaanden de begrafeniskosten en het verlies van zijn inkomen vergoed krijgen?"
+    "Crown keeps falling out": (
+        "Mijn tandarts heeft een kroon geplaatst die er steeds weer uitvalt. Hij weigert "
+        "het gratis te herstellen. Kan ik de kosten van een andere tandarts op hem verhalen?"
     ),
 }
 

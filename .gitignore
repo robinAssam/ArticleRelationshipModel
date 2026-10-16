@@ -29,8 +29,7 @@ dist/
 # never commit large model files or full case-law dumps
 *.bin
 *.safetensors
-data/raw/case_law/*.xml
-data/raw/case_law/*.json
+data/raw/case_law/*
 !data/raw/case_law/.gitkeep
 
 # but DO commit small annotated samples and the validation set
