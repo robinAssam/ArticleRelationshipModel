@@ -1,0 +1,11 @@
+# Runtime dependencies for the hosted app only (torch is installed separately
+# in the Dockerfile as a CPU build). Versions match requirements.txt.
+pandas==3.0.6
+numpy==2.5.4
+sentence-transformers==6.1.0
+transformers==5.19.0
+scikit-learn==1.9.1
+networkx==3.7
+streamlit==1.66.0
+plotly==7.1.0
+anthropic==1.14.0

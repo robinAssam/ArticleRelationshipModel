@@ -12,6 +12,7 @@ tag-based queries and the scoring parameters live in the sidebar.
 
 from __future__ import annotations
 
+import hmac
 import html
 import os
 import sys
@@ -141,7 +142,11 @@ def load_pipeline() -> dict:
     # Semantic similarity is the slowest step — first run downloads ~420 MB
     # and takes ~30 seconds. Subsequent runs are instant thanks to caching.
     from sentence_transformers import SentenceTransformer
-    model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
+    # EMBEDDING_MODEL lets a memory-constrained host swap in a smaller model
+    # (e.g. sentence-transformers/all-MiniLM-L6-v2) without code changes.
+    model = SentenceTransformer(
+        _secret("EMBEDDING_MODEL") or "sentence-transformers/all-mpnet-base-v2"
+    )
     sim_pairs = compute_tag_similarities(df, threshold=0.55, model=model)
 
     tags_by_field = unique_tags_by_field(df)
@@ -220,19 +225,47 @@ def _merge_query_atoms(atoms: list[dict]) -> dict:
     return q
 
 
-def _load_api_key() -> None:
-    """Use .streamlit/secrets.toml for the API key when the environment has none.
+def _secret(name: str) -> str | None:
+    """Read a setting from the environment, else from .streamlit/secrets.toml.
 
-    The secrets file is git-ignored, so the key never ends up in the repo.
+    Hosting platforms (e.g. Hugging Face Spaces) pass secrets as environment
+    variables; locally they live in the git-ignored secrets file.
     """
-    if os.environ.get("ANTHROPIC_API_KEY"):
-        return
+    if os.environ.get(name):
+        return os.environ[name]
     try:
-        key = st.secrets.get("ANTHROPIC_API_KEY")
+        return st.secrets.get(name)
     except Exception:  # no secrets file
-        key = None
+        return None
+
+
+def _load_api_key() -> None:
+    """Make the API key available to the Anthropic client."""
+    key = _secret("ANTHROPIC_API_KEY")
     if key:
         os.environ["ANTHROPIC_API_KEY"] = key
+
+
+def _check_password() -> bool:
+    """Ask for APP_PASSWORD before showing the app. No password set = open app."""
+    expected = _secret("APP_PASSWORD")
+    if not expected or st.session_state.get("authenticated"):
+        return True
+
+    st.markdown('<div class="hero-title">⚖ Article Relationship Model</div>',
+                unsafe_allow_html=True)
+    st.markdown('<div class="hero-sub">This demo is password protected.</div>',
+                unsafe_allow_html=True)
+    _, mid, _ = st.columns([2, 3, 2])
+    with mid:
+        with st.form("login", border=False):
+            entered = st.text_input("Password", type="password")
+            if st.form_submit_button("Enter", type="primary", width="stretch"):
+                if hmac.compare_digest(entered.encode(), expected.encode()):
+                    st.session_state["authenticated"] = True
+                    st.rerun()
+                st.error("Wrong password.")
+    return False
 
 
 @st.cache_data(show_spinner=False)
@@ -925,6 +958,8 @@ def render_tables(result: dict, pipe: dict) -> None:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    if not _check_password():
+        return
     pipe = load_pipeline()
     df = pipe["df"]
     params = render_sidebar(pipe["tags_by_field"])
