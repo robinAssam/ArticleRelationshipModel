@@ -1,4 +1,4 @@
-"""Streamlit UI for the Article Relationship Model.
+"""Statute Navigator: the Streamlit UI for the Article Relationship Model.
 
 Run with (from the repo root):
 
@@ -61,7 +61,7 @@ from src.data.reasoning import chained_reasoning  # noqa: E402
 # ---------------------------------------------------------------------------
 
 st.set_page_config(
-    page_title="Article Relationship Model",
+    page_title="Statute Navigator",
     page_icon="⚖",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -252,7 +252,7 @@ def _check_password() -> bool:
     if not expected or st.session_state.get("authenticated"):
         return True
 
-    st.markdown('<div class="hero-title">⚖ Article Relationship Model</div>',
+    st.markdown('<div class="hero-title">⚖ Statute Navigator</div>',
                 unsafe_allow_html=True)
     st.markdown('<div class="hero-sub">This demo is password protected.</div>',
                 unsafe_allow_html=True)
@@ -486,11 +486,11 @@ def section(title: str, subtitle: str = "", info: str | None = None,
 
 
 def render_hero() -> None:
-    st.markdown('<div class="hero-title">⚖ Article Relationship Model</div>',
+    st.markdown('<div class="hero-title">⚖ Statute Navigator</div>',
                 unsafe_allow_html=True)
     st.markdown(
-        '<div class="hero-sub">Describe a legal problem in Dutch or English and find '
-        "the statutory articles that apply. WGBO and Book 6 BW.</div>",
+        '<div class="hero-sub">Describe a legal problem in English or Dutch and find the '
+        "Dutch statutory articles that apply. WGBO and Book 6 BW.</div>",
         unsafe_allow_html=True,
     )
     _, mid, _ = st.columns([1, 6, 1])
