@@ -1,0 +1,18 @@
+{
+  "config": {
+    "name": "scoring_sweep",
+    "alpha": 0.5,
+    "normalize": "cosine",
+    "agg": "max",
+    "encoder": "sentence-transformers/all-mpnet-base-v2",
+    "threshold": 0.55,
+    "filter_fields": null,
+    "sweep": true,
+    "n_atoms": 80,
+    "n_articles": 30,
+    "run_at": "2026-10-15T19:39:49"
+  },
+  "summary": {
+    "sweep_rows": 15
+  }
+}

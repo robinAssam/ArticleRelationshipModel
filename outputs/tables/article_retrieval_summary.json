@@ -1,0 +1,31 @@
+{
+  "config": {
+    "name": "article_retrieval",
+    "alpha": 0.5,
+    "normalize": "cosine",
+    "agg": "max",
+    "encoder": "sentence-transformers/all-mpnet-base-v2",
+    "threshold": 0.55,
+    "filter_fields": null,
+    "sweep": false,
+    "n_atoms": 80,
+    "n_articles": 30,
+    "run_at": "2026-10-15T19:39:30"
+  },
+  "summary": {
+    "n_queries": 80,
+    "n_answerable": 69,
+    "n_candidate_articles": 29.9,
+    "mrr": 0.6107,
+    "hit@1": 0.4938,
+    "hit@3": 0.7259,
+    "hit@5": 0.7642,
+    "hit@10": 0.8175,
+    "mrr_answerable_only": 0.708,
+    "random_mrr": 0.1149,
+    "random_hit@1": 0.0288,
+    "random_hit@3": 0.0862,
+    "random_hit@5": 0.1438,
+    "random_hit@10": 0.2875
+  }
+}

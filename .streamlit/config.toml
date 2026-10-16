@@ -1,0 +1,6 @@
+[theme]
+# Accent from the reference palette (slot 1), matching the charts
+primaryColor = "#2a78d6"
+
+[browser]
+gatherUsageStats = false

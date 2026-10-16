@@ -40,3 +40,6 @@ data/raw/case_law/*.json
 # notebook outputs (clear before commit, or use nbstripout)
 # uncomment if you set up nbstripout:
 # notebooks/*.ipynb
+
+# Local secrets (API keys) for Streamlit
+.streamlit/secrets.toml

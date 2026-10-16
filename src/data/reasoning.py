@@ -34,6 +34,7 @@ def chained_reasoning(
     max_hops: int = 1,
     min_edge_strength: float = 2.0,
     max_expansions_per_atom: int = 4,
+    sem_lookup: dict | None = None,
 ) -> dict:
     """Walk the graph from an anchor query to produce a chained trace.
 
@@ -55,6 +56,9 @@ def chained_reasoning(
         Ignore tag-overlap edges with weighted_strength below this.
     max_expansions_per_atom : int
         Cap expansions per source atom so the chain stays legible.
+    sem_lookup : dict or None
+        Prebuilt tag-similarity lookup (see build_semantic_lookup); takes
+        precedence over ``sim_pairs`` for the anchor step.
 
     Returns
     -------
@@ -64,7 +68,7 @@ def chained_reasoning(
     # Anchor: classify the query
     result = classify_atom(
         query, df,
-        weights=weights, sim_pairs=sim_pairs,
+        weights=weights, sim_pairs=sim_pairs, sem_lookup=sem_lookup,
         alpha=alpha, top_k=top_k,
     )
     primary = result["top_matches"]
