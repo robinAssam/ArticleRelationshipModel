@@ -54,3 +54,6 @@ data/obsidian_vault/
 outputs/reports/thesis_plan.pdf
 docs/notes.md
 Finding the Law Enhancing Statutory Article Retrieval via Graph.pdf
+
+# Raw statute XML from the BWB (several MB; re-download with scripts/fetch_statutes.py)
+data/raw/statutes/*.xml

@@ -59,9 +59,9 @@ articles only (see the 15/10/2026 entry in `docs/03_decisions_log.md`).
       supervisor_notes/            Meeting notes, one file per meeting.
 
     data/
-      raw/statutes/                Source article texts. Read-only.
+      raw/statutes/                Official BWB XML (git-ignored) + sources.json. Read-only.
       annotations/                 One JSON per article; flat list of atoms.
-      processed/                   Derived tables (edges, embeddings).
+      processed/                   statutes.jsonl (87 articles), statute_references.csv.
 
     src/
       annotation/schema.py         Atom dataclass and field definitions.
@@ -69,9 +69,11 @@ articles only (see the 15/10/2026 entry in `docs/03_decisions_log.md`).
       data/hierarchy.py            Legal tree and taxonomy lookup.
       data/reasoning.py            Chained-reasoning graph walker.
       data/query.py                Question text -> query atoms (Claude) -> articles.
+      data/statutes.py             Parse official BWB statute XML into article records.
 
     scripts/
       run_eval.py                  Article-level evaluation; writes outputs/tables/.
+      fetch_statutes.py            Download WGBO + Book 6 text from the BWB.
 
     tests/
       test_pipeline.py             Pipeline tests on the synthetic corpus.

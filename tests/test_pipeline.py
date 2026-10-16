@@ -282,5 +282,64 @@ class QueryTest(unittest.TestCase):
         self.assertLessEqual(ranking["coverage"].max(), 1.0001)
 
 
+_BWB_FIXTURE = b"""<?xml version="1.0" encoding="utf-8"?>
+<toestand><wetgeving><wet-besluit><wettekst>
+<boek bwb-ng-variabel-deel="/Boek7" label="Boek 7"><kop><label>Boek</label><nr>7</nr><titel>Bijzondere overeenkomsten</titel></kop>
+<titeldeel bwb-ng-variabel-deel="/Boek7/Titeldeel7" label="Titel 7"><kop><label>Titel</label><nr>7</nr><titel>Opdracht</titel></kop>
+<afdeling bwb-ng-variabel-deel="/Boek7/Titeldeel7/Afdeling5" label="Afdeling 5"><kop><label>Afdeling</label><nr>5</nr><titel>WGBO</titel></kop>
+  <artikel bwb-ng-variabel-deel="/Boek7/Titeldeel7/Afdeling5/Artikel454" label="Artikel 454" inwerking="2020-01-01" status="goed">
+    <kop><label>Artikel</label><nr>454</nr></kop>
+    <lid><lidnr>1</lidnr><al>De hulpverlener richt een dossier in.</al><meta-data><x>noise</x></meta-data></lid>
+    <lid><lidnr>3</lidnr><al>Onverminderd <intref bwb-id="BWBR0005290" bwb-ng-variabel-deel="/Boek7/Titeldeel7/Afdeling5/Artikel455/Lid2">artikel 455</intref> bewaart hij het dossier.</al></lid>
+  </artikel>
+  <artikel bwb-ng-variabel-deel="/Boek7/Titeldeel7/Afdeling5/Artikel449" label="Artikel 449" status="goed">
+    <kop><label>Artikel</label><nr>449</nr></kop>
+    <al>Een enkele alinea:</al><lijst><li><li.nr>a.</li.nr><al>eerste;</al></li></lijst>
+  </artikel>
+  <artikel bwb-ng-variabel-deel="/Boek7/Titeldeel7/Afdeling5/Artikel458" label="Artikel 458" status="vervallen">
+    <kop><label>Artikel</label><nr>458</nr></kop><al>Vervallen.</al>
+  </artikel>
+</afdeling></titeldeel></boek>
+</wettekst></wet-besluit></wetgeving></toestand>"""
+
+
+class StatuteParsingTest(unittest.TestCase):
+    """Parsing of official BWB statute XML (src/data/statutes.py)."""
+
+    @classmethod
+    def setUpClass(cls):
+        from src.data.statutes import parse_bwb
+        cls.articles, cls.repealed = parse_bwb(
+            _BWB_FIXTURE, ["/Boek7/Titeldeel7/Afdeling5"], bwb_id="BWBR0005290", version="v1")
+        cls.by_id = {a["article_id"]: a for a in cls.articles}
+
+    def test_articles_and_repealed(self):
+        self.assertEqual(sorted(self.by_id), ["7:449", "7:454"])
+        self.assertEqual(self.repealed, ["7:458"])
+
+    def test_tree_and_metadata(self):
+        a = self.by_id["7:454"]
+        self.assertEqual((a["boek"], a["titeldeel"], a["afdeling"]), ("Boek 7", "Titel 7", "Afdeling 5"))
+        self.assertEqual((a["titeldeel_name"], a["afdeling_name"]), ("Opdracht", "WGBO"))
+        self.assertEqual(a["in_force_since"], "2020-01-01")
+
+    def test_lid_text_excludes_numbers_and_metadata(self):
+        lids = self.by_id["7:454"]["lids"]
+        self.assertEqual([l["lid"] for l in lids], ["1", "3"])
+        self.assertEqual(lids[0]["text"], "De hulpverlener richt een dossier in.")
+        self.assertNotIn("noise", self.by_id["7:454"]["text"])
+
+    def test_unnumbered_article_gets_single_lid_with_list(self):
+        lids = self.by_id["7:449"]["lids"]
+        self.assertEqual(len(lids), 1)
+        self.assertEqual(lids[0]["lid"], "")
+        self.assertEqual(lids[0]["text"], "Een enkele alinea: a. eerste;")
+
+    def test_reference_resolved_to_article_and_lid(self):
+        (ref,) = self.by_id["7:454"]["references"]
+        self.assertEqual((ref["source_lid"], ref["target_article"], ref["target_lid"]), ("3", "7:455", "2"))
+        self.assertEqual(ref["ref_text"], "artikel 455")
+
+
 if __name__ == "__main__":
     unittest.main()

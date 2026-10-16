@@ -99,3 +99,27 @@ stays 0.5 rather than tuning on the evaluation set. Results:
 into query atoms with Claude Opus 5.5 (structured JSON output, the corpus tag
 vocabulary in the prompt so exact matches can fire) and sums each article's
 score over the query atoms. Not yet evaluated — that is study A.
+
+
+## 16/10/2026 — Official statute text downloaded (BWB)
+
+`scripts/fetch_statutes.py` downloads the consolidated XML of BW Book 6
+(BWBR0005289, version 2026-07-16_0) and Book 7 (BWBR0005290, version
+2026-07-01_1) from the government BWB repository and parses it with
+`src/data/statutes.py`. Corpus scope: WGBO (afd. 7.7.5) and Book 6 afd.
+6.1.9, 6.1.10, 6.3.1 and 6.3.2: 87 articles in force (up from 30 annotated),
+with headings, in-force dates, text per lid, and 76 machine-readable
+cross-references (63 between corpus articles; the BWB `intref` elements).
+Versions and checksums are recorded in `data/raw/statutes/sources.json`; the
+raw XML is git-ignored and can be re-downloaded by pinning the version.
+
+Checking the annotations against the official text
+(`outputs/tables/annotation_text_check.csv`): of 80 real atoms, 61 are
+verbatim, 13 differ slightly (different cut, repeated words), and 6 differ
+substantially. Two causes:
+- the law changed after the text used for annotation: 7:454 (2020), 7:457
+  (2022), 6:106 (2019: now one paragraph with a list, old lid 2 gone);
+- the annotated Dutch is not the statutory wording (e.g. 6:101 lid 2,
+  unchanged since 1992), consistent with LLM-drafted annotations.
+Consequence: re-annotate from the official text before using the
+annotations as ground truth (part C).
