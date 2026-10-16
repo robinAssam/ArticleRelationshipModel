@@ -123,3 +123,30 @@ substantially. Two causes:
   unchanged since 1992), consistent with LLM-drafted annotations.
 Consequence: re-annotate from the official text before using the
 annotations as ground truth (part C).
+
+
+## 16/10/2026 — Case law available for study A (rechtspraak.nl)
+
+`scripts/fetch_caselaw.py` indexed every published civil-law judgment with
+text on rechtspraak.nl open data (291,252, 2000–2026), selected 5,631 with
+medical terms in title or summary, downloaded them and extracted Book 6/7
+BW citations from the full text (`data/processed/caselaw_citations.csv`;
+judgment texts stay local, git-ignored).
+
+- 703 judgments cite at least one WGBO article; 265 cite two or more;
+  186 also cite a Book 6 article in the corpus. Growing over time
+  (~20/year around 2010, 40–60/year since 2021).
+- Variety: 21 of the 23 WGBO articles are cited; 15 in >= 10 judgments,
+  8 in >= 30. Most cited: 7:453 (202), 7:446 (168), 7:464 (116),
+  7:448 (111), 7:462 (108), 7:457 (99), 7:450 (87), 7:454 (68).
+- Courts: 548 Rechtbank, 124 Gerechtshof, 16 Hoge Raad.
+- Spot checks: citations are genuine and usually substantive.
+- Recall of the keyword filter: 0 of 1,000 random non-candidates cite the
+  WGBO. That bounds the miss rate below ~0.3% (rule of three), i.e. at
+  most a few hundred judgments across the remaining 285k; likely far fewer.
+
+Conclusion: study A is feasible as planned (well above the ~300 threshold),
+pending a manual check of how many judgments yield a clean facts section
+and a substantive (not merely procedural) citation. Note that several often
+cited articles (7:450 consent, 7:462 hospital liability, 7:464 examinations)
+are not yet annotated: the full 87-article corpus needs annotating (part C).
