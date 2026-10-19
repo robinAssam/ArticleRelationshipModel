@@ -1,30 +1,3 @@
-"""Build the study A dataset: real judgments as retrieval questions.
-
-Each item is one judgment that cites a WGBO article:
-
-    question   the facts section, with every article reference masked
-    answer     the corpus articles (data/processed/statutes.jsonl) the
-               judgment cites anywhere in its text
-
-Judgments without a recognisable facts section, or with a very short one
-(often just "the facts are as established by the court below"), are left out.
-
-The split into dev (for tuning) and test (touched once, at the end) is made
-per group: judgments linked on rechtspraak.nl (first instance and appeal,
-interim and final judgment) or with identical facts stay on the same side,
-so the same facts never appear in both. The split is frozen: assignments
-already in split.csv are kept on re-runs; new groups are assigned by a hash
-of their ECLIs, so the outcome does not depend on processing order.
-
-Writes:
-    data/processed/study_a/queries.jsonl       full items incl. text (git-ignored)
-    data/processed/study_a/split.csv           ids, split, answers (committed)
-    outputs/tables/study_a_dataset_summary.json
-
-Run after scripts/fetch_caselaw.py fetch and scripts/fetch_statutes.py:
-
-    python scripts/build_study_a.py
-"""
 
 from __future__ import annotations
 

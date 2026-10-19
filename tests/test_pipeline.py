@@ -406,5 +406,32 @@ class CaselawTest(unittest.TestCase):
         self.assertEqual(mask_citations("om 7:45 uur en om 19:20 uur"), ("om 7:45 uur en om 19:20 uur", 0))
 
 
+class RetrievalMetricsTest(unittest.TestCase):
+    """Baseline retrieval and multi-answer metrics (src/similarity/retrieval.py)."""
+
+    def test_rank_metrics_with_two_answers(self):
+        from src.similarity.retrieval import rank_metrics
+        m = rank_metrics(["a", "b", "c", "d"], {"b", "d"}, ks=(1, 2, 4), ndcg_k=4)
+        self.assertEqual((m["first_rank"], m["mrr"]), (2, 0.5))
+        self.assertEqual((m["recall@1"], m["recall@2"], m["recall@4"]), (0.0, 0.5, 1.0))
+        self.assertTrue(0 < m["ndcg@4"] < 1)
+        self.assertEqual(rank_metrics(["b", "d", "a"], {"b", "d"}, ndcg_k=4)["ndcg@4"], 1.0)
+
+    def test_ties_are_averaged_not_ordered(self):
+        import numpy as np
+        from src.similarity.retrieval import evaluate
+        # All four articles tied: expected recall@1 of one answer is 1/4
+        _, summary = evaluate(np.zeros((1, 4)), ["a", "b", "c", "d"], [["c"]], tie_draws=400)
+        self.assertAlmostEqual(summary["recall@1"], 0.25, delta=0.06)
+
+    def test_bm25_ranks_the_matching_article_first(self):
+        import numpy as np
+        from src.similarity.retrieval import bm25_scores
+        docs = ["De hulpverlener houdt een dossier bij.", "De verhuurder onderhoudt de woning.",
+                "Schade wordt vergoed."]
+        scores = bm25_scores(["het ziekenhuis is het dossier van de patiënt kwijt"], docs)
+        self.assertEqual(int(np.argmax(scores[0])), 0)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -185,3 +185,48 @@ chunking is a per-system choice, not part of the dataset.
 
 Not done: Hoge Raad judgments mostly state facts inside "beoordeling van het
 middel" ("In cassatie kan worden uitgegaan van...") and are not recovered.
+
+
+## 19/10/2026 — Baselines on the study A dev set
+
+`scripts/run_baselines.py` (systems and metrics in `src/similarity/retrieval.py`).
+Every system produces a questions x articles score matrix; `evaluate()` turns
+it into recall@k, MRR and nDCG@10 per question, averaging over random orders
+when articles tie. Article documents are the statute text only (no number, no
+headings). BM25: rank-bm25 Okapi (k1 1.5, b 0.75), lowercased words minus a
+small Dutch stopword list, no stemming. Dense: BAAI/bge-m3 via
+sentence-transformers, max 8,192 tokens (dev questions: median ~1,100 tokens,
+max ~6,750, so none truncated), cosine of normalised embeddings; 14 minutes on
+CPU, scores cached. Random: mean over 100 random orders.
+
+Dev, 125 questions, 87 articles:
+
+    random: MRR 0.097  R@5 0.056  R@10 0.112  R@20 0.226  nDCG@10 0.063
+    bm25:   MRR 0.325  R@5 0.271  R@10 0.463  R@20 0.608  nDCG@10 0.293
+    dense:  MRR 0.313  R@5 0.306  R@10 0.416  R@20 0.614  nDCG@10 0.281
+
+BM25 vs dense, paired sign-flip permutation test (10,000 draws): MRR -0.012
+(p 0.72), R@10 -0.048 (p 0.29), nDCG@10 -0.012 (p 0.67): no difference.
+
+Per article (answer in top 10, BM25 / dense / times an answer): 7:453 15/0/44,
+7:457 11/15/23, 7:448 20/18/22, 7:464 9/4/22, 7:446 12/9/20, 7:462 12/19/19,
+7:450 4/16/18, 6:96 11/5/16, 7:454 9/4/13, 6:74 0/0/11, 6:162 0/0/9.
+The systems fail on different articles; neither reaches the short, abstract
+general norms (6:74, 6:162; 7:453 for dense). That is where atoms and the
+graph should add something.
+
+Exploratory, not yet a system in the script: summing z-normalised BM25 and
+dense scores gives MRR 0.367, R@10 0.461, nDCG@10 0.310 on dev. A BM25+dense
+hybrid is a standard strong baseline and should be added properly (and is the
+natural first stage for the atom re-ranker).
+
+Sanity checks (is BM25 ~ dense a bug?). No: the rankings differ (median
+Spearman 0.40 per question, median top-10 overlap 3 of 10). The tie is a
+statement of uncertainty, not equality: bootstrap 95% interval for dense -
+BM25 is [-0.078, +0.054] for MRR and [-0.135, +0.041] for recall@10. Dense
+lags more on the longer half of the questions (R@10 0.47 vs 0.55; shorter
+half 0.36 vs 0.38), suggesting one embedding of a long story dilutes it, but
+truncating questions to 512 tokens makes dense worse (R@10 0.373, MRR 0.310),
+so the whole text helps. A chunked variant (score question pieces separately,
+aggregate) is a candidate. Zero-shot dense ~ BM25 matches the literature
+(BEIR; BSARD, where only dense models trained on the task beat BM25).

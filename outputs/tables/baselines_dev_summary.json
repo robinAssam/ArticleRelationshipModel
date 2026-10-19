@@ -1,0 +1,42 @@
+{
+  "run_at": "2026-10-19T18:38:27",
+  "config": {
+    "split": "dev",
+    "systems": [
+      "random",
+      "bm25",
+      "dense"
+    ],
+    "model": "BAAI/bge-m3",
+    "max_length": 8192,
+    "random_draws": 100
+  },
+  "n_questions": 125,
+  "n_articles": 87,
+  "results": {
+    "random": {
+      "mrr": 0.0974,
+      "recall@1": 0.011,
+      "recall@5": 0.056,
+      "recall@10": 0.112,
+      "recall@20": 0.2263,
+      "ndcg@10": 0.0633
+    },
+    "bm25": {
+      "mrr": 0.3254,
+      "recall@1": 0.081,
+      "recall@5": 0.2713,
+      "recall@10": 0.4632,
+      "recall@20": 0.6077,
+      "ndcg@10": 0.2929
+    },
+    "dense": {
+      "mrr": 0.3133,
+      "recall@1": 0.0816,
+      "recall@5": 0.3059,
+      "recall@10": 0.4156,
+      "recall@20": 0.6135,
+      "ndcg@10": 0.2805
+    }
+  }
+}

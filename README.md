@@ -147,6 +147,33 @@ few points are within noise. Exact label matches carry most of the signal;
 most errors are neighbouring articles in the same section. Details and
 history: `docs/03_decisions_log.md`.
 
+**Baselines on real judgments (dev set, 125 questions, 87 articles).** These
+systems use no atoms; they are the bar the atom system has to beat.
+
+| | MRR | recall@5 | recall@10 | recall@20 | nDCG@10 |
+|---|---|---|---|---|---|
+| Random ranking | 0.10 | 0.06 | 0.11 | 0.23 | 0.06 |
+| BM25 (keyword search) | 0.33 | 0.27 | 0.46 | 0.61 | 0.29 |
+| Dense (BGE-M3 embeddings) | 0.31 | 0.31 | 0.42 | 0.61 | 0.28 |
+
+- **MRR:** 1 / position of the first correct article, averaged.
+- **recall@k:** share of the cited articles in the top k.
+- **nDCG@10:** how well all correct articles are placed in the top 10
+  (1 = all at the top).
+
+BM25 and dense cannot be told apart on the dev set: the difference is not
+significant (paired permutation test, p > 0.2), but with 125 questions the
+uncertainty is large (recall@10: dense between 13.5 points worse and 4 points
+better). This is in line with earlier work: dense models that are not trained
+on legal questions often do no better than BM25. The two are not
+copies of each other: they share only 3 of their top-10 articles on average,
+and fail on different articles. Dense finds
+hospital liability (7:462) and consent (7:450) far more often, BM25 the duty
+of care (7:453). Neither ever finds 6:74 (failure to perform) or 6:162 (tort)
+in the top 10, and dense never finds 7:453, the most cited article. These
+are short, abstract articles that share neither words nor obvious meaning
+with the story of a case: the gap the atoms and the graph are meant to close.
+
 
 ## The app: Statute Navigator
 
@@ -190,6 +217,7 @@ else runs locally. The hosted version runs on Streamlit Community Cloud from
       data/query.py                Question -> query atoms (Claude) -> ranked articles.
       data/statutes.py             Parse official BWB XML into article records.
       data/caselaw.py              Parse judgments, find the facts, mask citations.
+      similarity/retrieval.py      Baseline systems (BM25, dense) and metrics.
       data/generate_obsidian.py    Optional Obsidian vault export.
 
     scripts/
@@ -197,10 +225,11 @@ else runs locally. The hosted version runs on Streamlit Community Cloud from
       fetch_statutes.py            Download and parse the statute text.
       fetch_caselaw.py             Find judgments citing WGBO articles.
       build_study_a.py             Judgments -> study A questions, answers, split.
+      run_baselines.py             Baselines on study A -> outputs/tables/.
       deploy_hf_space.py           Optional Hugging Face Spaces deployment.
 
     deploy/                        Streamlit Cloud and Hugging Face configs.
-    tests/test_pipeline.py         32 tests (synthetic corpus, parsers, queries, masking).
+    tests/test_pipeline.py         35 tests (synthetic corpus, parsers, queries, masking, metrics).
     notebooks/                     Exploration (01) and experiments (02).
     outputs/tables/                Evaluation results with their config.
 
@@ -224,6 +253,7 @@ Common commands, from the repo root:
     python scripts/fetch_statutes.py                       # refresh statute text
     python scripts/fetch_caselaw.py index|fetch|sample|report   # case law
     python scripts/build_study_a.py                        # study A test set
+    python scripts/run_baselines.py                        # baselines (dev)
 
 
 ## Scaling up
@@ -279,8 +309,8 @@ makes annotating a whole book feasible.
 - **Annotations are in English, the law and case law in Dutch.** Questions
   are bridged by the LLM; the annotation language is still to be decided.
 - The current evaluation queries are corpus atoms, not real questions. The
-  real-judgment test set now exists (391 questions) but no system has been
-  run on it yet.
+  real-judgment test set now exists (391 questions); so far only the
+  baselines have been run on it, on the dev part.
 - The test set's answers are every corpus article a judgment cites, including
   ones cited only in passing. A hand check of a sample is still to do.
 
@@ -288,7 +318,8 @@ makes annotating a whole book feasible.
 ## Next steps
 
 1. Build the test set from the 703 judgments (done: 391 questions).
-2. Measure two standard baselines on all 87 articles.
+2. Measure two standard baselines on all 87 articles (done on dev: BM25 and
+   dense cannot be told apart, see *Results so far*).
 3. Test whether the links between articles (cross-references and the legal
    tree) improve those baselines, still without atoms.
 4. Build the automatic annotation pipeline and annotate the full 87-article

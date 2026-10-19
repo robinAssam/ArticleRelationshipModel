@@ -55,6 +55,7 @@ data/obsidian_vault/
 # Study A items include judgment text; rebuild with scripts/build_study_a.py.
 # The split and answers (split.csv) are committed.
 data/processed/study_a/queries.jsonl
+data/processed/study_a/cache/
 
 # Raw statute XML from the BWB (several MB; re-download with scripts/fetch_statutes.py)
 data/raw/statutes/*.xml
