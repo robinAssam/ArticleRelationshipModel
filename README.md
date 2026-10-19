@@ -156,7 +156,10 @@ systems use no atoms; they are the bar the atom system has to beat.
 | BM25 (keyword search) | 0.33 | 0.27 | 0.46 | 0.61 | 0.29 |
 | Dense (BGE-M3 embeddings) | 0.31 | 0.31 | 0.42 | 0.61 | 0.28 |
 | Hybrid: BM25 + dense, z-score fusion | 0.37 | 0.29 | 0.46 | 0.66 | 0.31 |
-| **Hybrid: BM25 + dense, rank fusion (RRF)** | **0.38** | 0.30 | **0.46** | **0.66** | **0.32** |
+| Hybrid: BM25 + dense, rank fusion (RRF) | 0.38 | 0.30 | 0.46 | 0.66 | 0.32 |
+| RRF + spreading along citations | 0.37 | 0.34 | 0.50 | 0.63 | 0.34 |
+| RRF + spreading within legal sections | 0.39 | 0.32 | 0.49 | 0.68 | 0.33 |
+| **RRF + spreading along both** | **0.40** | **0.34** | **0.49** | **0.69** | **0.35** |
 
 - **MRR:** 1 / position of the first correct article, averaged.
 - **recall@k:** share of the cited articles in the top k.
@@ -184,6 +187,25 @@ dense, p = 0.01) but finds no more of the cited articles in the top 10
 6:162 are still never in the top 10, and 7:453 only 4 times in 44. RRF is the
 baseline the atom system has to beat, and the first stage that picks the
 shortlist for atom re-ranking.
+
+**Spreading over links between articles** (no atoms yet). After the hybrid,
+each article passes part of its score to the articles it is linked to, so
+an article linked to a strong match moves up. Two kinds of link: explicit
+citations in the law text (48 links; 47 of the 87 articles have none), and
+sections of the legal tree (articles in the same afdeling, the structure
+Gijs's G-DSR uses). How strongly to spread was chosen on the dev set, so
+these dev gains are optimistic until confirmed on the test set.
+
+- Both links together give the best result (nDCG@10 +0.03 over the hybrid,
+  p = 0.005). Sections alone help a little (+0.015, p = 0.02); citations alone
+  are not significant.
+- Judges do cite linked articles together, about four times more often than
+  chance, but it concerns few pairs (17 of 320 in dev).
+- The blind spots stay: 6:74 and 6:162 are still never in the top 10, and
+  7:453 drops to 3 in 44. 6:162 and 7:453 have no citation links at all, and
+  a section boost lifts all their neighbours equally. Reaching them needs
+  links the law text does not make explicit, which is what the atom graph
+  (shared actors, acts, conditions) adds.
 
 
 ## The app: Statute Navigator
@@ -228,7 +250,8 @@ else runs locally. The hosted version runs on Streamlit Community Cloud from
       data/query.py                Question -> query atoms (Claude) -> ranked articles.
       data/statutes.py             Parse official BWB XML into article records.
       data/caselaw.py              Parse judgments, find the facts, mask citations.
-      similarity/retrieval.py      Baseline systems (BM25, dense) and metrics.
+      similarity/retrieval.py      Baseline systems (BM25, dense, hybrid) and metrics.
+      graph/propagation.py         Score spreading over citation and section links.
       data/generate_obsidian.py    Optional Obsidian vault export.
 
     scripts/
@@ -236,11 +259,11 @@ else runs locally. The hosted version runs on Streamlit Community Cloud from
       fetch_statutes.py            Download and parse the statute text.
       fetch_caselaw.py             Find judgments citing WGBO articles.
       build_study_a.py             Judgments -> study A questions, answers, split.
-      run_baselines.py             Baselines on study A -> outputs/tables/.
+      run_baselines.py             Baselines and graph systems on study A -> outputs/tables/.
       deploy_hf_space.py           Optional Hugging Face Spaces deployment.
 
     deploy/                        Streamlit Cloud and Hugging Face configs.
-    tests/test_pipeline.py         35 tests (synthetic corpus, parsers, queries, masking, metrics).
+    tests/test_pipeline.py         39 tests (synthetic corpus, parsers, queries, masking, metrics, graph).
     notebooks/                     Exploration (01) and experiments (02).
     outputs/tables/                Evaluation results with their config.
 
@@ -319,9 +342,12 @@ makes annotating a whole book feasible.
   liability), are not yet searchable.
 - **Annotations are in English, the law and case law in Dutch.** Questions
   are bridged by the LLM; the annotation language is still to be decided.
-- The current evaluation queries are corpus atoms, not real questions. The
-  real-judgment test set now exists (391 questions); so far only the
-  baselines have been run on it, on the dev part.
+- The atom system has so far only been evaluated with corpus atoms as
+  questions, not real ones. The real-judgment test set exists (391
+  questions), but only the systems without atoms have been run on it, on the
+  dev part. The test part has not been touched.
+- The spreading strengths of the graph systems were chosen on the dev set,
+  so their dev scores are optimistic until the test run.
 - The test set's answers are every corpus article a judgment cites, including
   ones cited only in passing. A hand check of a sample is still to do.
 
@@ -333,12 +359,14 @@ makes annotating a whole book feasible.
    dense cannot be told apart; combined, they rank better. See *Results so
    far*).
 3. Test whether the links between articles (cross-references and the legal
-   tree) improve those baselines, still without atoms.
+   tree) improve those baselines, still without atoms (done on dev: a small
+   gain, the blind spots remain).
 4. Build the automatic annotation pipeline and annotate the full 87-article
    corpus from the official text, with a human-checked sample to measure
    agreement.
 5. Add the atom scores and the atom graph on top of the baselines and compare.
-6. Check a sample of the judgments by hand
-7. A qualitative study of alternative legal grounds on a few real cases.
+6. Check a sample of the judgments by hand.
+7. Run every system once on the test set, with the settings fixed on dev.
+8. A qualitative study of alternative legal grounds on a few real cases.
 
 

@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-19T19:00:46",
+  "run_at": "2026-10-19T19:18:54",
   "config": {
     "split": "dev",
     "systems": [
@@ -7,11 +7,20 @@
       "bm25",
       "dense",
       "hybrid",
-      "hybrid_rrf"
+      "hybrid_rrf",
+      "graph_cite",
+      "graph_tree",
+      "graph_both"
     ],
     "model": "BAAI/bge-m3",
     "max_length": 8192,
-    "random_draws": 100
+    "random_draws": 100,
+    "beta_cite": 0.25,
+    "beta_tree": 1.0,
+    "beta_both": [
+      0.1,
+      1.0
+    ]
   },
   "n_questions": 125,
   "n_articles": 87,
@@ -55,6 +64,30 @@
       "recall@10": 0.463,
       "recall@20": 0.658,
       "ndcg@10": 0.3175
+    },
+    "graph_cite": {
+      "mrr": 0.3699,
+      "recall@1": 0.119,
+      "recall@5": 0.3394,
+      "recall@10": 0.4954,
+      "recall@20": 0.6267,
+      "ndcg@10": 0.3361
+    },
+    "graph_tree": {
+      "mrr": 0.3881,
+      "recall@1": 0.1099,
+      "recall@5": 0.3188,
+      "recall@10": 0.485,
+      "recall@20": 0.6836,
+      "ndcg@10": 0.3328
+    },
+    "graph_both": {
+      "mrr": 0.4013,
+      "recall@1": 0.1239,
+      "recall@5": 0.3414,
+      "recall@10": 0.4928,
+      "recall@20": 0.6939,
+      "ndcg@10": 0.3471
     }
   }
 }

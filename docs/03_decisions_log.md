@@ -259,3 +259,44 @@ not coverage (recall@10 unchanged). Per article in the top 10 (RRF): 7:453
 Decision: `hybrid_rrf` is the reference baseline for study A (best on every
 metric, no parameter tuned on dev) and the first stage for the atom
 re-ranker (shortlist = its top k).
+
+
+## 19/10/2026 — Step 4: score spreading over citation and section links
+
+`src/graph/propagation.py`; systems `graph_cite`, `graph_tree`, `graph_both`
+in `scripts/run_baselines.py`. First stage: `hybrid_rrf`, scaled per question
+to [0, 1]. One spreading step s' = s + beta * norm(A) s per link type.
+- Citation links: BWB references between corpus articles, undirected
+  (48 distinct pairs; 47 of 87 articles have none; 6:162 and 7:453 none,
+  6:74 one).
+- Tree links: same afdeling (WGBO = 23 articles in one section).
+- Normalisation: symmetric (D^-1/2 A D^-1/2). The plain neighbour average was
+  tried first and hurt citations at every beta (MRR 0.36 at beta 0.25, 0.28
+  at 1.0): an article with one link gets its neighbour's full score; e.g.
+  7:457 was pushed into the top 10 wrongly 36 times. Max-of-neighbours was
+  neutral.
+
+Co-citation check (dev): of 320 answer pairs, 17 are linked by citation
+(5.3% vs 1.3% for random pairs) and 145 share a section (45% vs 17%).
+
+Beta chosen on dev by nDCG@10 (`--sweep` -> outputs/tables/graph_sweep_dev.csv):
+citations 0.25, sections 1.0, both 0.1 + 1.0. Higher citation betas hurt
+(beta 1: nDCG 0.292, 4: 0.259).
+
+Dev, 125 questions:
+
+    hybrid_rrf: MRR 0.376  R@5 0.300  R@10 0.463  R@20 0.658  nDCG@10 0.318
+    graph_cite: MRR 0.370  R@5 0.339  R@10 0.495  R@20 0.627  nDCG@10 0.336
+    graph_tree: MRR 0.388  R@5 0.319  R@10 0.485  R@20 0.684  nDCG@10 0.333
+    graph_both: MRR 0.401  R@5 0.341  R@10 0.493  R@20 0.694  nDCG@10 0.347
+
+Paired vs hybrid_rrf (bootstrap 95% interval, permutation p):
+- graph_cite: nDCG +0.019 [-0.013, +0.050] p 0.25; MRR -0.006 p 0.80; R@10 +0.032 p 0.11
+- graph_tree: nDCG +0.015 [+0.003, +0.028] p 0.02; MRR +0.012 p 0.23; R@10 +0.022 p 0.07
+- graph_both: nDCG +0.030 [+0.009, +0.051] p 0.005; MRR +0.025 p 0.12; R@10 +0.030 p 0.07
+
+Caveat: beta was selected on the same dev questions, so these gains are
+optimistic; the test run decides. Per article in the top 10 (hybrid ->
+graph_both): 7:457 17 -> 20, 7:454 7 -> 9, 7:462 12 -> 14, 6:96 8 -> 6,
+7:453 4 -> 3, 6:74 0 -> 0, 6:162 0 -> 0. The law's explicit structure gives a
+small, broad gain but cannot reach the general-norm articles.

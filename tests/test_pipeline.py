@@ -444,5 +444,41 @@ class RetrievalMetricsTest(unittest.TestCase):
         np.testing.assert_array_equal(rrf_fusion(a, b), rrf_fusion(a * 1000, b))
 
 
+class PropagationTest(unittest.TestCase):
+    """Score spreading over citation and legal-tree links (src/graph/propagation.py)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+        cls.tmp = Path(tempfile.mkdtemp())
+        cls.ids = ["7:454", "7:455", "7:453", "6:162"]
+        (cls.tmp / "refs.csv").write_text(
+            "source_article,target_article\n7:454,7:455\n7:454,7:454\n7:454,99:1\n", encoding="utf-8")
+        with (cls.tmp / "statutes.jsonl").open("w", encoding="utf-8") as f:
+            for a, path in [("7:454", "/Boek7/A5"), ("7:455", "/Boek7/A5"),
+                            ("7:453", "/Boek7/A5"), ("6:162", "/Boek6/A1")]:
+                f.write(json.dumps({"article_id": a, "path": f"{path}/Artikel{a}"}) + "\n")
+
+    def test_citation_links_are_undirected_and_skip_self_and_outside(self):
+        from src.graph.propagation import citation_adjacency
+        A = citation_adjacency(self.ids, self.tmp / "refs.csv")
+        self.assertEqual((A[0, 1], A[1, 0], A[0, 0], A.sum()), (1.0, 1.0, 0.0, 2.0))
+
+    def test_tree_links_same_section_only(self):
+        from src.graph.propagation import tree_adjacency
+        A = tree_adjacency(self.ids, self.tmp / "statutes.jsonl")
+        self.assertEqual(A[0].tolist(), [0.0, 1.0, 1.0, 0.0])
+        self.assertEqual(A[3].sum(), 0.0)
+
+    def test_spreading_lifts_the_linked_article_only(self):
+        import numpy as np
+        from src.graph.propagation import citation_adjacency, spread
+        A = citation_adjacency(self.ids, self.tmp / "refs.csv")
+        scores = np.array([[1.0, 0.2, 0.3, 0.0]])  # 7:454 strong, 7:455 weak
+        out = spread(scores, (A, 0.5))
+        self.assertGreater(out[0, 1], out[0, 2])  # 7:455 passes 7:453 via its link
+        self.assertEqual(out[0, 3], 0.0)  # unlinked article unchanged
+
+
 if __name__ == "__main__":
     unittest.main()
