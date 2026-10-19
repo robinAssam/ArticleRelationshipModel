@@ -354,19 +354,15 @@ makes annotating a whole book feasible.
 
 ## Next steps
 
-1. Build the test set from the 703 judgments (done: 391 questions).
-2. Measure two standard baselines on all 87 articles (done on dev: BM25 and
-   dense cannot be told apart; combined, they rank better. See *Results so
-   far*).
-3. Test whether the links between articles (cross-references and the legal
-   tree) improve those baselines, still without atoms (done on dev: a small
-   gain, the blind spots remain).
-4. Build the automatic annotation pipeline and annotate the full 87-article
+1. Build the automatic annotation pipeline and annotate the full 87-article
    corpus from the official text, with a human-checked sample to measure
-   agreement.
-5. Add the atom scores and the atom graph on top of the baselines and compare.
-6. Check a sample of the judgments by hand.
-7. Run every system once on the test set, with the settings fixed on dev.
-8. A qualitative study of alternative legal grounds on a few real cases.
+   agreement. The pipeline is developed on the 30 articles already
+   annotated; the other 57 are annotated once the annotation protocol is
+   agreed. Step 2 waits for this: only 45 of the 125 dev questions have all
+   their answers among the 30 annotated articles.
+2. Add the atom scores and the atom graph on top of the baselines and compare.
+3. Check a sample of the judgments by hand.
+4. Run every system once on the test set, with the settings fixed on dev.
+5. A qualitative study of alternative legal grounds on a few real cases.
 
 
