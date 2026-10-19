@@ -25,15 +25,21 @@ requirement or consequence it concerns, with an auditable trail of why.
 
 ## Scope
 
+The corpus is deliberately small. It covers one area of law, medical
+liability, in three layers:
+
 | Layer | Contents | Size |
 |---|---|---|
 | **Annotated** (what the app and evaluation search) | 6 WGBO articles (7:446, 448, 453, 454, 455, 457) + 24 Book 6 articles | 30 articles, 80 atoms |
 | **Official text** (downloaded, not yet annotated) | All of the WGBO (7:446–468) + Book 6 afd. 6.1.9, 6.1.10, 6.3.1, 6.3.2 | 87 articles |
 | **Case law** (citing these articles) | Civil judgments on rechtspraak.nl that cite a WGBO article | 703 judgments |
 
-The code is not specific to medical law: any part of the BW can be
-downloaded and parsed. What limits coverage is annotation: an article can
-only be searched once it has been split into atoms and labelled.
+In other words: the app can currently search 30 articles. The rest of the
+Civil Code (BW), such as the other ~870 articles of Book 7 (sale, rent,
+employment and so on), is not included. The code is not specific to medical
+law, though. What limits coverage is annotation: an article can only be
+searched once it has been split into atoms and labelled. See *Scaling up*
+below.
 
 A synthetic corpus (the "Lunar Medical Code", 15 articles, 38 atoms) is kept
 as a test fixture only and is excluded from all evaluation.
@@ -196,6 +202,48 @@ Common commands, from the repo root:
     python scripts/fetch_caselaw.py index|fetch|sample|report   # case law
 
 
+## Scaling up
+
+**More statute text** The download script reads the official
+government XML, which covers all Dutch law. Adding another book of the BW is
+a one-line change.
+
+**More test data** To measure whether the system finds
+the right article, we need questions with known answers. Real court
+judgments provide these: the facts of the case are the question, and the
+articles the judge cited are the answer.  291,252 published civil judgments (2000–2026) have already 
+been indexed and can extract which BW articles each one cites. For now, only search the medical ones are searched(703
+judgments). Dropping that filter would give test cases for any part of the
+BW, likely thousands, without anyone labelling them by hand. As far as I
+know, no such test set exists yet for Dutch statutory law.
+
+**More annotations** An LLM can split and
+label thousands of articles quickly and at low cost. A human cannot check
+them all, so quality is measured on a hand-checked sample (see *Next
+steps*).
+
+**Search speed** Comparing a question with
+every atom is fast up to roughly 100,000 atoms. For larger corpora the
+search works in two steps: an ordinary text search first picks the most
+likely few dozen articles, and the atom comparison then re-orders only
+those. This two-step setup is one of the systems we will test anyway (see
+*Next steps*), so it is planned rather than an afterthought.
+
+**labels do not scale yet** The 80 atoms use 277 different
+labels, and 199 of those occur only once. Every new article adds new labels,
+so in a large corpus two atoms that mean the same thing would often carry
+different labels and fail to match. Two fixes are needed: a standard list of
+labels (for example one fixed term for *doctor* / *care provider* /
+*physician*), and giving the LLM only the labels relevant to a question
+instead of the whole list, which would not fit at scale.
+
+**How the next steps prepare for this.** The baselines (ordinary text search
+and embedding search) tell us how much the atoms add before we invest in
+annotating more law. The two-step system is the design that scales. And the
+automatic annotation pipeline, checked against human annotations, is what
+makes annotating a whole book feasible.
+
+
 ## Known limitations
 
 - **Annotations are unchecked LLM drafts**, and some are based on older
@@ -212,12 +260,15 @@ Common commands, from the repo root:
 
 ## Next steps
 
-- Check a sample of the 703 judgments by hand: how many give a clear facts
-  section and a substantive citation?
-- Annotate the full 87-article corpus from the official text (LLM draft plus
-  a human-checked sample to measure agreement).
-- Evaluate on real judgments: compare BM25, dense retrieval, and dense
-  retrieval combined with the atom scores and the graph.
-- A qualitative study of alternative legal grounds on a few real cases.
+1. Build the test set from the 703 judgments
+2. Measure two standard baselines on all 87 articles.
+3. Test whether the links between articles (cross-references and the legal
+   tree) improve those baselines, still without atoms.
+4. Build the automatic annotation pipeline and annotate the full 87-article
+   corpus from the official text, with a human-checked sample to measure
+   agreement.
+5. Add the atom scores and the atom graph on top of the baselines and compare.
+6. Check a sample of the judgments by hand
+7. A qualitative study of alternative legal grounds on a few real cases.
 
 
