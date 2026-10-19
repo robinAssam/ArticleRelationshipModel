@@ -1,0 +1,55 @@
+{
+  "judgments_citing_wgbo": 703,
+  "items": 391,
+  "dropped": {
+    "facts shorter than 80 words": 58,
+    "no facts section found": 254
+  },
+  "facts_found_by": {
+    "heading": 98,
+    "section": 293
+  },
+  "split": {
+    "test": 266,
+    "dev": 125
+  },
+  "groups": 388,
+  "question_words": {
+    "min": 80,
+    "median": 663,
+    "max": 4788
+  },
+  "questions_with_masked_references": 72,
+  "answers_per_item": {
+    "1": 155,
+    "2": 102,
+    "3": 68,
+    "4": 28,
+    "5": 18,
+    "6": 12,
+    "7": 4,
+    "8": 2,
+    "9": 2
+  },
+  "articles_used_as_answer": 49,
+  "corpus_articles": 87,
+  "most_frequent_answers": {
+    "7:453": 127,
+    "7:446": 91,
+    "7:457": 68,
+    "7:448": 65,
+    "7:462": 65,
+    "7:464": 63,
+    "7:450": 52,
+    "7:454": 43,
+    "6:96": 43,
+    "6:74": 32,
+    "6:162": 31,
+    "7:458a": 24,
+    "7:460": 21,
+    "6:106": 18,
+    "7:465": 13
+  },
+  "min_words": 80,
+  "dev_fraction": 0.3
+}

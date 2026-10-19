@@ -52,5 +52,9 @@ data/obsidian_vault/
 # Personal files (thesis plan, notes, papers): separate private repo, see private/
 /private/
 
+# Study A items include judgment text; rebuild with scripts/build_study_a.py.
+# The split and answers (split.csv) are committed.
+data/processed/study_a/queries.jsonl
+
 # Raw statute XML from the BWB (several MB; re-download with scripts/fetch_statutes.py)
 data/raw/statutes/*.xml

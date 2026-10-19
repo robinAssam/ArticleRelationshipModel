@@ -1,0 +1,392 @@
+ecli,split,group,date,court,procedure,facts_method,n_words,n_masked,answers
+ECLI:NL:GHAMS:2010:BN7966,test,ECLI:NL:GHAMS:2010:BN7966,2010-08-31,Gerechtshof Amsterdam,Hoger beroep,heading,84,0,7:447 7:450
+ECLI:NL:GHAMS:2011:BT1670,dev,ECLI:NL:GHAMS:2011:BT1670,2011-08-02,Gerechtshof Amsterdam,Hoger beroep,heading,124,0,7:450
+ECLI:NL:GHAMS:2011:BT6513,test,ECLI:NL:GHAMS:2011:BT6513,2011-07-26,Gerechtshof Amsterdam,Hoger beroep,heading,179,0,7:446 7:461
+ECLI:NL:GHAMS:2014:1775,dev,ECLI:NL:GHAMS:2014:1775,2014-05-13,Gerechtshof Amsterdam,Hoger beroep,section,336,0,7:466
+ECLI:NL:GHAMS:2015:4252,test,ECLI:NL:GHAMS:2015:4252,2015-10-13,Gerechtshof Amsterdam,Hoger beroep,section,1084,1,7:448
+ECLI:NL:GHAMS:2016:1143,test,ECLI:NL:GHAMS:2016:1143,2016-03-29,Gerechtshof Amsterdam,Hoger beroep,section,878,2,7:461
+ECLI:NL:GHAMS:2016:3739,test,ECLI:NL:GHAMS:2016:3739,2016-09-13,Gerechtshof Amsterdam,Hoger beroep,section,289,0,7:453 7:462
+ECLI:NL:GHAMS:2016:4283,test,ECLI:NL:GHAMS:2016:4283,2016-10-21,Gerechtshof Amsterdam,Hoger beroep kort geding,section,635,1,7:446 7:460
+ECLI:NL:GHAMS:2017:5306,test,ECLI:NL:GHAMS:2017:5306,2017-12-19,Gerechtshof Amsterdam,Hoger beroep,section,1636,0,7:462
+ECLI:NL:GHAMS:2022:1172,test,ECLI:NL:GHAMS:2022:1172,2022-04-19,Gerechtshof Amsterdam,Hoger beroep,section,1483,0,7:446 7:448
+ECLI:NL:GHAMS:2022:337,test,ECLI:NL:GHAMS:2022:337,2022-02-08,Gerechtshof Amsterdam,Hoger beroep,section,1464,0,6:106 7:448 7:462
+ECLI:NL:GHAMS:2024:956,test,ECLI:NL:GHAMS:2024:956,2024-04-16,Gerechtshof Amsterdam,Hoger beroep,heading,1354,0,7:457 7:458a
+ECLI:NL:GHARL:2015:6588,test,ECLI:NL:GHARL:2015:6588,2015-09-08,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,1385,0,7:448 7:450 7:462
+ECLI:NL:GHARL:2016:1697,test,ECLI:NL:GHARL:2016:1697,2016-03-08,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,971,2,7:457
+ECLI:NL:GHARL:2017:10170,test,ECLI:NL:GHARL:2017:10170,2017-11-21,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,3087,0,6:97 6:106 7:465
+ECLI:NL:GHARL:2018:4396,dev,ECLI:NL:GHARL:2018:4396,2018-05-15,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,730,2,6:108 7:446 7:454 7:457
+ECLI:NL:GHARL:2020:3226,dev,ECLI:NL:GHARL:2020:3226,2020-04-21,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,2026,0,7:448
+ECLI:NL:GHARL:2022:3174,test,ECLI:NL:GHARL:2022:3174,2022-04-19,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,408,0,7:446
+ECLI:NL:GHARL:2022:9040,test,ECLI:NL:GHARL:2022:9040,2022-10-20,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,189,0,7:446 7:450
+ECLI:NL:GHARL:2023:9482,test,ECLI:NL:GHARL:2023:9482,2023-11-09,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,section,607,0,7:462
+ECLI:NL:GHARL:2025:1561,test,ECLI:NL:GHARL:2025:1561,2025-03-18,Gerechtshof Arnhem-Leeuwarden,Hoger beroep,heading,227,0,7:448
+ECLI:NL:GHARN:2005:AU7670,dev,ECLI:NL:GHARN:2005:AU7670,2005-11-29,Gerechtshof Arnhem,Hoger beroep,heading,1374,2,6:102 6:166 7:453
+ECLI:NL:GHARN:2012:BX6567,test,ECLI:NL:GHARN:2012:BX6567,2012-09-11,Gerechtshof Arnhem,Hoger beroep,section,2138,0,7:454
+ECLI:NL:GHDHA:2020:2365,test,ECLI:NL:GHDHA:2020:2365,2020-07-15,Gerechtshof Den Haag,Hoger beroep,section,129,0,7:447
+ECLI:NL:GHDHA:2022:128,dev,ECLI:NL:GHDHA:2022:128,2022-02-09,Gerechtshof Den Haag,Hoger beroep,section,133,0,7:446
+ECLI:NL:GHDHA:2022:1790,dev,ECLI:NL:GHDHA:2022:1790,2022-08-30,Gerechtshof Den Haag,Hoger beroep,section,417,0,6:74 6:97 6:162 7:454
+ECLI:NL:GHDHA:2023:226,test,ECLI:NL:GHDHA:2023:226,2023-02-21,Gerechtshof Den Haag,Hoger beroep kort geding,section,287,0,7:457 7:458a
+ECLI:NL:GHDHA:2024:161,test,ECLI:NL:GHDHA:2024:161,2024-02-13,Gerechtshof Den Haag,Hoger beroep,section,1907,8,7:462
+ECLI:NL:GHDHA:2024:1722,test,ECLI:NL:GHDHA:2024:1722,2024-10-08,Gerechtshof Den Haag,Hoger beroep,section,869,1,7:447 7:450 7:457
+ECLI:NL:GHDHA:2025:2036,dev,ECLI:NL:GHDHA:2025:2036,2025-09-16,Gerechtshof Den Haag,Hoger beroep kort geding,section,957,1,7:457 7:458a
+ECLI:NL:GHSHE:2020:2592,test,ECLI:NL:GHSHE:2020:2592,2020-08-18,Gerechtshof 's-Hertogenbosch,Hoger beroep,section,2307,0,6:77 7:453
+ECLI:NL:GHSHE:2021:1357,test,ECLI:NL:GHSHE:2021:1357,2021-05-04,Gerechtshof 's-Hertogenbosch,Hoger beroep kort geding,section,379,0,7:457 7:458a
+ECLI:NL:HR:2020:1082,dev,ECLI:NL:HR:2020:1082,2020-06-19,Hoge Raad,Cassatie,section,1223,5,6:77 7:453
+ECLI:NL:HR:2023:1670,test,ECLI:NL:HR:2023:1670,2023-12-01,Hoge Raad,Cassatie in het belang der wet,section,936,15,7:446 7:456 7:464
+ECLI:NL:HR:2023:1682,test,ECLI:NL:HR:2023:1682,2023-12-01,Hoge Raad,Cassatie,section,589,0,7:446 7:457
+ECLI:NL:OGEAA:2018:517,dev,ECLI:NL:OGEAA:2018:517,2018-09-05,Gerecht in Eerste Aanleg van Aruba,Eerste aanleg - enkelvoudig,section,103,0,7:453 7:462
+ECLI:NL:OGEAA:2019:576,dev,ECLI:NL:OGEAA:2019:576,2019-09-04,Gerecht in Eerste Aanleg van Aruba,Eerste aanleg - enkelvoudig,section,276,0,7:453 7:462
+ECLI:NL:OGEAA:2019:796,test,ECLI:NL:OGEAA:2019:796,2019-12-11,Gerecht in Eerste Aanleg van Aruba,Eerste aanleg - enkelvoudig,section,309,0,7:453 7:462
+ECLI:NL:OGEAA:2020:265,test,ECLI:NL:OGEAA:2020:265,2020-06-17,Gerecht in Eerste Aanleg van Aruba,Eerste aanleg - enkelvoudig,section,389,0,7:462
+ECLI:NL:OGEAA:2021:413,test,ECLI:NL:OGEAA:2021:413,2021-08-11,Gerecht in Eerste Aanleg van Aruba,Eerste aanleg - enkelvoudig,section,443,0,6:76 7:446 7:453 7:462
+ECLI:NL:OGEAC:2019:333,dev,ECLI:NL:OGEAC:2019:333,2019-06-17,Gerecht in eerste aanleg van Curaçao,Eerste aanleg - enkelvoudig,section,779,0,7:448 7:453 7:462
+ECLI:NL:OGEAC:2021:209,dev,ECLI:NL:OGEAC:2021:209,2021-11-22,Gerecht in eerste aanleg van Curaçao,Eerste aanleg - enkelvoudig,section,1628,0,7:453 7:462
+ECLI:NL:OGEAC:2024:245,test,ECLI:NL:OGEAC:2024:245,2024-09-09,Gerecht in eerste aanleg van Curaçao,Eerste aanleg - enkelvoudig,section,1309,0,7:453
+ECLI:NL:OGEAM:2011:BP2923,test,ECLI:NL:OGEAM:2011:BP2923,2011-01-10,Gerecht in eerste aanleg van Sint Maarten,Kort geding,heading,279,0,7:446 7:454 7:468
+ECLI:NL:OGEAM:2022:64,test,ECLI:NL:OGEAM:2022:64,2022-09-09,Gerecht in eerste aanleg van Sint Maarten,Eerste aanleg - enkelvoudig,section,323,0,7:457 7:458a 7:458b
+ECLI:NL:RBAMS:2005:AU5131,test,ECLI:NL:RBAMS:2005:AU5131,2005-10-27,Rechtbank Amsterdam,Bodemzaak,heading,98,0,6:98 7:464
+ECLI:NL:RBAMS:2005:AU6024,dev,ECLI:NL:RBAMS:2005:AU6024,2005-10-27,Rechtbank Amsterdam,Bodemzaak,heading,132,0,7:446 7:464
+ECLI:NL:RBAMS:2007:BB9523,test,ECLI:NL:RBAMS:2007:BB9523,2007-11-22,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,heading,792,4,7:446 7:454 7:456 7:458 7:462 7:468
+ECLI:NL:RBAMS:2007:BC1778,test,ECLI:NL:RBAMS:2007:BC1778,2007-12-20,Rechtbank Amsterdam,Kort geding,heading,303,0,7:467
+ECLI:NL:RBAMS:2009:BL6693,dev,ECLI:NL:RBAMS:2009:BL6693,2009-12-09,Rechtbank Amsterdam,Bodemzaak,heading,116,0,7:446 7:461 7:464
+ECLI:NL:RBAMS:2010:BP0743,dev,ECLI:NL:RBAMS:2010:BP0743,2010-08-11,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,heading,817,0,7:446 7:462
+ECLI:NL:RBAMS:2011:BV1236,test,ECLI:NL:RBAMS:2011:BV1236,2011-12-07,Rechtbank Amsterdam,Eerste aanleg - meervoudig,heading,838,0,7:448 7:450 7:453 7:462
+ECLI:NL:RBAMS:2011:BV8486,test,ECLI:NL:RBAMS:2011:BV8486,2011-12-15,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,heading,427,0,7:464
+ECLI:NL:RBAMS:2013:BZ5826,dev,ECLI:NL:RBAMS:2013:BZ5826,2013-02-27,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,heading,104,0,7:457
+ECLI:NL:RBAMS:2013:BZ5828,dev,ECLI:NL:RBAMS:2013:BZ5826,2013-02-27,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,heading,104,0,7:457
+ECLI:NL:RBAMS:2014:2275,test,ECLI:NL:RBAMS:2014:2275,2014-04-02,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1859,4,7:454 7:457 7:458
+ECLI:NL:RBAMS:2014:358,dev,ECLI:NL:RBAMS:2014:358,2014-01-29,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,835,0,7:448 7:450 7:453 7:462
+ECLI:NL:RBAMS:2014:6239,dev,ECLI:NL:RBAMS:2014:6239,2014-09-23,Rechtbank Amsterdam,Kort geding,section,351,0,7:454 7:457
+ECLI:NL:RBAMS:2015:8556,test,ECLI:NL:RBAMS:2015:8556,2015-11-26,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,136,0,7:457
+ECLI:NL:RBAMS:2017:3491,dev,ECLI:NL:RBAMS:2017:3491,2017-05-24,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,536,0,6:77 7:446 7:448
+ECLI:NL:RBAMS:2017:6400,test,ECLI:NL:RBAMS:2017:6400,2017-09-01,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,507,2,6:76 7:446 7:453
+ECLI:NL:RBAMS:2017:9869,test,ECLI:NL:RBAMS:2017:9869,2017-12-15,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,150,0,7:453
+ECLI:NL:RBAMS:2018:2543,test,ECLI:NL:RBAMS:2018:2543,2018-04-18,Rechtbank Amsterdam,Eerste aanleg - meervoudig,section,1653,0,6:108 7:446 7:453
+ECLI:NL:RBAMS:2019:8798,test,ECLI:NL:RBAMS:2019:8798,2019-11-07,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1458,0,6:96 7:464
+ECLI:NL:RBAMS:2020:2200,test,ECLI:NL:RBAMS:2020:2200,2020-03-18,Rechtbank Amsterdam,Eerste aanleg - meervoudig,section,1489,0,7:446 7:453 7:462
+ECLI:NL:RBAMS:2020:2334,dev,ECLI:NL:RBAMS:2020:2334,2020-03-25,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1745,0,7:448
+ECLI:NL:RBAMS:2020:3171,test,ECLI:NL:RBAMS:2020:3171,2020-06-24,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1204,0,6:162 7:446 7:448
+ECLI:NL:RBAMS:2020:4219,test,ECLI:NL:RBAMS:2020:4219,2020-08-13,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,392,0,7:453
+ECLI:NL:RBAMS:2021:3531,test,ECLI:NL:RBAMS:2021:3531,2021-07-16,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,323,0,7:446 7:453
+ECLI:NL:RBAMS:2021:3874,test,ECLI:NL:RBAMS:2021:3874,2021-07-29,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1891,0,6:96 7:464
+ECLI:NL:RBAMS:2021:3889,test,ECLI:NL:RBAMS:2021:3889,2021-04-22,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,353,0,7:464
+ECLI:NL:RBAMS:2021:4760,dev,ECLI:NL:RBAMS:2021:4760,2021-09-01,Rechtbank Amsterdam,Eerste aanleg - meervoudig,section,2162,0,6:74 6:107a 7:453
+ECLI:NL:RBAMS:2021:7277,test,ECLI:NL:RBAMS:2021:7277,2021-11-17,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1253,0,7:453
+ECLI:NL:RBAMS:2021:7281,test,ECLI:NL:RBAMS:2021:7281,2021-12-23,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1269,0,6:77 6:95 6:96 7:446 7:453 7:462
+ECLI:NL:RBAMS:2021:865,dev,ECLI:NL:RBAMS:2021:865,2021-02-18,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,284,0,7:464
+ECLI:NL:RBAMS:2022:2975,test,ECLI:NL:RBAMS:2022:2975,2022-06-01,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,394,0,7:453
+ECLI:NL:RBAMS:2022:4909,dev,ECLI:NL:RBAMS:2022:4909,2022-08-03,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,896,0,7:446 7:448 7:450 7:453
+ECLI:NL:RBAMS:2022:5178,dev,ECLI:NL:RBAMS:2022:5178,2022-09-01,Rechtbank Amsterdam,Kort geding,section,272,0,7:457 7:458a
+ECLI:NL:RBAMS:2022:7934,test,ECLI:NL:RBAMS:2022:7934,2022-12-22,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,2133,9,7:461
+ECLI:NL:RBAMS:2022:829,dev,ECLI:NL:RBAMS:2022:829,2022-02-24,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,113,0,7:457
+ECLI:NL:RBAMS:2023:3944,test,ECLI:NL:RBAMS:2023:3944,2023-06-22,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,449,0,7:464
+ECLI:NL:RBAMS:2023:4085,test,ECLI:NL:RBAMS:2023:4085,2023-05-04,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1187,0,7:457 7:458a
+ECLI:NL:RBAMS:2023:5506,dev,ECLI:NL:RBAMS:2023:5506,2023-08-24,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,479,0,7:464
+ECLI:NL:RBAMS:2023:7533,test,ECLI:NL:RBAMS:2023:7533,2023-11-28,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,573,0,7:457 7:458a
+ECLI:NL:RBAMS:2023:7713,dev,ECLI:NL:RBAMS:2023:7713,2023-12-07,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,317,0,6:96 7:464
+ECLI:NL:RBAMS:2024:1148,dev,ECLI:NL:RBAMS:2024:1148,2024-02-29,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,285,0,7:464
+ECLI:NL:RBAMS:2024:1507,test,ECLI:NL:RBAMS:2024:1507,2024-02-29,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,173,0,7:464
+ECLI:NL:RBAMS:2024:3322,test,ECLI:NL:RBAMS:2024:3322,2024-03-21,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,105,0,7:464
+ECLI:NL:RBAMS:2024:4879,test,ECLI:NL:RBAMS:2024:4879,2024-07-04,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,146,0,7:464
+ECLI:NL:RBAMS:2024:5162,test,ECLI:NL:RBAMS:2024:5162,2024-08-08,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,396,1,7:446
+ECLI:NL:RBAMS:2024:5246,test,ECLI:NL:RBAMS:2024:5246,2024-08-22,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1260,9,7:446 7:450 7:453
+ECLI:NL:RBAMS:2024:5852,test,ECLI:NL:RBAMS:2024:5852,2024-09-19,Rechtbank Amsterdam,Kort geding,section,1727,0,7:453
+ECLI:NL:RBAMS:2025:1957,test,ECLI:NL:RBAMS:2025:1957,2025-03-19,Rechtbank Amsterdam,Eerste aanleg - meervoudig,section,4788,0,7:446 7:453 7:462
+ECLI:NL:RBAMS:2025:2673,test,ECLI:NL:RBAMS:2025:2673,2025-04-23,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,1979,1,6:162 7:453
+ECLI:NL:RBAMS:2025:376,test,ECLI:NL:RBAMS:2025:376,2025-01-16,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,684,0,7:464
+ECLI:NL:RBAMS:2025:6432,test,ECLI:NL:RBAMS:2025:6432,2025-08-28,Rechtbank Amsterdam,Eerste aanleg - meervoudig,section,1182,1,6:95 6:170 6:174 6:181 7:453
+ECLI:NL:RBAMS:2026:2034,test,ECLI:NL:RBAMS:2026:2034,2026-02-26,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,167,0,7:464
+ECLI:NL:RBAMS:2026:9271,test,ECLI:NL:RBAMS:2026:9271,2026-09-15,Rechtbank Amsterdam,Eerste aanleg - enkelvoudig,section,724,0,6:162 7:446 7:453
+ECLI:NL:RBARN:2006:AY7461,test,ECLI:NL:RBARN:2006:AY7461,2006-06-12,Rechtbank Arnhem,Eerste aanleg - meervoudig,heading,1097,0,7:454
+ECLI:NL:RBARN:2007:BA5822,test,ECLI:NL:RBARN:2007:BA5822,2007-05-10,Rechtbank Arnhem,Kort geding,heading,232,0,7:457
+ECLI:NL:RBARN:2007:BC0644,test,ECLI:NL:RBARN:2007:BC0644,2007-12-12,Rechtbank Arnhem,Eerste aanleg - meervoudig,heading,1122,0,7:454
+ECLI:NL:RBARN:2009:BH9159,dev,ECLI:NL:RBARN:2009:BH9159,2009-03-11,Rechtbank Arnhem,Eerste aanleg - meervoudig,heading,543,0,7:453
+ECLI:NL:RBARN:2010:BL4385,test,ECLI:NL:RBARN:2010:BL4385,2010-02-03,Rechtbank Arnhem,Eerste aanleg - enkelvoudig,heading,1118,0,6:74 6:82 6:83 7:453
+ECLI:NL:RBARN:2011:BQ0753,test,ECLI:NL:RBARN:2011:BQ0753,2011-03-30,Rechtbank Arnhem,Eerste aanleg - meervoudig,heading,508,0,7:448
+ECLI:NL:RBARN:2011:BT8500,test,ECLI:NL:RBARN:2011:BT8500,2011-10-12,Rechtbank Arnhem,Eerste aanleg - meervoudig,heading,1590,0,6:108 7:453
+ECLI:NL:RBARN:2011:BU7458,test,ECLI:NL:RBARN:2011:BU7458,2011-11-23,Rechtbank Arnhem,Eerste aanleg - enkelvoudig,heading,531,0,7:448
+ECLI:NL:RBARN:2012:3820,test,ECLI:NL:RBARN:2012:3820,2012-05-03,Rechtbank Arnhem,Eerste aanleg - enkelvoudig,section,2460,0,6:74 6:162 7:446 7:448 7:462
+ECLI:NL:RBASS:2006:AY8841,dev,ECLI:NL:RBASS:2006:AY8841,2006-09-25,Rechtbank Assen,Kort geding,heading,213,0,7:446 7:456 7:464
+ECLI:NL:RBASS:2007:BD2052,test,ECLI:NL:RBASS:2007:BD2052,2007-10-24,Rechtbank Assen,Eerste aanleg - enkelvoudig,heading,2206,0,7:454
+ECLI:NL:RBASS:2011:BP6698,test,ECLI:NL:RBASS:2011:BP6698,2011-02-23,Rechtbank Assen,Eerste aanleg - enkelvoudig,heading,112,0,6:107a 7:448 7:450
+ECLI:NL:RBASS:2011:BS8890,test,ECLI:NL:RBASS:2011:BS8890,2011-06-15,Rechtbank Assen,Eerste aanleg - enkelvoudig,heading,1762,0,7:446 7:450 7:466
+ECLI:NL:RBDHA:2014:2101,dev,ECLI:NL:RBDHA:2014:2101,2014-02-19,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,170,0,6:96 7:448 7:453
+ECLI:NL:RBDHA:2016:11303,dev,ECLI:NL:RBDHA:2016:11303,2016-09-19,Rechtbank Den Haag,Kort geding,section,444,1,7:446 7:464
+ECLI:NL:RBDHA:2017:1103,dev,ECLI:NL:RBDHA:2017:1103,2017-01-23,Rechtbank Den Haag,Rekestprocedure,section,711,0,6:76 6:96 6:170 6:171 7:464
+ECLI:NL:RBDHA:2017:5685,test,ECLI:NL:RBDHA:2017:5685,2017-05-17,Rechtbank Den Haag,Bodemzaak,section,4098,0,6:96 6:108 7:446 7:453 7:462
+ECLI:NL:RBDHA:2017:827,test,ECLI:NL:RBDHA:2017:827,2017-02-01,Rechtbank Den Haag,Bodemzaak,section,2615,0,7:446 7:448 7:450 7:453 7:462
+ECLI:NL:RBDHA:2018:14479,dev,ECLI:NL:RBDHA:2018:14479,2018-10-24,Rechtbank Den Haag,Bodemzaak,section,1751,0,6:162 7:448 7:450 7:453 7:462
+ECLI:NL:RBDHA:2018:8743,test,ECLI:NL:RBDHA:2018:8743,2018-07-18,Rechtbank Den Haag,Bodemzaak,section,1288,0,6:76 6:97 7:446 7:462
+ECLI:NL:RBDHA:2019:1079,dev,ECLI:NL:RBDHA:2019:1079,2019-01-30,Rechtbank Den Haag,Bodemzaak,section,854,0,7:464
+ECLI:NL:RBDHA:2019:8340,test,ECLI:NL:RBDHA:2019:8340,2019-07-17,Rechtbank Den Haag,Bodemzaak,section,1313,1,7:446 7:448 7:453 7:465
+ECLI:NL:RBDHA:2020:1679,test,ECLI:NL:RBDHA:2020:1679,2020-01-29,Rechtbank Den Haag,Rekestprocedure,section,1591,0,6:96 7:453
+ECLI:NL:RBDHA:2021:1165,dev,ECLI:NL:RBDHA:2021:1165,2021-01-05,Rechtbank Den Haag,Rekestprocedure,section,731,0,7:454
+ECLI:NL:RBDHA:2021:2579,test,ECLI:NL:RBDHA:2021:2579,2021-03-16,Rechtbank Den Haag,Kort geding,section,1835,0,7:453 7:465
+ECLI:NL:RBDHA:2021:5461,test,ECLI:NL:RBDHA:2021:5461,2021-06-02,Rechtbank Den Haag,Bodemzaak,section,3222,11,7:457
+ECLI:NL:RBDHA:2022:10309,dev,ECLI:NL:RBDHA:2022:10309,2022-10-05,Rechtbank Den Haag,Bodemzaak,section,1039,0,6:89 7:462
+ECLI:NL:RBDHA:2022:12608,test,ECLI:NL:RBDHA:2022:12608,2022-11-24,Rechtbank Den Haag,Kort geding,section,1181,0,7:457 7:458a
+ECLI:NL:RBDHA:2022:221,test,ECLI:NL:RBDHA:2022:221,2022-01-19,Rechtbank Den Haag,Bodemzaak,section,750,0,7:453 7:462
+ECLI:NL:RBDHA:2023:13983,test,ECLI:NL:RBDHA:2023:13983,2023-09-18,Rechtbank Den Haag,Beschikking,section,1912,0,6:96 7:453 7:462
+ECLI:NL:RBDHA:2023:14658,dev,ECLI:NL:RBDHA:2023:14658,2023-09-13,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,205,0,7:446 7:468
+ECLI:NL:RBDHA:2023:20562,test,ECLI:NL:RBDHA:2023:20562,2023-11-02,Rechtbank Den Haag,Rekestprocedure,section,251,0,7:464
+ECLI:NL:RBDHA:2023:5702,test,ECLI:NL:RBDHA:2023:5702,2023-04-19,Rechtbank Den Haag,Bodemzaak,section,2108,9,7:457
+ECLI:NL:RBDHA:2023:8762,test,ECLI:NL:RBDHA:2023:8762,2023-05-19,Rechtbank Den Haag,Beschikking,section,521,0,7:464
+ECLI:NL:RBDHA:2023:9021,test,ECLI:NL:RBDHA:2023:9021,2023-06-21,Rechtbank Den Haag,Bodemzaak,section,3180,6,7:457
+ECLI:NL:RBDHA:2024:10536,dev,ECLI:NL:RBDHA:2024:10536,2024-06-27,Rechtbank Den Haag,Beschikking,section,2756,0,6:74 6:95 6:96 6:106 6:162 7:446 7:453
+ECLI:NL:RBDHA:2024:16985,dev,ECLI:NL:GHDHA:2025:2036,2024-10-23,Rechtbank Den Haag,Kort geding,section,921,1,7:457 7:458a 7:458b
+ECLI:NL:RBDHA:2024:17269,test,ECLI:NL:RBDHA:2024:17269,2024-09-27,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,80,0,7:450
+ECLI:NL:RBDHA:2024:17274,test,ECLI:NL:RBDHA:2024:17274,2024-10-24,Rechtbank Den Haag,Bodemzaak,section,1192,0,7:453 7:465
+ECLI:NL:RBDHA:2024:22596,dev,ECLI:NL:RBDHA:2024:22596,2024-12-04,Rechtbank Den Haag,Bodemzaak,section,2860,0,7:453
+ECLI:NL:RBDHA:2024:22812,dev,ECLI:NL:RBDHA:2024:22812,2024-12-05,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,209,0,7:464
+ECLI:NL:RBDHA:2024:22814,dev,ECLI:NL:RBDHA:2024:22814,2024-12-19,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,468,1,7:464
+ECLI:NL:RBDHA:2025:6546,dev,ECLI:NL:RBDHA:2025:6546,2025-04-02,Rechtbank Den Haag,Bodemzaak,section,3034,0,6:98 7:464
+ECLI:NL:RBDHA:2025:9312,dev,ECLI:NL:RBDHA:2025:9312,2025-04-24,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,814,0,7:446 7:460
+ECLI:NL:RBDHA:2025:9454,test,ECLI:NL:RBDHA:2025:9454,2025-05-15,Rechtbank Den Haag,Beschikking,section,589,0,7:464
+ECLI:NL:RBDHA:2025:9986,test,ECLI:NL:RBDHA:2025:9986,2025-06-04,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,460,0,6:162 7:453 7:464
+ECLI:NL:RBDHA:2026:12301,test,ECLI:NL:RBDHA:2026:12301,2026-04-24,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,93,0,7:464
+ECLI:NL:RBDHA:2026:7307,test,ECLI:NL:RBDHA:2026:7307,2026-03-17,Rechtbank Den Haag,Eerste aanleg - enkelvoudig,section,270,0,7:457 7:458a
+ECLI:NL:RBDOR:2008:BC9280,dev,ECLI:NL:RBDOR:2008:BC9280,2008-04-02,Rechtbank Dordrecht,Eerste aanleg - enkelvoudig,heading,477,0,7:453
+ECLI:NL:RBDOR:2008:BG8801,test,ECLI:NL:RBDOR:2008:BG8801,2008-12-24,Rechtbank Dordrecht,Eerste aanleg - enkelvoudig,heading,268,0,7:446 7:462
+ECLI:NL:RBDOR:2009:BI1216,test,ECLI:NL:RBDOR:2009:BI1216,2009-04-08,Rechtbank Dordrecht,Eerste aanleg - enkelvoudig,heading,345,0,6:76 6:89 6:107a 6:171 7:446 7:453
+ECLI:NL:RBDOR:2010:BL7560,dev,ECLI:NL:RBDOR:2010:BL7560,2010-02-15,Rechtbank Dordrecht,Eerste aanleg - enkelvoudig,heading,628,0,6:95 6:106 7:453 7:462 7:464
+ECLI:NL:RBDOR:2012:BV3577,test,ECLI:NL:RBDOR:2012:BV3577,2012-02-15,Rechtbank Dordrecht,Eerste aanleg - enkelvoudig,heading,393,0,7:462
+ECLI:NL:RBDOR:2012:BV9790,dev,ECLI:NL:RBDOR:2012:BV9790,2012-03-21,Rechtbank Dordrecht,Voorlopige voorziening,heading,91,0,7:450
+ECLI:NL:RBGEL:2013:6474,test,ECLI:NL:RBGEL:2013:6474,2013-12-11,Rechtbank Gelderland,Eerste aanleg - meervoudig,section,2126,0,7:453
+ECLI:NL:RBGEL:2015:4970,dev,ECLI:NL:RBGEL:2015:4970,2015-07-29,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,1046,2,7:457
+ECLI:NL:RBGEL:2017:3748,dev,ECLI:NL:RBGEL:2017:3748,2017-07-19,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,2258,0,7:453
+ECLI:NL:RBGEL:2017:4179,test,ECLI:NL:RBGEL:2017:4179,2017-06-22,Rechtbank Gelderland,Beschikking,section,684,1,6:101 7:462
+ECLI:NL:RBGEL:2017:6092,dev,ECLI:NL:RBGEL:2017:6092,2017-11-01,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,1880,0,7:453
+ECLI:NL:RBGEL:2017:6853,dev,ECLI:NL:RBGEL:2017:6853,2017-11-21,Rechtbank Gelderland,Kort geding,section,563,0,7:454 7:457
+ECLI:NL:RBGEL:2018:1237,test,ECLI:NL:RBGEL:2018:1237,2018-02-20,Rechtbank Gelderland,Kort geding,section,1918,2,7:454 7:456 7:457
+ECLI:NL:RBGEL:2018:3115,dev,ECLI:NL:RBGEL:2018:3115,2018-05-14,Rechtbank Gelderland,Beschikking,section,483,0,6:74 6:77 6:96 7:446 7:453
+ECLI:NL:RBGEL:2018:5764,test,ECLI:NL:RBGEL:2018:5764,2018-06-29,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,111,0,7:446 7:450
+ECLI:NL:RBGEL:2018:5765,test,ECLI:NL:RBGEL:2018:5765,2018-12-17,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,595,0,7:453 7:465
+ECLI:NL:RBGEL:2019:2226,dev,ECLI:NL:RBGEL:2019:2226,2019-05-21,Rechtbank Gelderland,Kort geding,section,1346,1,6:162 7:466
+ECLI:NL:RBGEL:2020:1114,dev,ECLI:NL:RBGEL:2020:1114,2020-02-18,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,3953,0,6:74 7:453 7:462
+ECLI:NL:RBGEL:2020:1618,test,ECLI:NL:RBGEL:2020:1618,2020-01-07,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,359,0,6:96 6:162 7:446 7:453
+ECLI:NL:RBGEL:2020:3699,dev,ECLI:NL:RBGEL:2020:3699,2020-06-03,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,188,0,7:446 7:450 7:468
+ECLI:NL:RBGEL:2021:1388,dev,ECLI:NL:RBGEL:2021:1388,2021-03-24,Rechtbank Gelderland,Eerste aanleg - meervoudig,section,2484,4,6:74 6:75 6:78 6:87 6:162 7:457
+ECLI:NL:RBGEL:2021:5671,test,ECLI:NL:RBGEL:2021:5671,2021-10-26,Rechtbank Gelderland,Op tegenspraak,section,2917,3,6:74 6:96 6:106 6:162 7:446 7:448 7:450 7:453 7:462
+ECLI:NL:RBGEL:2021:5737,dev,ECLI:NL:RBGEL:2021:5737,2021-10-27,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,3078,0,7:448 7:450 7:462
+ECLI:NL:RBGEL:2022:281,test,ECLI:NL:RBGEL:2022:281,2022-01-26,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,455,0,7:457 7:458a 7:458b
+ECLI:NL:RBGEL:2022:3340,test,ECLI:NL:RBGEL:2022:3340,2022-07-06,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,4132,0,7:448
+ECLI:NL:RBGEL:2022:5309,test,ECLI:NL:RBGEL:2022:5309,2022-09-07,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,1172,0,7:465
+ECLI:NL:RBGEL:2023:2824,dev,ECLI:NL:RBGEL:2023:2824,2023-04-26,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,261,0,6:96 7:464
+ECLI:NL:RBGEL:2023:5267,test,ECLI:NL:RBGEL:2023:5267,2023-09-01,Rechtbank Gelderland,Beschikking,section,204,0,7:464
+ECLI:NL:RBGEL:2023:5388,test,ECLI:NL:RBGEL:2023:5388,2023-04-12,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,2474,0,6:74 7:446 7:448 7:450 7:453 7:462
+ECLI:NL:RBGEL:2024:1215,test,ECLI:NL:RBGEL:2024:1215,2024-03-07,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,604,0,7:454 7:456 7:457
+ECLI:NL:RBGEL:2024:1298,test,ECLI:NL:RBGEL:2024:1298,2024-02-28,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,225,0,6:96 7:457 7:458a
+ECLI:NL:RBGEL:2024:2842,test,ECLI:NL:RBGEL:2024:2842,2024-05-15,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,heading,922,0,7:453 7:462
+ECLI:NL:RBGEL:2024:4951,dev,ECLI:NL:RBGEL:2024:4951,2024-07-26,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,871,0,7:460
+ECLI:NL:RBGEL:2024:568,dev,ECLI:NL:RBGEL:2024:568,2024-01-25,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,2528,0,6:96 7:453
+ECLI:NL:RBGEL:2024:835,test,ECLI:NL:RBGEL:2024:835,2024-02-02,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,255,0,6:74 6:95 6:96 7:448 7:461
+ECLI:NL:RBGEL:2025:2315,test,ECLI:NL:RBGEL:2025:2315,2025-03-26,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,462,0,7:453 7:460
+ECLI:NL:RBGEL:2025:6773,dev,ECLI:NL:RBGEL:2025:6773,2025-04-18,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,435,0,7:457 7:458a
+ECLI:NL:RBGEL:2025:7811,dev,ECLI:NL:RBGEL:2025:7811,2025-09-15,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,603,0,7:457 7:458a
+ECLI:NL:RBGEL:2026:2930,dev,ECLI:NL:RBGEL:2026:2930,2026-04-13,Rechtbank Gelderland,Eerste aanleg - meervoudig,section,115,0,7:447
+ECLI:NL:RBGEL:2026:5964,dev,ECLI:NL:RBGEL:2026:5964,2026-06-12,Rechtbank Gelderland,Eerste aanleg - enkelvoudig,section,977,0,7:446 7:457 7:458a 7:458b
+ECLI:NL:RBGRO:2009:BJ8795,test,ECLI:NL:RBGRO:2009:BJ8795,2009-09-25,Rechtbank Groningen,Kort geding,heading,737,0,6:162 7:457
+ECLI:NL:RBHAA:2004:AO7560,test,ECLI:NL:RBHAA:2004:AO7560,2004-04-14,Rechtbank Haarlem,Kort geding,heading,613,0,7:457
+ECLI:NL:RBHAA:2008:BD8290,test,ECLI:NL:RBHAA:2008:BD8290,2008-07-02,Rechtbank Haarlem,Eerste aanleg - enkelvoudig,heading,800,0,7:448 7:450
+ECLI:NL:RBHAA:2009:BJ0199,test,ECLI:NL:RBHAA:2009:BJ0199,2009-06-03,Rechtbank Haarlem,Eerste aanleg - meervoudig,heading,732,0,6:96 7:462
+ECLI:NL:RBHAA:2010:BM5670,dev,ECLI:NL:RBHAA:2010:BM5670,2010-05-26,Rechtbank Haarlem,Kort geding,heading,1621,0,7:462
+ECLI:NL:RBHAA:2010:BO4552,test,ECLI:NL:RBHAA:2010:BO4552,2010-09-08,Rechtbank Haarlem,Eerste aanleg - enkelvoudig,heading,1338,2,7:453
+ECLI:NL:RBLEE:2011:BQ7902,test,ECLI:NL:RBLEE:2011:BQ7902,2011-06-08,Rechtbank Leeuwarden,Kort geding,heading,384,0,7:457
+ECLI:NL:RBLIM:2016:11635,test,ECLI:NL:RBLIM:2016:11635,2016-11-17,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,730,0,6:77 6:96 7:446
+ECLI:NL:RBLIM:2016:2725,test,ECLI:NL:RBLIM:2016:2725,2016-03-29,Rechtbank Limburg,Kort geding,section,172,1,7:460
+ECLI:NL:RBLIM:2017:1248,test,ECLI:NL:RBLIM:2017:1248,2017-02-15,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,136,0,7:461
+ECLI:NL:RBLIM:2017:4981,test,ECLI:NL:RBLIM:2017:4981,2017-05-31,Rechtbank Limburg,Eerste aanleg - meervoudig,section,327,0,6:77 7:448
+ECLI:NL:RBLIM:2017:6887,test,ECLI:NL:RBLIM:2017:6887,2017-07-19,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,366,0,7:454 7:457
+ECLI:NL:RBLIM:2017:9987,test,ECLI:NL:RBLIM:2017:9987,2017-10-18,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,572,0,6:106 7:448 7:450 7:462
+ECLI:NL:RBLIM:2018:8504,test,ECLI:NL:RBLIM:2018:8504,2018-09-12,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,713,0,7:448 7:450 7:454
+ECLI:NL:RBLIM:2019:1196,dev,ECLI:NL:RBLIM:2019:1196,2019-02-13,Rechtbank Limburg,Bodemzaak,section,1032,1,7:465 7:466
+ECLI:NL:RBLIM:2019:7069,dev,ECLI:NL:RBLIM:2019:7069,2019-07-31,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,1288,0,6:74 6:106 6:107 7:453
+ECLI:NL:RBLIM:2021:10021,dev,ECLI:NL:RBLIM:2021:10021,2021-12-29,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,305,0,7:453
+ECLI:NL:RBLIM:2021:2542,test,ECLI:NL:RBLIM:2021:2542,2021-03-23,Rechtbank Limburg,Kort geding,section,696,0,7:460
+ECLI:NL:RBLIM:2022:5268,test,ECLI:NL:RBLIM:2022:5268,2022-07-12,Rechtbank Limburg,Kort geding,section,1863,0,7:446
+ECLI:NL:RBLIM:2023:6064,test,ECLI:NL:RBLIM:2023:6064,2023-10-12,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,421,0,6:74 6:96 6:106 7:446 7:453
+ECLI:NL:RBLIM:2024:1292,test,ECLI:NL:RBLIM:2024:1292,2024-03-06,Rechtbank Limburg,Eerste aanleg - enkelvoudig,section,124,0,6:74 6:162 7:446 7:448 7:453
+ECLI:NL:RBLIM:2024:1997,dev,ECLI:NL:RBLIM:2024:1997,2024-04-24,Rechtbank Limburg,Eerste aanleg - meervoudig,section,2284,0,6:98 6:101 7:453
+ECLI:NL:RBLIM:2024:2303,dev,ECLI:NL:RBLIM:2024:2303,2024-05-01,Rechtbank Limburg,Eerste aanleg - meervoudig,section,1191,0,6:106 7:448 7:450
+ECLI:NL:RBLIM:2024:4901,dev,ECLI:NL:RBLIM:2024:4901,2024-06-26,Rechtbank Limburg,Eerste aanleg - meervoudig,section,1210,0,6:74 7:448 7:450 7:453 7:454
+ECLI:NL:RBLIM:2025:6034,test,ECLI:NL:RBLIM:2025:6034,2025-06-25,Rechtbank Limburg,Kort geding,section,4096,0,7:453 7:465
+ECLI:NL:RBLIM:2026:1201,test,ECLI:NL:RBLIM:2026:1201,2026-01-13,Rechtbank Limburg,Beschikking,section,148,2,7:465
+ECLI:NL:RBMAA:2010:BL5516,dev,ECLI:NL:RBMAA:2010:BL5516,2010-01-20,Rechtbank Maastricht,Eerste aanleg - enkelvoudig,heading,363,0,7:462
+ECLI:NL:RBMAA:2011:BQ2508,test,ECLI:NL:RBMAA:2011:BQ2508,2011-04-20,Rechtbank Maastricht,Eerste aanleg - enkelvoudig,heading,158,0,7:448 7:453 7:454
+ECLI:NL:RBMID:2012:BZ5988,test,ECLI:NL:RBMID:2012:BZ5988,2012-12-21,Rechtbank Middelburg,Eerste aanleg - enkelvoudig,heading,495,0,7:454 7:456
+ECLI:NL:RBMNE:2013:3251,test,ECLI:NL:RBMNE:2013:3251,2013-08-07,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,1003,0,6:96 6:162 7:448 7:450 7:453 7:464
+ECLI:NL:RBMNE:2013:3761,test,ECLI:NL:RBMNE:2013:3761,2013-09-18,Rechtbank Midden-Nederland,Eerste aanleg - meervoudig,section,1160,0,6:106 7:448 7:450
+ECLI:NL:RBMNE:2014:3097,dev,ECLI:NL:RBMNE:2014:3097,2014-07-23,Rechtbank Midden-Nederland,Eerste aanleg - meervoudig,section,2503,3,7:457
+ECLI:NL:RBMNE:2014:7661,dev,ECLI:NL:RBMNE:2014:7661,2014-07-23,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,260,1,7:453
+ECLI:NL:RBMNE:2014:784,dev,ECLI:NL:RBMNE:2014:784,2014-02-27,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,481,0,6:96 7:448 7:462
+ECLI:NL:RBMNE:2017:4172,test,ECLI:NL:RBMNE:2017:4172,2017-08-16,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,869,2,6:162 7:453 7:462
+ECLI:NL:RBMNE:2018:1905,test,ECLI:NL:RBMNE:2018:1905,2018-03-21,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,663,1,6:74 6:106 6:163 7:454 7:457
+ECLI:NL:RBMNE:2018:5186,test,ECLI:NL:RBMNE:2018:5186,2018-08-08,Rechtbank Midden-Nederland,Kort geding,section,177,0,7:457
+ECLI:NL:RBMNE:2019:3621,test,ECLI:NL:RBMNE:2019:3621,2019-08-02,Rechtbank Midden-Nederland,Kort geding,section,762,0,7:454 7:457
+ECLI:NL:RBMNE:2020:2056,test,ECLI:NL:RBMNE:2020:2056,2020-05-27,Rechtbank Midden-Nederland,Kort geding,section,1359,2,7:446 7:460
+ECLI:NL:RBMNE:2020:4307,test,ECLI:NL:RBMNE:2020:4307,2020-10-07,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,1056,3,6:106 7:460
+ECLI:NL:RBMNE:2023:4418,test,ECLI:NL:RBMNE:2023:4418,2023-07-12,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,1402,2,6:106 6:162 7:446 7:464
+ECLI:NL:RBMNE:2024:5157,test,ECLI:NL:RBMNE:2024:5157,2024-08-15,Rechtbank Midden-Nederland,Kort geding,heading,272,0,7:453
+ECLI:NL:RBMNE:2024:5502,test,ECLI:NL:RBMNE:2024:5502,2024-09-18,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,1369,0,7:446 7:454 7:457 7:458a
+ECLI:NL:RBMNE:2024:7540,test,ECLI:NL:RBMNE:2024:7540,2024-12-20,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,section,126,0,7:446 7:450
+ECLI:NL:RBMNE:2025:4898,test,ECLI:NL:RBMNE:2025:4898,2025-09-12,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,heading,736,0,6:96 7:453 7:462
+ECLI:NL:RBMNE:2026:1248,test,ECLI:NL:RBMNE:2026:1248,2026-03-18,Rechtbank Midden-Nederland,Eerste aanleg - enkelvoudig,heading,99,0,7:464
+ECLI:NL:RBNHO:2014:12412,dev,ECLI:NL:RBNHO:2014:12412,2014-08-20,Rechtbank Noord-Holland,Bodemzaak,section,554,0,7:462
+ECLI:NL:RBNHO:2015:203,test,ECLI:NL:RBNHO:2015:203,2015-01-21,Rechtbank Noord-Holland,Bodemzaak,section,797,0,6:74 7:457 7:464
+ECLI:NL:RBNHO:2015:876,dev,ECLI:NL:RBNHO:2015:876,2015-01-22,Rechtbank Noord-Holland,Eerste aanleg - enkelvoudig,section,292,0,7:453
+ECLI:NL:RBNHO:2017:2838,test,ECLI:NL:RBNHO:2017:2838,2017-04-12,Rechtbank Noord-Holland,Kort geding,section,2170,3,7:454 7:456
+ECLI:NL:RBNHO:2017:3955,dev,ECLI:NL:RBNHO:2017:3955,2017-05-12,Rechtbank Noord-Holland,Kort geding,section,1361,1,7:450
+ECLI:NL:RBNHO:2018:10456,test,ECLI:NL:RBNHO:2018:10456,2018-12-05,Rechtbank Noord-Holland,Eerste aanleg - meervoudig,section,829,0,7:453
+ECLI:NL:RBNHO:2019:6621,test,ECLI:NL:RBNHO:2019:6621,2019-07-30,Rechtbank Noord-Holland,Kort geding,section,1189,0,7:448 7:453
+ECLI:NL:RBNHO:2019:7049,test,ECLI:NL:RBNHO:2019:7049,2019-07-24,Rechtbank Noord-Holland,Op tegenspraak,section,709,0,6:96 6:106 6:107 6:108 6:162 7:453 7:462
+ECLI:NL:RBNHO:2020:2903,test,ECLI:NL:RBNHO:2020:2903,2020-04-16,Rechtbank Noord-Holland,Beschikking,heading,569,0,7:464
+ECLI:NL:RBNHO:2020:9821,test,ECLI:NL:RBNHO:2020:9821,2020-11-25,Rechtbank Noord-Holland,Eerste aanleg - meervoudig,section,226,0,7:453 7:454 7:462
+ECLI:NL:RBNHO:2021:1797,test,ECLI:NL:RBNHO:2021:1797,2021-03-04,Rechtbank Noord-Holland,Op tegenspraak,section,146,1,7:464
+ECLI:NL:RBNHO:2021:529,test,ECLI:NL:RBNHO:2021:529,2021-01-27,Rechtbank Noord-Holland,Op tegenspraak,section,99,0,7:446 7:448
+ECLI:NL:RBNHO:2021:6286,test,ECLI:NL:RBNHO:2021:6286,2021-07-08,Rechtbank Noord-Holland,Eerste aanleg - enkelvoudig,section,185,0,6:74 7:446 7:462 7:464
+ECLI:NL:RBNHO:2021:9644,test,ECLI:NL:RBNHO:2021:9644,2021-11-02,Rechtbank Noord-Holland,Eerste aanleg - enkelvoudig,section,1776,3,7:464
+ECLI:NL:RBNHO:2022:2539,dev,ECLI:NL:RBNHO:2022:2539,2022-03-23,Rechtbank Noord-Holland,Eerste aanleg - enkelvoudig,section,126,0,7:464
+ECLI:NL:RBNHO:2022:8032,test,ECLI:NL:RBNHO:2022:8032,2022-08-25,Rechtbank Noord-Holland,Eerste aanleg - enkelvoudig,heading,248,0,7:464
+ECLI:NL:RBNHO:2023:14097,test,ECLI:NL:RBNHO:2023:14097,2023-11-09,Rechtbank Noord-Holland,Tussenbeschikking,section,225,0,7:464
+ECLI:NL:RBNHO:2023:2009,test,ECLI:NL:RBNHO:2023:2009,2023-03-03,Rechtbank Noord-Holland,Eerste aanleg - enkelvoudig,section,416,0,7:453 7:464
+ECLI:NL:RBNHO:2024:12657,test,ECLI:NL:RBNHO:2024:12657,2024-07-25,Rechtbank Noord-Holland,Rekestprocedure,section,613,0,6:96 7:464
+ECLI:NL:RBNHO:2024:2057,dev,ECLI:NL:RBNHO:2024:2057,2024-02-28,Rechtbank Noord-Holland,Bodemzaak,heading,473,0,6:83 6:96 7:453
+ECLI:NL:RBNHO:2024:2058,test,ECLI:NL:RBNHO:2024:2058,2024-02-28,Rechtbank Noord-Holland,Bodemzaak,section,749,0,6:83 6:96 7:453
+ECLI:NL:RBNHO:2024:3701,dev,ECLI:NL:RBNHO:2024:3701,2024-04-11,Rechtbank Noord-Holland,Kort geding,section,1045,1,7:457 7:458a
+ECLI:NL:RBNHO:2024:4985,dev,ECLI:NL:RBNHO:2024:4985,2024-05-29,Rechtbank Noord-Holland,Eerste aanleg - enkelvoudig,section,1536,0,7:464
+ECLI:NL:RBNHO:2024:6035,test,ECLI:NL:RBNHO:2024:6035,2024-06-14,Rechtbank Noord-Holland,Kort geding,section,1137,0,7:460
+ECLI:NL:RBNHO:2025:11472,test,ECLI:NL:RBNHO:2025:11472,2025-10-02,Rechtbank Noord-Holland,Beschikking,section,190,0,7:464
+ECLI:NL:RBNHO:2025:4988,test,ECLI:NL:RBNHO:2025:4988,2025-04-30,Rechtbank Noord-Holland,Tussenuitspraak,section,929,0,6:74 6:162 7:446 7:448 7:450 7:453
+ECLI:NL:RBNHO:2026:796,dev,ECLI:NL:RBNHO:2026:796,2026-02-04,Rechtbank Noord-Holland,Bodemzaak,section,656,0,6:74 7:456
+ECLI:NL:RBNHO:2026:8384,test,ECLI:NL:RBNHO:2026:8384,2026-06-18,Rechtbank Noord-Holland,Beschikking,section,470,0,7:453
+ECLI:NL:RBNNE:2013:BZ0218,test,ECLI:NL:RBNNE:2013:BZ0218,2013-01-23,Rechtbank Noord-Nederland,Eerste aanleg - meervoudig,heading,1045,0,7:448 7:450 7:453
+ECLI:NL:RBNNE:2015:4149,dev,ECLI:NL:RBNNE:2015:4149,2015-08-31,Rechtbank Noord-Nederland,Kort geding,section,1069,0,7:446 7:448 7:454 7:456
+ECLI:NL:RBNNE:2016:265,test,ECLI:NL:RBNNE:2016:265,2016-02-03,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,701,2,6:76 6:96 6:108 7:454 7:457
+ECLI:NL:RBNNE:2016:4839,dev,ECLI:NL:RBNNE:2016:4839,2016-11-02,Rechtbank Noord-Nederland,Eerste aanleg - meervoudig,section,961,0,6:74 6:77 6:162 6:173 6:181 7:446 7:462
+ECLI:NL:RBNNE:2017:4099,dev,ECLI:NL:RBNNE:2017:4099,2017-09-27,Rechtbank Noord-Nederland,Kort geding,section,500,0,7:457
+ECLI:NL:RBNNE:2017:5005,test,ECLI:NL:RBNNE:2017:5005,2017-12-22,Rechtbank Noord-Nederland,Kort geding,section,1005,0,7:446 7:460
+ECLI:NL:RBNNE:2019:3830,test,ECLI:NL:RBNNE:2019:3830,2019-09-11,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,1518,0,6:74 6:76 6:97 6:98 7:454
+ECLI:NL:RBNNE:2021:2730,test,ECLI:NL:RBNNE:2021:2730,2021-06-10,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,877,0,7:446 7:453
+ECLI:NL:RBNNE:2021:589,dev,ECLI:NL:RBNNE:2021:589,2021-02-17,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,4328,3,7:453
+ECLI:NL:RBNNE:2022:1294,dev,ECLI:NL:RBNNE:2022:1294,2022-04-14,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,1304,0,6:96 6:106 7:448 7:450 7:453
+ECLI:NL:RBNNE:2024:1858,test,ECLI:NL:RBNNE:2024:1858,2024-04-10,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,3846,0,7:453 7:460 7:462 7:466
+ECLI:NL:RBNNE:2025:1685,dev,ECLI:NL:RBNNE:2025:1685,2025-05-07,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,1071,0,7:457 7:458a
+ECLI:NL:RBNNE:2025:3761,test,ECLI:NL:RBNNE:2025:3761,2025-09-17,Rechtbank Noord-Nederland,Eerste aanleg - enkelvoudig,section,2408,1,7:454 7:457 7:458a
+ECLI:NL:RBNNE:2026:1965,test,ECLI:NL:RBNNE:2026:1965,2026-05-27,Rechtbank Noord-Nederland,Kort geding,section,581,0,7:457 7:458a
+ECLI:NL:RBOBR:2013:7185,test,ECLI:NL:RBOBR:2013:7185,2013-12-06,Rechtbank Oost-Brabant,Rekestprocedure,section,891,2,7:448 7:450 7:462
+ECLI:NL:RBOBR:2014:487,test,ECLI:NL:RBOBR:2014:487,2014-01-30,Rechtbank Oost-Brabant,Kort geding,section,1388,0,7:457
+ECLI:NL:RBOBR:2014:7183,test,ECLI:NL:RBOBR:2014:7183,2014-11-26,Rechtbank Oost-Brabant,Op tegenspraak,section,2143,0,6:74 6:76 7:453 7:462
+ECLI:NL:RBOBR:2015:2183,test,ECLI:NL:RBOBR:2015:2183,2015-04-15,Rechtbank Oost-Brabant,Kort geding,section,925,1,7:460
+ECLI:NL:RBOBR:2017:2130,dev,ECLI:NL:RBOBR:2017:2130,2017-04-12,Rechtbank Oost-Brabant,Bodemzaak,section,626,0,6:162 6:163 7:454
+ECLI:NL:RBOBR:2017:6091,test,ECLI:NL:RBOBR:2017:6091,2017-11-22,Rechtbank Oost-Brabant,Op tegenspraak,section,431,0,6:77 7:446 7:453
+ECLI:NL:RBOBR:2017:6092,test,ECLI:NL:RBOBR:2017:6092,2017-11-22,Rechtbank Oost-Brabant,Op tegenspraak,section,554,0,7:457
+ECLI:NL:RBOBR:2019:2399,test,ECLI:NL:RBOBR:2019:2399,2019-04-25,Rechtbank Oost-Brabant,Kort geding,section,1169,0,7:446 7:454 7:456
+ECLI:NL:RBOBR:2022:3395,test,ECLI:NL:RBOBR:2022:3395,2022-08-17,Rechtbank Oost-Brabant,Bodemzaak,section,656,0,6:74 6:77 6:162 7:446 7:448 7:450 7:453 7:462
+ECLI:NL:RBOBR:2022:96,test,ECLI:NL:RBOBR:2022:96,2022-01-19,Rechtbank Oost-Brabant,Bodemzaak,section,3209,22,7:454 7:457 7:458 7:458a
+ECLI:NL:RBOBR:2025:8514,test,ECLI:NL:RBOBR:2025:8514,2025-12-17,Rechtbank Oost-Brabant,Bodemzaak,section,3818,22,6:162 7:461
+ECLI:NL:RBONE:2013:BZ6271,dev,ECLI:NL:RBONE:2013:BZ6271,2013-03-28,Rechtbank Oost-Nederland,Kort geding,heading,161,1,7:457
+ECLI:NL:RBOVE:2015:5058,dev,ECLI:NL:RBOVE:2015:5058,2015-11-18,Rechtbank Overijssel,Eerste aanleg - meervoudig,section,890,0,6:77 7:462
+ECLI:NL:RBOVE:2016:1624,dev,ECLI:NL:RBOVE:2016:1624,2016-04-20,Rechtbank Overijssel,Kort geding,section,374,0,7:460
+ECLI:NL:RBOVE:2017:1211,test,ECLI:NL:RBOVE:2017:1211,2017-02-22,Rechtbank Overijssel,Eerste aanleg - enkelvoudig,section,430,0,7:457
+ECLI:NL:RBOVE:2017:3297,dev,ECLI:NL:RBOVE:2017:3297,2017-08-09,Rechtbank Overijssel,Kort geding,section,621,0,7:457
+ECLI:NL:RBOVE:2018:4006,test,ECLI:NL:RBOVE:2018:4006,2018-10-12,Rechtbank Overijssel,Kort geding,heading,89,2,7:457
+ECLI:NL:RBOVE:2019:1345,test,ECLI:NL:RBOVE:2019:1345,2019-04-16,Rechtbank Overijssel,Kort geding,section,348,1,7:457
+ECLI:NL:RBOVE:2019:994,test,ECLI:NL:RBOVE:2019:994,2019-03-20,Rechtbank Overijssel,Eerste aanleg - meervoudig,section,1069,0,6:166 7:446 7:448 7:454 7:464
+ECLI:NL:RBOVE:2023:1301,dev,ECLI:NL:RBOVE:2023:1301,2023-02-20,Rechtbank Overijssel,Beschikking,heading,1423,0,7:453
+ECLI:NL:RBOVE:2024:2576,test,ECLI:NL:RBOVE:2024:2576,2024-05-15,Rechtbank Overijssel,Eerste aanleg - meervoudig,section,663,0,7:454
+ECLI:NL:RBOVE:2025:2137,test,ECLI:NL:RBOVE:2025:2137,2025-04-08,Rechtbank Overijssel,Eerste aanleg - enkelvoudig,section,193,0,7:446 7:448
+ECLI:NL:RBOVE:2025:358,test,ECLI:NL:RBOVE:2025:358,2025-01-21,Rechtbank Overijssel,Eerste aanleg - enkelvoudig,section,240,0,6:74 6:82 6:83 7:446 7:453 7:461
+ECLI:NL:RBROT:2007:BD7445,test,ECLI:NL:RBROT:2007:BD7445,2007-11-28,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,391,0,7:454
+ECLI:NL:RBROT:2008:BD8855,test,ECLI:NL:RBROT:2008:BD8855,2008-05-22,Rechtbank Rotterdam,Kort geding,heading,1549,0,7:460
+ECLI:NL:RBROT:2009:BH5964,test,ECLI:NL:RBROT:2009:BH5964,2009-02-25,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,231,0,6:96 7:446
+ECLI:NL:RBROT:2010:BL5998,test,ECLI:NL:RBROT:2010:BL5998,2010-02-23,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,1342,4,7:453
+ECLI:NL:RBROT:2010:BN8300,test,ECLI:NL:RBROT:2010:BN8300,2010-08-18,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,115,0,6:76 7:446
+ECLI:NL:RBROT:2010:BN9944,test,ECLI:NL:RBROT:2010:BN9944,2010-09-29,Rechtbank Rotterdam,Eerste aanleg - meervoudig,heading,448,0,7:453 7:457
+ECLI:NL:RBROT:2010:BO7879,test,ECLI:NL:RBROT:2010:BO7879,2010-11-24,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,248,0,6:74 7:448 7:450 7:453
+ECLI:NL:RBROT:2011:BP5714,test,ECLI:NL:RBROT:2011:BP5714,2011-01-12,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,513,1,7:446 7:453
+ECLI:NL:RBROT:2011:BQ7053,test,ECLI:NL:RBROT:2011:BQ7053,2011-03-16,Rechtbank Rotterdam,Eerste aanleg - meervoudig,heading,601,0,7:448 7:450 7:453
+ECLI:NL:RBROT:2012:BW4629,test,ECLI:NL:RBROT:2012:BW4629,2012-04-18,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,1517,0,7:448 7:450 7:452
+ECLI:NL:RBROT:2013:BZ2365,dev,ECLI:NL:RBROT:2013:BZ2365,2013-01-23,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,2300,1,6:89 6:96 7:448 7:450 7:453 7:462
+ECLI:NL:RBROT:2013:BZ2397,dev,ECLI:NL:RBROT:2013:BZ2397,2013-01-23,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,437,0,6:89 7:448 7:450 7:453
+ECLI:NL:RBROT:2014:1583,dev,ECLI:NL:RBROT:2014:1583,2014-03-26,Rechtbank Rotterdam,Bodemzaak,section,707,0,7:448 7:453 7:460
+ECLI:NL:RBROT:2015:4250,dev,ECLI:NL:RBROT:2015:4250,2015-06-17,Rechtbank Rotterdam,Beschikking,section,842,0,6:96 7:448 7:453
+ECLI:NL:RBROT:2015:8129,test,ECLI:NL:RBROT:2015:8129,2015-11-06,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,138,0,7:446
+ECLI:NL:RBROT:2015:8640,test,ECLI:NL:RBROT:2015:8640,2015-11-24,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,1268,0,7:448 7:450 7:453 7:462
+ECLI:NL:RBROT:2016:1327,test,ECLI:NL:RBROT:2016:1327,2016-02-19,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,2644,0,6:74 6:76 6:96 6:99 6:171 7:446 7:453 7:462
+ECLI:NL:RBROT:2016:2803,test,ECLI:NL:RBROT:2016:2803,2016-04-11,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,170,0,7:464
+ECLI:NL:RBROT:2016:7002,test,ECLI:NL:RBROT:2016:7002,2016-08-31,Rechtbank Rotterdam,Eerste aanleg - meervoudig,section,1628,5,6:166 7:446
+ECLI:NL:RBROT:2017:6459,test,ECLI:NL:RBROT:2017:6459,2017-07-14,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,620,0,6:74 6:83 6:101 6:162 7:446 7:453
+ECLI:NL:RBROT:2017:793,dev,ECLI:NL:RBROT:2017:793,2017-02-01,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,1541,0,7:448 7:450 7:453 7:454
+ECLI:NL:RBROT:2018:2505,test,ECLI:NL:RBROT:2018:2505,2018-03-07,Rechtbank Rotterdam,Kort geding,section,1509,0,7:446
+ECLI:NL:RBROT:2018:8874,dev,ECLI:NL:RBROT:2018:8874,2018-10-24,Rechtbank Rotterdam,Beschikking,section,131,0,6:96 7:464
+ECLI:NL:RBROT:2018:984,test,ECLI:NL:RBROT:2018:984,2018-02-07,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,96,0,7:457
+ECLI:NL:RBROT:2019:10413,dev,ECLI:NL:RBROT:2019:10413,2019-12-19,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,heading,1836,4,6:74 6:82 6:106 7:446 7:453 7:454
+ECLI:NL:RBROT:2019:1050,test,ECLI:NL:RBROT:2019:1050,2019-02-13,Rechtbank Rotterdam,Eerste aanleg - meervoudig,section,1309,3,6:74 6:162 7:454
+ECLI:NL:RBROT:2019:4047,dev,ECLI:NL:RBROT:2019:4047,2019-05-22,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,1171,0,7:453
+ECLI:NL:RBROT:2020:10519,test,ECLI:NL:RBROT:2020:10519,2020-11-19,Rechtbank Rotterdam,Beschikking,section,89,0,7:446
+ECLI:NL:RBROT:2020:7224,test,ECLI:NL:RBROT:2020:7224,2020-08-13,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,113,0,6:96 7:447
+ECLI:NL:RBROT:2020:7606,test,ECLI:NL:RBROT:2020:7606,2020-08-21,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,101,0,7:461
+ECLI:NL:RBROT:2020:9245,test,ECLI:NL:RBROT:2020:9245,2020-09-30,Rechtbank Rotterdam,Eerste aanleg - meervoudig,heading,746,0,6:97 6:107 6:108 6:162 7:446 7:448 7:450 7:453 7:465
+ECLI:NL:RBROT:2021:12152,test,ECLI:NL:RBROT:2021:12152,2021-11-26,Rechtbank Rotterdam,Beschikking,section,112,1,7:464
+ECLI:NL:RBROT:2021:13611,test,ECLI:NL:RBROT:2021:13611,2021-07-01,Rechtbank Rotterdam,Beschikking,section,1387,0,6:101 7:464
+ECLI:NL:RBROT:2021:6846,test,ECLI:NL:RBROT:2021:6846,2021-07-16,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,86,0,6:96 7:454
+ECLI:NL:RBROT:2021:7098,dev,ECLI:NL:RBROT:2021:7098,2021-07-30,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,96,0,6:96 7:461
+ECLI:NL:RBROT:2022:1180,test,ECLI:NL:RBROT:2022:1180,2022-02-18,Rechtbank Rotterdam,Kort geding,heading,737,0,7:453 7:460
+ECLI:NL:RBROT:2022:345,test,ECLI:NL:GHDHA:2023:226,2022-01-13,Rechtbank Rotterdam,Kort geding,section,305,0,7:457 7:458a
+ECLI:NL:RBROT:2022:8103,dev,ECLI:NL:RBROT:2022:8103,2022-09-21,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,725,2,7:457
+ECLI:NL:RBROT:2022:8214,test,ECLI:NL:RBROT:2022:8214,2022-10-14,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,92,0,7:448
+ECLI:NL:RBROT:2023:10453,test,ECLI:NL:RBROT:2023:10453,2023-11-08,Rechtbank Rotterdam,Beschikking,section,123,0,6:96 6:98 7:464
+ECLI:NL:RBROT:2023:127,dev,ECLI:NL:RBROT:2023:127,2023-01-06,Rechtbank Rotterdam,Beschikking,section,178,0,7:464
+ECLI:NL:RBROT:2023:1395,test,ECLI:NL:RBROT:2023:1395,2023-02-07,Rechtbank Rotterdam,Kort geding,section,214,0,7:453
+ECLI:NL:RBROT:2023:739,dev,ECLI:NL:RBROT:2023:739,2023-02-02,Rechtbank Rotterdam,Beschikking,section,83,0,7:450
+ECLI:NL:RBROT:2024:1087,test,ECLI:NL:RBROT:2024:1087,2024-02-13,Rechtbank Rotterdam,Kort geding,section,464,0,7:446 7:460
+ECLI:NL:RBROT:2024:2138,test,ECLI:NL:RBROT:2024:2138,2024-03-20,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,861,0,7:446 7:448 7:450 7:453
+ECLI:NL:RBROT:2024:3609,test,ECLI:NL:RBROT:2024:3609,2024-02-16,Rechtbank Rotterdam,Beschikking,section,96,0,7:450
+ECLI:NL:RBROT:2024:3678,dev,ECLI:NL:RBROT:2024:3678,2024-04-24,Rechtbank Rotterdam,Beschikking,section,80,0,7:464
+ECLI:NL:RBROT:2025:11084,test,ECLI:NL:RBROT:2025:11084,2025-09-17,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,170,0,7:446 7:456 7:464
+ECLI:NL:RBROT:2025:14747,dev,ECLI:NL:RBROT:2025:14747,2025-12-11,Rechtbank Rotterdam,Kort geding,section,520,1,7:447
+ECLI:NL:RBROT:2025:1483,test,ECLI:NL:RBROT:2025:1483,2025-02-05,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,1600,0,7:448 7:450 7:462
+ECLI:NL:RBROT:2025:2707,test,ECLI:NL:RBROT:2025:2707,2025-03-03,Rechtbank Rotterdam,Kort geding,section,699,0,7:454 7:457 7:458a
+ECLI:NL:RBROT:2025:3309,test,ECLI:NL:RBROT:2025:3309,2025-02-12,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,514,1,7:461
+ECLI:NL:RBROT:2026:2629,test,ECLI:NL:RBROT:2026:2629,2026-03-18,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,245,0,7:464
+ECLI:NL:RBROT:2026:2951,dev,ECLI:NL:RBROT:2026:2951,2026-01-13,Rechtbank Rotterdam,Beschikking,section,153,0,7:464
+ECLI:NL:RBROT:2026:3552,test,ECLI:NL:RBROT:2026:3552,2026-04-01,Rechtbank Rotterdam,Eerste aanleg - enkelvoudig,section,383,1,6:75 6:96 6:101 7:453
+ECLI:NL:RBROT:2026:5972,test,ECLI:NL:RBROT:2026:5972,2026-05-19,Rechtbank Rotterdam,Beschikking,section,682,0,6:96 7:446 7:453
+ECLI:NL:RBSGR:2009:BK0176,test,ECLI:NL:RBSGR:2009:BK0176,2009-10-06,Rechtbank 's-Gravenhage,Kort geding,heading,1750,0,7:453
+ECLI:NL:RBSGR:2010:BO3180,dev,ECLI:NL:RBSGR:2010:BO3180,2010-09-29,Rechtbank 's-Gravenhage,Eerste aanleg - enkelvoudig,heading,1125,0,6:108 7:453
+ECLI:NL:RBSGR:2011:BX6364,test,ECLI:NL:RBSGR:2011:BX6364,2011-11-23,Rechtbank 's-Gravenhage,Eerste aanleg - enkelvoudig,heading,609,0,7:453
+ECLI:NL:RBSGR:2012:BX6260,dev,ECLI:NL:RBSGR:2012:BX6260,2012-08-31,Rechtbank 's-Gravenhage,Kort geding,heading,171,0,7:457
+ECLI:NL:RBSHE:2005:BQ3252,test,ECLI:NL:RBSHE:2005:BQ3252,2005-06-25,Rechtbank 's-Hertogenbosch,Eerste aanleg - enkelvoudig,heading,394,0,6:74 6:162 7:450 7:453 7:462
+ECLI:NL:RBSHE:2007:BB4665,test,ECLI:NL:RBSHE:2007:BB4665,2007-10-01,Rechtbank 's-Hertogenbosch,Eerste aanleg - enkelvoudig,heading,527,0,7:446 7:460
+ECLI:NL:RBSHE:2011:BP9894,test,ECLI:NL:RBSHE:2011:BP9894,2011-03-29,Rechtbank 's-Hertogenbosch,Kort geding,heading,834,0,7:465
+ECLI:NL:RBSHE:2012:BV6856,dev,ECLI:NL:RBSHE:2012:BV6856,2012-02-22,Rechtbank 's-Hertogenbosch,Eerste aanleg - enkelvoudig,heading,900,0,7:448 7:450 7:453 7:462
+ECLI:NL:RBUTR:2007:AZ6197,dev,ECLI:NL:RBUTR:2007:AZ6197,2007-01-10,Rechtbank Utrecht,Eerste aanleg - meervoudig,heading,461,0,6:98 7:453
+ECLI:NL:RBUTR:2009:BH3560,dev,ECLI:NL:RBUTR:2009:BH3560,2009-02-20,Rechtbank Utrecht,Kort geding,heading,1083,0,7:460
+ECLI:NL:RBUTR:2009:BK1546,dev,ECLI:NL:RBUTR:2009:BK1546,2009-10-28,Rechtbank Utrecht,Eerste aanleg - enkelvoudig,heading,3836,3,6:106 6:162 7:448 7:450 7:453 7:454
+ECLI:NL:RBUTR:2009:BK3305,test,ECLI:NL:RBUTR:2009:BK3305,2009-10-14,Rechtbank Utrecht,Eerste aanleg - enkelvoudig,heading,92,0,7:464
+ECLI:NL:RBUTR:2010:BN7740,test,ECLI:NL:RBUTR:2010:BN7740,2010-08-25,Rechtbank Utrecht,Eerste aanleg - enkelvoudig,heading,1479,0,7:462
+ECLI:NL:RBUTR:2010:BO6888,test,ECLI:NL:RBUTR:2010:BO6888,2010-12-08,Rechtbank Utrecht,Eerste aanleg - meervoudig,heading,1758,0,6:74 6:162 7:453
+ECLI:NL:RBUTR:2011:BQ7799,test,ECLI:NL:RBUTR:2011:BQ7799,2011-03-16,Rechtbank Utrecht,Eerste aanleg - enkelvoudig,heading,346,0,7:446
+ECLI:NL:RBUTR:2011:BQ8717,test,ECLI:NL:RBUTR:2011:BQ8717,2011-06-15,Rechtbank Utrecht,Eerste aanleg - enkelvoudig,heading,1190,0,7:448
+ECLI:NL:RBUTR:2012:BW8487,test,ECLI:NL:RBUTR:2012:BW8487,2012-05-30,Rechtbank Utrecht,Eerste aanleg - meervoudig,heading,513,0,7:465
+ECLI:NL:RBUTR:2012:BX3527,test,ECLI:NL:RBUTR:2012:BX3527,2012-07-11,Rechtbank Utrecht,Eerste aanleg - enkelvoudig,heading,312,0,7:464
+ECLI:NL:RBZLY:2008:BG1780,test,ECLI:NL:RBZLY:2008:BG1780,2008-06-25,Rechtbank Zwolle-Lelystad,Eerste aanleg - meervoudig,heading,1093,0,7:464
+ECLI:NL:RBZLY:2010:BO4400,test,ECLI:NL:RBZLY:2010:BO4400,2010-07-14,Rechtbank Zwolle-Lelystad,Eerste aanleg - enkelvoudig,heading,1046,0,7:448 7:453 7:462
+ECLI:NL:RBZLY:2011:BQ0981,test,ECLI:NL:RBZLY:2011:BQ0981,2011-03-02,Rechtbank Zwolle-Lelystad,Eerste aanleg - enkelvoudig,heading,813,0,6:89 7:463
+ECLI:NL:RBZUT:2004:AP0089,dev,ECLI:NL:RBZUT:2004:AP0089,2004-05-12,Rechtbank Zutphen,Eerste aanleg - enkelvoudig,heading,289,0,7:447 7:454 7:457
+ECLI:NL:RBZUT:2008:BD3553,test,ECLI:NL:RBZUT:2008:BD3553,2008-03-26,Rechtbank Zutphen,Kort geding,heading,2277,0,7:446 7:460
+ECLI:NL:RBZUT:2009:BK4206,dev,ECLI:NL:RBZUT:2009:BK4206,2009-10-08,Rechtbank Zutphen,Eerste aanleg - meervoudig,heading,1575,3,7:454 7:464
+ECLI:NL:RBZUT:2011:BP0323,test,ECLI:NL:RBZUT:2011:BP0323,2011-01-12,Rechtbank Zutphen,Eerste aanleg - enkelvoudig,heading,1223,0,7:462
+ECLI:NL:RBZUT:2011:BR0785,test,ECLI:NL:RBZUT:2011:BR0785,2011-07-06,Rechtbank Zutphen,Eerste aanleg - enkelvoudig,heading,297,0,7:450
+ECLI:NL:RBZWB:2014:3600,test,ECLI:NL:RBZWB:2014:3600,2014-01-15,Rechtbank Zeeland-West-Brabant,Eerste aanleg - enkelvoudig,section,178,0,6:77 7:462
+ECLI:NL:RBZWB:2015:2681,test,ECLI:NL:RBZWB:2015:2681,2015-04-15,Rechtbank Zeeland-West-Brabant,Eerste aanleg - enkelvoudig,section,274,0,7:465
+ECLI:NL:RBZWB:2022:523,test,ECLI:NL:RBZWB:2022:523,2022-01-25,Rechtbank Zeeland-West-Brabant,Beschikking,section,132,0,7:457
+ECLI:NL:RBZWB:2022:5457,test,ECLI:NL:RBZWB:2022:5457,2022-09-21,Rechtbank Zeeland-West-Brabant,Bodemzaak,section,711,0,6:95 6:106 6:162 6:170 7:456 7:457 7:462
+ECLI:NL:RBZWB:2023:2658,test,ECLI:NL:RBZWB:2023:2658,2023-04-17,Rechtbank Zeeland-West-Brabant,Kort geding,section,1041,0,7:446 7:460
+ECLI:NL:RBZWB:2024:5547,dev,ECLI:NL:RBZWB:2024:5547,2024-08-07,Rechtbank Zeeland-West-Brabant,Bodemzaak,section,137,1,6:96 7:446
+ECLI:NL:RBZWB:2024:7847,dev,ECLI:NL:RBZWB:2024:7847,2024-10-23,Rechtbank Zeeland-West-Brabant,Bodemzaak,section,135,0,6:96 7:446 7:453 7:461
+ECLI:NL:RBZWB:2025:5519,dev,ECLI:NL:RBZWB:2025:5519,2025-07-09,Rechtbank Zeeland-West-Brabant,Bodemzaak,section,137,0,7:450
+ECLI:NL:RBZWB:2026:1275,test,ECLI:NL:RBZWB:2026:1275,2026-01-27,Rechtbank Zeeland-West-Brabant,Rekestprocedure,section,95,0,7:446
+ECLI:NL:RBZWB:2026:503,test,ECLI:NL:RBZWB:2026:503,2026-01-28,Rechtbank Zeeland-West-Brabant,Bodemzaak,section,132,0,6:96 7:446 7:454
+ECLI:NL:RBZWB:2026:5316,dev,ECLI:NL:RBZWB:2026:5316,2026-06-17,Rechtbank Zeeland-West-Brabant,Bodemzaak,section,1217,0,6:162 7:448 7:453
+ECLI:NL:RBZWO:2003:AN9850,test,ECLI:NL:RBZWO:2003:AN9850,2003-12-10,Rechtbank Zwolle,Eerste aanleg - meervoudig,heading,814,0,7:450 7:466

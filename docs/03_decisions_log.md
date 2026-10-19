@@ -150,3 +150,38 @@ pending a manual check of how many judgments yield a clean facts section
 and a substantive (not merely procedural) citation. Note that several often
 cited articles (7:450 consent, 7:462 hospital liability, 7:464 examinations)
 are not yet annotated: the full 87-article corpus needs annotating (part C).
+
+
+## 19/10/2026 — Study A dataset built
+
+`scripts/build_study_a.py` (logic in `src/data/caselaw.py`) turns the 703
+judgments citing a WGBO article into retrieval items:
+
+- **Question** = the facts section. Found by section title ("De feiten",
+  "Feiten", "De vaststaande feiten", "Feitelijke achtergrond": 293) or, for
+  judgments without section markup, by a numbered "N. De feiten" heading in
+  the running text up to heading N+1 (98).
+- **Masking.** Every statutory article reference in the question becomes
+  `[ARTIKEL]` (any law, any form: "art. 7:453 BW", "artikelen 7:446 en 7:453
+  BW", "artikel 453 van Boek 7 BW", bare "7:453 BW"), and "WGBO" / its full
+  name becomes `[WET]`. Bare `n:nnn` is masked only when a law follows or it
+  is Book 6/7 with article >= 60, so clock times ("19:20 uur") stay. 72
+  questions contained references. After masking no corpus citation is left
+  in any question (checked with the same extractor that produces the answers).
+- **Answer** = corpus articles (statutes.jsonl, 87) cited anywhere in the
+  judgment. Includes citations in passing; to be checked by hand on a sample.
+- **Dropped:** 254 without a recognisable facts section (interim/final
+  judgments referring to earlier ones, Hoge Raad, unusual structure), 58 with
+  facts under 80 words (mostly "the facts as established below apply").
+- **Split** per group (union-find over rechtspraak `dcterms:relation` links and
+  identical facts), by a hash of the group id: dev 125, test 266, 388 groups.
+  Frozen: existing assignments in split.csv are kept on re-runs.
+
+Result: 391 items, question median 663 words (80–4,788), 155 with one answer,
+236 with two to nine; 49 of the 87 corpus articles occur as an answer. Most
+frequent: 7:453, 7:446, 7:457, 7:448. Long questions exceed the input limit of
+some dense encoders (e.g. 512 tokens for multilingual-e5); truncation or
+chunking is a per-system choice, not part of the dataset.
+
+Not done: Hoge Raad judgments mostly state facts inside "beoordeling van het
+middel" ("In cassatie kan worden uitgegaan van...") and are not recovered.

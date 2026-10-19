@@ -341,5 +341,70 @@ class StatuteParsingTest(unittest.TestCase):
         self.assertEqual(ref["ref_text"], "artikel 455")
 
 
+_JUDGMENT_XML = """<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/"
+           xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:psi="http://psi.rechtspraak.nl/">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:GHXX:2020:1</dcterms:identifier>
+      <dcterms:creator>Gerechtshof X</dcterms:creator>
+      <dcterms:date>2020-05-01</dcterms:date>
+      <psi:procedure>Hoger beroep</psi:procedure>
+      <dcterms:relation ecli:resourceIdentifier="ECLI:NL:RBXX:2018:9">Eerste aanleg</dcterms:relation>
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0"><para>Aansprakelijkheid huisarts, art. 7:453 BW.</para></inhoudsindicatie>
+  <uitspraak xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0">
+    <section><title><nr>1</nr> Het geding</title><para>Procedure.</para></section>
+    <section><title><nr>2</nr> De feiten</title>
+      <para>2.1 De huisarts heeft om 7:45 uur de patiënt gezien.</para>
+      <para>2.2 Eiser beroept zich op artikel 7:453 BW.</para></section>
+    <section><title><nr>3</nr> De beoordeling</title><para>Ook 6:162 BW is van toepassing.</para></section>
+  </uitspraak>
+</open-rechtspraak>"""
+
+
+class CaselawTest(unittest.TestCase):
+    """Judgment parsing and citation masking for study A (src/data/caselaw.py)."""
+
+    def test_parse_metadata_relations_and_facts_section(self):
+        from src.data.caselaw import parse_judgment
+        j = parse_judgment(_JUDGMENT_XML.encode("utf-8"))
+        self.assertEqual((j["ecli"], j["court"], j["procedure"]),
+                         ("ECLI:NL:GHXX:2020:1", "Gerechtshof X", "Hoger beroep"))
+        self.assertEqual(j["related"], ["ECLI:NL:RBXX:2018:9"])
+        self.assertEqual(j["facts_method"], "section")
+        self.assertTrue(j["facts"].startswith("2.1 De huisarts"))
+        self.assertNotIn("6:162", j["facts"])  # the next section is not part of the facts
+
+    def test_facts_from_numbered_heading_without_sections(self):
+        from src.data.caselaw import _facts_from_text
+        text = "1. Het geding Procedure. 2. De feiten 2.1 Eiser is geopereerd. 3. De beoordeling Iets."
+        self.assertEqual(_facts_from_text(text), "2.1 Eiser is geopereerd.")
+
+    def test_citations_ignore_other_laws(self):
+        from src.data.caselaw import bw_citations
+        self.assertEqual(bw_citations("artikel 7:453 BW en artikel 7:11 Awb"), {"7:453"})
+
+    def test_masking_removes_every_corpus_reference(self):
+        from src.data.caselaw import bw_citations, mask_citations
+        cases = {
+            "ingevolge art. 7:453 BW van een goed hulpverlener": "ingevolge [ARTIKEL] van een goed hulpverlener",
+            "de artikelen 7:446 en 7:453 BW en artikel 6:162 lid 1 BW": "de [ARTIKEL] en [ARTIKEL]",
+            "artikel 453 van Boek 7 BW": "[ARTIKEL]",
+            "(7:446 e.v. BW) en de WGBO": "([ARTIKEL]) en de [WET]",
+            "artt. 7:448 lid 2, sub b en 7:450 BW": "[ARTIKEL]",
+        }
+        for text, expected in cases.items():
+            masked, n = mask_citations(text)
+            self.assertEqual(masked, expected)
+            self.assertGreater(n, 0)
+            self.assertEqual(bw_citations(masked), set())
+
+    def test_masking_keeps_clock_times(self):
+        from src.data.caselaw import mask_citations
+        self.assertEqual(mask_citations("om 7:45 uur en om 19:20 uur"), ("om 7:45 uur en om 19:20 uur", 0))
+
+
 if __name__ == "__main__":
     unittest.main()

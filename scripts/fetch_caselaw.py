@@ -37,6 +37,10 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.data.caselaw import bw_citations  # noqa: E402
+
 RAW = PROJECT_ROOT / "data" / "raw" / "case_law"
 XML_DIR = RAW / "xml"
 INDEX = RAW / "index.csv"
@@ -59,10 +63,6 @@ MEDICAL = re.compile(
     re.IGNORECASE,
 )
 
-# "artikel 7:454 BW", "art. 7:448 lid 2 BW", "artikelen 7:446 en 7:453 BW", "(6:162 BW)"
-_CITE = re.compile(r"(?<![\d:])([67]):(\d{1,3}[a-z]?)(?![\d:])")
-_NEXT_LAW = re.compile(r"\b(BW|Burgerlijk Wetboek|Awb|Rv|Wft|Sr|Sv|Wvw|AOW|WIA|ZW)\b")
-
 
 def get(url: str, params: list[tuple[str, str]] | None = None, tries: int = 4) -> bytes:
     if params:
@@ -78,21 +78,6 @@ def get(url: str, params: list[tuple[str, str]] | None = None, tries: int = 4) -
             print(f"  retry after error: {e}")
             time.sleep(5 * (attempt + 1))
     raise RuntimeError("unreachable")
-
-
-def bw_citations(text: str) -> set[str]:
-    """Book 6/7 BW article citations in a judgment, e.g. {'7:454', '6:162'}.
-
-    A citation counts unless the next law named within 60 characters is a
-    different act (e.g. "artikel 7:11 Awb"); in civil judgments a bare
-    "7:454" refers to the BW.
-    """
-    found = set()
-    for m in _CITE.finditer(text):
-        law = _NEXT_LAW.search(text, m.end(), m.end() + 60)
-        if law is None or law.group(1) in ("BW", "Burgerlijk Wetboek"):
-            found.add(f"{m.group(1)}:{m.group(2)}")
-    return found
 
 
 # --------------------------------------------------------------------- index

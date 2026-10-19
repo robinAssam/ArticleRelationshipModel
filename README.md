@@ -108,6 +108,27 @@ Only the derived citation table (`data/processed/caselaw_citations.csv`:
 ECLI, date, court, cited articles) is in the repository; downloaded
 judgments stay local.
 
+**Study A test set.** `scripts/build_study_a.py` turns these judgments into
+question–answer pairs for measuring retrieval:
+
+- **Question:** the facts section of the judgment ("De feiten"). Article
+  numbers in it are replaced by `[ARTIKEL]` (and "WGBO" by `[WET]`), because
+  judges often name the article in the facts, which would give the answer
+  away.
+- **Answer:** the articles of the 87-article corpus that the judgment cites.
+- **Result:** 391 usable judgments. 254 were left out because no facts
+  section could be found, and 58 because the facts section was very short
+  (often only "the facts are as established by the court below").
+  Questions are a median of 663 words; 155 have one correct article, the
+  rest two to nine. 49 of the 87 articles occur as an answer.
+- **Split:** 125 dev (for tuning) and 266 test (used once, at the end).
+  Judgments about the same case (first instance and appeal) stay on the
+  same side, and the split stays fixed when the script is re-run.
+
+The split and answers are in `data/processed/study_a/split.csv`; the
+questions themselves (`queries.jsonl`) are rebuilt locally from the
+downloaded judgments. Counts: `outputs/tables/study_a_dataset_summary.json`.
+
 
 ## Results so far
 
@@ -159,7 +180,7 @@ else runs locally. The hosted version runs on Streamlit Community Cloud from
       raw/statutes/                Official BWB XML (git-ignored) + sources.json.
       raw/case_law/                Downloaded judgments (git-ignored).
       processed/                   statutes.jsonl, statute_references.csv,
-                                   caselaw_citations.csv.
+                                   caselaw_citations.csv, study_a/split.csv.
 
     src/
       annotation/schema.py         Atom dataclass and field definitions.
@@ -168,16 +189,18 @@ else runs locally. The hosted version runs on Streamlit Community Cloud from
       data/reasoning.py            Graph walker with an auditable trail.
       data/query.py                Question -> query atoms (Claude) -> ranked articles.
       data/statutes.py             Parse official BWB XML into article records.
+      data/caselaw.py              Parse judgments, find the facts, mask citations.
       data/generate_obsidian.py    Optional Obsidian vault export.
 
     scripts/
       run_eval.py                  Article-level evaluation -> outputs/tables/.
       fetch_statutes.py            Download and parse the statute text.
       fetch_caselaw.py             Find judgments citing WGBO articles.
+      build_study_a.py             Judgments -> study A questions, answers, split.
       deploy_hf_space.py           Optional Hugging Face Spaces deployment.
 
     deploy/                        Streamlit Cloud and Hugging Face configs.
-    tests/test_pipeline.py         27 tests (synthetic corpus, parser, queries).
+    tests/test_pipeline.py         32 tests (synthetic corpus, parsers, queries, masking).
     notebooks/                     Exploration (01) and experiments (02).
     outputs/tables/                Evaluation results with their config.
 
@@ -200,6 +223,7 @@ Common commands, from the repo root:
     python scripts/run_eval.py                             # evaluation tables
     python scripts/fetch_statutes.py                       # refresh statute text
     python scripts/fetch_caselaw.py index|fetch|sample|report   # case law
+    python scripts/build_study_a.py                        # study A test set
 
 
 ## Scaling up
@@ -254,13 +278,16 @@ makes annotating a whole book feasible.
   liability), are not yet searchable.
 - **Annotations are in English, the law and case law in Dutch.** Questions
   are bridged by the LLM; the annotation language is still to be decided.
-- The current evaluation queries are corpus atoms, not real questions.
-  Real judgments as queries are the next step.
+- The current evaluation queries are corpus atoms, not real questions. The
+  real-judgment test set now exists (391 questions) but no system has been
+  run on it yet.
+- The test set's answers are every corpus article a judgment cites, including
+  ones cited only in passing. A hand check of a sample is still to do.
 
 
 ## Next steps
 
-1. Build the test set from the 703 judgments
+1. Build the test set from the 703 judgments (done: 391 questions).
 2. Measure two standard baselines on all 87 articles.
 3. Test whether the links between articles (cross-references and the legal
    tree) improve those baselines, still without atoms.
