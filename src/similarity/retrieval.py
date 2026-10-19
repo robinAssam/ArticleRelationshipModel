@@ -8,6 +8,8 @@ atoms, and the metrics every system is scored with:
     article_documents()       one text per article from statutes.jsonl
     bm25_scores(...)          keyword search (BM25 over lowercased words)
     dense_scores(...)         embedding search (cosine of sentence embeddings)
+    zscore_fusion(...)        hybrid: sum of standardised scores of several systems
+    rrf_fusion(...)           hybrid: reciprocal rank fusion of several systems
     rank_metrics(...)         recall@k, MRR and nDCG@k for one question
     evaluate(...)             metrics for every question, plus the mean
 
@@ -93,6 +95,33 @@ def dense_scores(questions: list[str], docs: list[str], model,
 
 def random_scores(n_questions: int, n_docs: int, seed: int = 0) -> np.ndarray:
     return np.random.default_rng(seed).random((n_questions, n_docs))
+
+
+def zscore_fusion(*score_matrices: np.ndarray) -> np.ndarray:
+    """Sum of per-question standardised scores (equal weights).
+
+    BM25 scores and cosine similarities live on different scales; standardising
+    each question's scores (mean 0, sd 1) makes them addable. An article ranks
+    high when both systems like it, or one system likes it a lot.
+    """
+    def z(s: np.ndarray) -> np.ndarray:
+        sd = s.std(axis=1, keepdims=True)
+        return (s - s.mean(axis=1, keepdims=True)) / np.where(sd > 0, sd, 1.0)
+
+    return sum(z(s) for s in score_matrices)
+
+
+def rrf_fusion(*score_matrices: np.ndarray, k: int = 60) -> np.ndarray:
+    """Reciprocal rank fusion: sum of 1 / (k + rank) over the systems.
+
+    Uses only each system's ranking, not its scores, so no scaling is needed;
+    k = 60 is the usual setting (Cormack et al., 2009). Ties within a system
+    share the average rank.
+    """
+    import scipy.stats
+
+    ranks = [scipy.stats.rankdata(-s, axis=1) for s in score_matrices]
+    return sum(1.0 / (k + r) for r in ranks)
 
 
 # ------------------------------------------------------------------- metrics

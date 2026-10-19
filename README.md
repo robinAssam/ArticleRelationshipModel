@@ -155,6 +155,8 @@ systems use no atoms; they are the bar the atom system has to beat.
 | Random ranking | 0.10 | 0.06 | 0.11 | 0.23 | 0.06 |
 | BM25 (keyword search) | 0.33 | 0.27 | 0.46 | 0.61 | 0.29 |
 | Dense (BGE-M3 embeddings) | 0.31 | 0.31 | 0.42 | 0.61 | 0.28 |
+| Hybrid: BM25 + dense, z-score fusion | 0.37 | 0.29 | 0.46 | 0.66 | 0.31 |
+| **Hybrid: BM25 + dense, rank fusion (RRF)** | **0.38** | 0.30 | **0.46** | **0.66** | **0.32** |
 
 - **MRR:** 1 / position of the first correct article, averaged.
 - **recall@k:** share of the cited articles in the top k.
@@ -173,6 +175,15 @@ of care (7:453). Neither ever finds 6:74 (failure to perform) or 6:162 (tort)
 in the top 10, and dense never finds 7:453, the most cited article. These
 are short, abstract articles that share neither words nor obvious meaning
 with the story of a case: the gap the atoms and the graph are meant to close.
+
+The **hybrid** merges the BM25 and dense rankings. Rank fusion (RRF) adds
+1/(60 + rank) from each system and needs no tuning. It puts the first
+correct article higher (MRR 0.38 vs 0.33 for BM25, p = 0.06; vs 0.31 for
+dense, p = 0.01) but finds no more of the cited articles in the top 10
+(recall@10 0.46, same as BM25). It does not close the gap either: 6:74 and
+6:162 are still never in the top 10, and 7:453 only 4 times in 44. RRF is the
+baseline the atom system has to beat, and the first stage that picks the
+shortlist for atom re-ranking.
 
 
 ## The app: Statute Navigator
@@ -319,7 +330,8 @@ makes annotating a whole book feasible.
 
 1. Build the test set from the 703 judgments (done: 391 questions).
 2. Measure two standard baselines on all 87 articles (done on dev: BM25 and
-   dense cannot be told apart, see *Results so far*).
+   dense cannot be told apart; combined, they rank better. See *Results so
+   far*).
 3. Test whether the links between articles (cross-references and the legal
    tree) improve those baselines, still without atoms.
 4. Build the automatic annotation pipeline and annotate the full 87-article

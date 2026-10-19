@@ -1,4 +1,30 @@
+"""Run the study A baselines (no atoms) on the judgment questions.
 
+Systems:
+    random       articles in random order: the floor every system must beat
+    bm25         keyword search over the article text
+    dense        embedding search (default BAAI/bge-m3, which reads up to
+                 8,192 tokens, so most facts sections fit whole)
+    hybrid       BM25 + dense: sum of standardised scores (z-score fusion)
+    hybrid_rrf   BM25 + dense: reciprocal rank fusion (k = 60)
+
+Runs on the dev split by default. The test split is for the final run only,
+once every system and setting is fixed, so it needs --final.
+
+Every run writes, under outputs/tables/:
+
+    baselines_<split>_summary.json     configuration + mean metrics per system
+    baselines_<split>_per_query.csv    one row per question and system, for
+                                       error analysis and paired tests
+
+Dense embeddings are cached in data/processed/study_a/cache/ (git-ignored).
+
+Examples (from the repo root):
+
+    python scripts/run_baselines.py
+    python scripts/run_baselines.py --systems random bm25
+    python scripts/run_baselines.py --split test --final
+"""
 
 from __future__ import annotations
 
@@ -16,7 +42,8 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 from src.similarity.retrieval import (  # noqa: E402
-    article_documents, bm25_scores, dense_scores, evaluate, random_scores,
+    article_documents, bm25_scores, dense_scores, evaluate, random_scores, rrf_fusion,
+    zscore_fusion,
 )
 
 QUERIES = PROJECT_ROOT / "data" / "processed" / "study_a" / "queries.jsonl"
@@ -24,14 +51,15 @@ STATUTES = PROJECT_ROOT / "data" / "processed" / "statutes.jsonl"
 CACHE = PROJECT_ROOT / "data" / "processed" / "study_a" / "cache"
 OUT_DIR = PROJECT_ROOT / "outputs" / "tables"
 
+SYSTEMS = ["random", "bm25", "dense", "hybrid", "hybrid_rrf"]
+
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--split", choices=["dev", "test"], default="dev")
     p.add_argument("--final", action="store_true",
                    help="required for --split test: confirms this is the final run")
-    p.add_argument("--systems", nargs="+", default=["random", "bm25", "dense"],
-                   choices=["random", "bm25", "dense"])
+    p.add_argument("--systems", nargs="+", default=SYSTEMS, choices=SYSTEMS)
     p.add_argument("--model", default="BAAI/bge-m3", help="sentence-transformer for dense")
     p.add_argument("--max-length", type=int, default=8192,
                    help="tokens the dense model reads; longer texts are truncated")
@@ -69,6 +97,20 @@ def main() -> None:
     ids, docs = article_documents(STATUTES)
     print(f"{len(items)} {args.split} questions, {len(ids)} articles")
 
+    computed: dict[str, np.ndarray] = {}
+
+    def scores_of(system: str) -> np.ndarray:
+        if system not in computed:
+            if system == "bm25":
+                computed[system] = bm25_scores(questions, docs)
+            elif system == "dense":
+                computed[system] = _dense(questions, docs, args)
+            elif system == "hybrid":
+                computed[system] = zscore_fusion(scores_of("bm25"), scores_of("dense"))
+            elif system == "hybrid_rrf":
+                computed[system] = rrf_fusion(scores_of("bm25"), scores_of("dense"))
+        return computed[system]
+
     summaries, per_query = {}, []
     for system in args.systems:
         if system == "random":
@@ -77,14 +119,13 @@ def main() -> None:
             pq = sum(r[0] for r in runs) / len(runs)
             summary = {k: round(float(np.mean([r[1][k] for r in runs])), 4) for k in runs[0][1]}
         else:
-            scores = bm25_scores(questions, docs) if system == "bm25" else _dense(questions, docs, args)
-            pq, summary = evaluate(scores, ids, answers)
+            pq, summary = evaluate(scores_of(system), ids, answers)
         summaries[system] = summary
         pq.insert(0, "system", system)
         pq.insert(1, "ecli", [it["ecli"] for it in items])
         pq.insert(2, "n_answers", [len(a) for a in answers])
         per_query.append(pq)
-        print(f"{system:>7}: " + "  ".join(f"{k} {v:.3f}" for k, v in summary.items()))
+        print(f"{system:>10}: " + "  ".join(f"{k} {v:.3f}" for k, v in summary.items()))
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     stem = OUT_DIR / f"baselines_{args.split}"

@@ -1,4 +1,20 @@
+"""Deploy the Streamlit app to a Hugging Face Space.
 
+Uploads only what the app needs to run: app.py, the src/ package, the
+annotations and the Streamlit theme, plus the Space's Dockerfile, README and
+requirements from deploy/hf_space/. Notebooks, documents, outputs and
+.streamlit/secrets.toml are never uploaded.
+
+One-time setup:
+    hf auth login                      # paste a Hugging Face *write* token
+
+Deploy (creates the Space on first run, updates it afterwards):
+    python scripts/deploy_hf_space.py --space <your-hf-username>/article-relationship-model
+
+Then, in the Space's Settings > Variables and secrets, add two secrets:
+    ANTHROPIC_API_KEY   your Anthropic key
+    APP_PASSWORD        the password visitors must enter
+"""
 
 from __future__ import annotations
 

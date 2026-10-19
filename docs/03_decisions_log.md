@@ -230,3 +230,32 @@ truncating questions to 512 tokens makes dense worse (R@10 0.373, MRR 0.310),
 so the whole text helps. A chunked variant (score question pieces separately,
 aggregate) is a candidate. Zero-shot dense ~ BM25 matches the literature
 (BEIR; BSARD, where only dense models trained on the task beat BM25).
+
+
+## 19/10/2026 — Hybrid baseline (BM25 + dense)
+
+Two fusion methods in `src/similarity/retrieval.py`, both systems in
+`scripts/run_baselines.py`:
+- `hybrid`: z-score fusion, sum of per-question standardised scores, equal
+  weights (no tuning).
+- `hybrid_rrf`: reciprocal rank fusion, sum of 1/(60 + rank) (Cormack et al.
+  2009; k = 60 not tuned). Ties share the average rank.
+
+Dev, 125 questions:
+
+    hybrid:     MRR 0.367  R@5 0.292  R@10 0.461  R@20 0.658  nDCG@10 0.310
+    hybrid_rrf: MRR 0.376  R@5 0.300  R@10 0.463  R@20 0.658  nDCG@10 0.318
+
+Paired tests, hybrid_rrf minus (bootstrap 95% interval, permutation p):
+- vs BM25: MRR +0.051 [-0.001, +0.104] p 0.06; R@10 0.000 p 1.0; nDCG@10 +0.025 p 0.24
+- vs dense: MRR +0.063 [+0.013, +0.110] p 0.01; R@10 +0.047 p 0.19; nDCG@10 +0.037 p 0.09
+- vs z-score hybrid: no difference (MRR +0.009, p 0.60)
+
+The hybrid improves the order (the first correct article comes earlier) but
+not coverage (recall@10 unchanged). Per article in the top 10 (RRF): 7:453
+4/44 (BM25 15, dense 0: fusion dilutes BM25's hits), 7:450 13/18, 7:457 17/23,
+6:74 0/11, 6:162 0/9. The general-norm articles remain unreachable.
+
+Decision: `hybrid_rrf` is the reference baseline for study A (best on every
+metric, no parameter tuned on dev) and the first stage for the atom
+re-ranker (shortlist = its top k).

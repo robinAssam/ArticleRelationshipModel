@@ -1,11 +1,13 @@
 {
-  "run_at": "2026-10-19T18:38:27",
+  "run_at": "2026-10-19T19:00:46",
   "config": {
     "split": "dev",
     "systems": [
       "random",
       "bm25",
-      "dense"
+      "dense",
+      "hybrid",
+      "hybrid_rrf"
     ],
     "model": "BAAI/bge-m3",
     "max_length": 8192,
@@ -37,6 +39,22 @@
       "recall@10": 0.4156,
       "recall@20": 0.6135,
       "ndcg@10": 0.2805
+    },
+    "hybrid": {
+      "mrr": 0.3671,
+      "recall@1": 0.0959,
+      "recall@5": 0.2918,
+      "recall@10": 0.4606,
+      "recall@20": 0.6576,
+      "ndcg@10": 0.3097
+    },
+    "hybrid_rrf": {
+      "mrr": 0.3762,
+      "recall@1": 0.1013,
+      "recall@5": 0.3002,
+      "recall@10": 0.463,
+      "recall@20": 0.658,
+      "ndcg@10": 0.3175
     }
   }
 }

@@ -1,3 +1,27 @@
+"""Find Dutch civil judgments that cite WGBO articles (rechtspraak.nl open data).
+
+Study A uses real judgments as questions and the articles they cite as the
+answers, so this measures how much usable case law exists. Three stages:
+
+    index    Fetch the summary of every published civil-law judgment with text
+             (~290k, ~5 minutes) and select medical candidates by keyword.
+    fetch    Download the full text of the candidates and extract every
+             citation of a Book 6 / Book 7 BW article. Resumable.
+    sample   Download a random sample of NON-candidates and check how many
+             cite the WGBO anyway: an estimate of what the keyword filter misses.
+    report   Print the counts (also run at the end of fetch and sample).
+
+Examples (from the repo root):
+
+    python scripts/fetch_caselaw.py index
+    python scripts/fetch_caselaw.py fetch
+    python scripts/fetch_caselaw.py sample --n 1000
+    python scripts/fetch_caselaw.py report
+
+Judgment texts and the summary index stay in data/raw/case_law/ (git-ignored);
+only the derived citation table data/processed/caselaw_citations.csv is meant
+to be committed. Source: https://www.rechtspraak.nl/Uitspraken/paginas/open-data.aspx
+"""
 
 from __future__ import annotations
 

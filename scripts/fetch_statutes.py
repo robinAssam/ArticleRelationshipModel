@@ -1,4 +1,21 @@
+"""Download the official statute text and turn it into article records.
 
+Source: the Basiswettenbestand (BWB) repository of the Dutch government,
+which publishes every statute as consolidated XML, one file per version.
+
+Writes:
+    data/raw/statutes/<BWB-id>_<version>.xml   raw XML (git-ignored, re-downloadable)
+    data/raw/statutes/sources.json             which version was used + checksum
+    data/processed/statutes.jsonl              one article per line
+    data/processed/statute_references.csv      article -> article references
+    outputs/tables/annotation_text_check.csv   annotated atoms vs official text
+
+Examples (from the repo root):
+
+    python scripts/fetch_statutes.py                       # latest versions
+    python scripts/fetch_statutes.py --version BWBR0005290=2026-07-01_1
+    python scripts/fetch_statutes.py --offline             # re-parse saved XML
+"""
 
 from __future__ import annotations
 

@@ -1,3 +1,20 @@
+"""Run the article-level leave-one-out evaluation and save the results.
+
+Thesis tables should come from files, not from whatever a notebook printed
+last. Every run writes, under outputs/tables/:
+
+    <name>_summary.json    the configuration used + the summary metrics
+    <name>_per_query.csv   one row per query (atom), for error analysis
+
+With --sweep it instead evaluates every normalize x alpha combination and
+writes <name>_sweep.csv (one row per combination) plus the summary JSON.
+
+Examples (from the repo root):
+
+    python scripts/run_eval.py
+    python scripts/run_eval.py --name no_semantic --alpha 1.0
+    python scripts/run_eval.py --name sweep --sweep
+"""
 
 from __future__ import annotations
 

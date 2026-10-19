@@ -432,6 +432,17 @@ class RetrievalMetricsTest(unittest.TestCase):
         scores = bm25_scores(["het ziekenhuis is het dossier van de patiënt kwijt"], docs)
         self.assertEqual(int(np.argmax(scores[0])), 0)
 
+    def test_fusion_rewards_agreement_and_ignores_scale(self):
+        import numpy as np
+        from src.similarity.retrieval import rrf_fusion, zscore_fusion
+        # Scales differ wildly. Both systems rank article 0 first; they disagree on 1 and 2
+        a = np.array([[100.0, 95.0, 0.0]])
+        b = np.array([[0.9, 0.1, 0.5]])
+        for fused in (zscore_fusion(a, b), rrf_fusion(a, b)):
+            self.assertEqual(int(np.argmax(fused[0])), 0)
+        # Scaling one system does not change the RRF ranking
+        np.testing.assert_array_equal(rrf_fusion(a, b), rrf_fusion(a * 1000, b))
+
 
 if __name__ == "__main__":
     unittest.main()
