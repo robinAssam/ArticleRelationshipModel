@@ -361,7 +361,8 @@ makes annotating a whole book feasible.
    agreed. Step 2 waits for this: only 45 of the 125 dev questions have all
    their answers among the 30 annotated articles.
 2. Add the atom scores and the atom graph on top of the baselines and compare.
-3. Check a sample of the judgments by hand.
+3. Check a sample of the judgments by hand: `streamlit run handcheck.py`
+   (50 judgments fixed in `data/validation/handcheck_sample.csv`).
 4. Run every system once on the test set, with the settings fixed on dev.
 5. A qualitative study of alternative legal grounds on a few real cases.
 

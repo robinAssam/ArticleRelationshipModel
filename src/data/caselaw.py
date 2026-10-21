@@ -5,6 +5,7 @@ judgment is the question, and the BW articles the judgment cites are the
 answer. This module holds the parts that work on a single judgment:
 
     bw_citations(text)        Book 6/7 BW articles cited in a text
+    bw_citation_spans(text)   the same, with where each citation occurs
     parse_judgment(xml)       metadata, related judgments, full text, facts
     mask_citations(text)      replace article references by [ARTIKEL]
 
@@ -28,19 +29,24 @@ _CITE = re.compile(r"(?<![\d:])([67]):(\d{1,3}[a-z]?)(?![\d:])")
 _NEXT_LAW = re.compile(r"\b(BW|Burgerlijk Wetboek|Awb|Rv|Wft|Sr|Sv|Wvw|AOW|WIA|ZW)\b")
 
 
-def bw_citations(text: str) -> set[str]:
-    """Book 6/7 BW article citations in a judgment, e.g. {'7:454', '6:162'}.
+def bw_citation_spans(text: str) -> list[tuple[int, int, str]]:
+    """Every Book 6/7 BW citation in a text as (start, end, article), in order.
 
     A citation counts unless the next law named within 60 characters is a
     different act (e.g. "artikel 7:11 Awb"); in civil judgments a bare
     "7:454" refers to the BW.
     """
-    found = set()
+    spans = []
     for m in _CITE.finditer(text):
         law = _NEXT_LAW.search(text, m.end(), m.end() + 60)
         if law is None or law.group(1) in ("BW", "Burgerlijk Wetboek"):
-            found.add(f"{m.group(1)}:{m.group(2)}")
-    return found
+            spans.append((m.start(), m.end(), f"{m.group(1)}:{m.group(2)}"))
+    return spans
+
+
+def bw_citations(text: str) -> set[str]:
+    """Book 6/7 BW article citations in a judgment, e.g. {'7:454', '6:162'}."""
+    return {article for _, _, article in bw_citation_spans(text)}
 
 
 # -------------------------------------------------------------------- masking
