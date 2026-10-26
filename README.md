@@ -300,7 +300,7 @@ a one-line change.
 the right article, we need questions with known answers. Real court
 judgments provide these: the facts of the case are the question, and the
 articles the judge cited are the answer.  291,252 published civil judgments (2000–2026) have already 
-been indexed and can extract which BW articles each one cites. For now, only search the medical ones are searched(703
+been indexed and can extract which BW articles each one cites. For now, only the medical ones are searched(703
 judgments). Dropping that filter would give test cases for any part of the
 BW, likely thousands, without anyone labelling them by hand. As far as I
 know, no such test set exists yet for Dutch statutory law.
