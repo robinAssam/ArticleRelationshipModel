@@ -1,4 +1,4 @@
-"""Score spreading over links between articles (study A, step 4).
+"""Score spreading over links between articles (study A).
 
 A first-stage system scores every article for a question. Spreading then
 lets each article pass part of its score to the articles it is linked to,

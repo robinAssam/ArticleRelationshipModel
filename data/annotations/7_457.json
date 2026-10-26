@@ -38,7 +38,7 @@
     ],
     "annotator": "Claude-draft",
     "annotated_at": "12/09/2026",
-    "notes": "Core confidentiality duty. Two explicit references — will create edges to 7:448 (third-party informing) and 7:454 (records). Rich atom for demoing chained reasoning."
+    "notes": "Core confidentiality duty. Two explicit references — will create edges to 7:448 (third-party informing) and 7:454 (records). Useful example for chained reasoning."
   },
   {
     "atom_id": "7:457(1).b",

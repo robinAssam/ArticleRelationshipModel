@@ -122,7 +122,7 @@ substantially. Two causes:
 - the annotated Dutch is not the statutory wording (e.g. 6:101 lid 2,
   unchanged since 1992), consistent with LLM-drafted annotations.
 Consequence: re-annotate from the official text before using the
-annotations as ground truth (part C).
+annotations as ground truth.
 
 
 ## 16/10/2026 — Case law available for study A (rechtspraak.nl)
@@ -149,7 +149,7 @@ Conclusion: study A is feasible as planned (well above the ~300 threshold),
 pending a manual check of how many judgments yield a clean facts section
 and a substantive (not merely procedural) citation. Note that several often
 cited articles (7:450 consent, 7:462 hospital liability, 7:464 examinations)
-are not yet annotated: the full 87-article corpus needs annotating (part C).
+are not yet annotated: the full 87-article corpus needs annotating.
 
 
 ## 19/10/2026 — Study A dataset built
@@ -261,7 +261,7 @@ metric, no parameter tuned on dev) and the first stage for the atom
 re-ranker (shortlist = its top k).
 
 
-## 19/10/2026 — Step 4: score spreading over citation and section links
+## 19/10/2026 — Score spreading over citation and section links
 
 `src/graph/propagation.py`; systems `graph_cite`, `graph_tree`, `graph_both`
 in `scripts/run_baselines.py`. First stage: `hybrid_rrf`, scaled per question

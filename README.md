@@ -356,10 +356,7 @@ makes annotating a whole book feasible.
 
 1. Build the automatic annotation pipeline and annotate the full 87-article
    corpus from the official text, with a human-checked sample to measure
-   agreement. The pipeline is developed on the 30 articles already
-   annotated; the other 57 are annotated once the annotation protocol is
-   agreed. Step 2 waits for this: only 45 of the 125 dev questions have all
-   their answers among the 30 annotated articles.
+   agreement. 
 2. Add the atom scores and the atom graph on top of the baselines and compare.
 3. Check a sample of the judgments by hand: `streamlit run handcheck.py`
    (50 judgments fixed in `data/validation/handcheck_sample.csv`).

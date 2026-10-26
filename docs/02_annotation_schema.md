@@ -2,7 +2,6 @@
 
 This is the 9-label structure from the supervisor's *Annotation Guidelines:
 Legal Preconditions* document, adapted to this project's atom-level unit.
-The raw guidelines are filed under `docs/supervisor_notes/`.
 
 ## The 9 labels
 
@@ -16,10 +15,10 @@ The raw guidelines are filed under `docs/supervisor_notes/`.
 | 6 | Temporal | When, before / after, deadlines |
 | 7 | Explicit References | Citations to other articles or documents |
 | 8 | Hierarchies | "Subject to", "Notwithstanding", "Without prejudice to" |
-| 9 | Residual | Pre-conditional attributes not captured by 2–8 |-+-----------++++++++++++-
+| 9 | Residual | Pre-conditional attributes not captured by 2–8 |
 
-For full definitions and edge cases, see
-`docs/supervisor_notes/annotation_guidelines.md`.
+The full guidelines, with definitions and edge cases, are not part of this
+repository.
 
 ## Atom tuple schema
 

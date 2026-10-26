@@ -117,7 +117,7 @@
     "residual": ["statement", "file", "request"],
     "annotator": "Claude-draft",
     "annotated_at": "2026-06-22",
-    "notes": "'Upon request' tagged as temporal (trigger word 'upon' per schema). Could alternatively be split as a separate pre-condition atom — open supervisor question."
+    "notes": "'Upon request' tagged as temporal (trigger word 'upon' per schema). Could alternatively be split as a separate pre-condition atom — open question."
   },
   {
     "atom_id": "7:454(3).a",
